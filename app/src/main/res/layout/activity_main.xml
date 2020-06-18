@@ -1,53 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-    <ImageView
-        android:id="@+id/welcome"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/background" />
-
-    <TextView
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:id="@+id/welcomeString1"
-        android:textSize="33sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:fontFamily="sans-serif-condensed"
-        android:text="@string/welcomeString1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="415dp"
-        android:textStyle="italic"
-        android:textSize="25sp"
-        android:fontFamily="cursive"
-        android:textColor="#FFFFFF"
-        android:text="@string/welcomeString2"
-        android:id="@+id/welcomeString2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/btnSignIn"
-        android:background="@drawable/signin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="525dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-    <Button
-        android:id="@+id/btnSignUp"
-        android:background="@drawable/signup"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="580dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-    />
-</RelativeLayout>
+        android:id="@+id/mainContainer">
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

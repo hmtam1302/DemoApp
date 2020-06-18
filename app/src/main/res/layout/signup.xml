@@ -18,18 +18,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="5dp"
             android:text="@string/name"
             android:textColor="#040087"
-            android:textSize="30sp"
+            android:textSize="27sp"
             android:textStyle="bold" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:contentDescription="@string/logo"
             android:src="@drawable/logo" />
 
@@ -37,8 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="200dp"
-            android:text="@string/welcometext"
+            android:layout_marginTop="150dp"
+            android:text="Create account"
             android:textColor="#040087"
             android:textSize="40sp"
             android:textStyle="bold" />
@@ -47,8 +47,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="250dp"
-            android:text="@string/sigintocontinue"
+            android:layout_marginTop="200dp"
+            android:text="Create a new account"
             android:textColor="#9FA0A4"
             android:textStyle="bold" />
 
@@ -56,9 +56,9 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="250dp"
             android:background="@drawable/edittextborder"
-            android:hint="Enter your user name"
+            android:hint="Input your user name"
             android:maxLength="16"
             android:paddingStart="50dp"
             android:paddingLeft="50dp"
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
-            android:layout_marginTop="290dp"
+            android:layout_marginTop="240dp"
             android:background="#FFFFFF"
             android:text="User name"
             android:textColor="#00197B" />
@@ -80,8 +80,38 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="306dp"
+            android:layout_marginTop="256dp"
             android:src="@drawable/username" />
+
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="315dp"
+            android:background="@drawable/edittextborder"
+            android:hint="Input your password"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="305dp"
+            android:background="#FFFFFF"
+            android:text="Password"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="321dp"
+            android:src="@drawable/password" />
 
         <EditText
             android:layout_width="350dp"
@@ -89,7 +119,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="375dp"
             android:background="@drawable/edittextborder"
-            android:hint="Enter your password"
+            android:hint="Confirm your password"
             android:inputType="textPassword"
             android:maxLength="20"
             android:paddingLeft="50dp"
@@ -103,7 +133,7 @@
             android:layout_marginLeft="70dp"
             android:layout_marginTop="365dp"
             android:background="#FFFFFF"
-            android:text="Password"
+            android:text="Confirm password"
             android:textColor="#00197B" />
 
         <ImageView
@@ -113,29 +143,77 @@
             android:layout_marginTop="381dp"
             android:src="@drawable/password" />
 
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="435dp"
+            android:background="@drawable/edittextborder"
+            android:hint="Enter your phone number"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#707070" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="260dp"
+            android:layout_marginLeft="70dp"
             android:layout_marginTop="425dp"
-            android:text="@string/forgotpassword"
-            android:textColor="#0839FF"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:background="#FFFFFF"
+            android:text="Phone number"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="441dp"
+            android:src="@drawable/password" />
+
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="495dp"
+            android:background="@drawable/edittextborder"
+            android:hint="Enter your email"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="485dp"
+            android:background="#FFFFFF"
+            android:text="Email"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="501dp"
+            android:src="@drawable/password" />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="500dp"
-            android:background="@drawable/login" />
+            android:layout_marginTop="575dp"
+            android:background="@drawable/createaccount" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="53dp"
-            android:layout_marginTop="550dp"
-            android:text="Don't have an account?"
+            android:layout_marginLeft="95dp"
+            android:layout_marginTop="625dp"
+            android:text="Already have an account?"
             android:textColor="#000000"
             android:textSize="15sp"
             android:textStyle="italic" />
@@ -143,12 +221,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="210dp"
-            android:layout_marginTop="550dp"
-            android:text="Create a new account"
+            android:layout_marginLeft="265dp"
+            android:layout_marginTop="625dp"
+            android:text="Login"
             android:textColor="#0839FF"
             android:textSize="15sp"
             android:textStyle="bold" />
-
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
