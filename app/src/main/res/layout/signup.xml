@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF">
-
+        <!--Back button-->
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -15,6 +15,7 @@
             android:contentDescription="@string/back"
             android:onClick="backToMain" />
 
+        <!--Name-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,6 +26,7 @@
             android:textSize="27sp"
             android:textStyle="bold" />
 
+        <!--Logo-->
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,6 +35,7 @@
             android:contentDescription="@string/logo"
             android:src="@drawable/logo" />
 
+        <!--Create account-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,13 +55,14 @@
             android:textColor="#9FA0A4"
             android:textStyle="bold" />
 
+        <!--Username-->
         <EditText
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="250dp"
             android:background="@drawable/edittextborder"
-            android:hint="Input your user name"
+            android:hint="Enter your user name"
             android:maxLength="16"
             android:paddingStart="50dp"
             android:paddingLeft="50dp"
@@ -83,13 +87,14 @@
             android:layout_marginTop="256dp"
             android:src="@drawable/username" />
 
+        <!--Password-->
         <EditText
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="315dp"
             android:background="@drawable/edittextborder"
-            android:hint="Input your password"
+            android:hint="Enter your password"
             android:inputType="textPassword"
             android:maxLength="20"
             android:paddingLeft="50dp"
@@ -113,6 +118,7 @@
             android:layout_marginTop="321dp"
             android:src="@drawable/password" />
 
+        <!--Confirm password-->
         <EditText
             android:layout_width="350dp"
             android:layout_height="wrap_content"
@@ -143,6 +149,7 @@
             android:layout_marginTop="381dp"
             android:src="@drawable/password" />
 
+        <!--Phone number-->
         <EditText
             android:layout_width="350dp"
             android:layout_height="wrap_content"
@@ -173,6 +180,7 @@
             android:layout_marginTop="441dp"
             android:src="@drawable/password" />
 
+        <!--Email-->
         <EditText
             android:layout_width="350dp"
             android:layout_height="wrap_content"
@@ -201,6 +209,7 @@
             android:layout_marginTop="501dp"
             android:src="@drawable/password" />
 
+        <!--Create account button-->
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -208,6 +217,7 @@
             android:layout_marginTop="575dp"
             android:background="@drawable/createaccount" />
 
+        <!--Login-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

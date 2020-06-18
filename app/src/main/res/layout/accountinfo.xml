@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+        <!--Back button-->
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back"
+            android:contentDescription="@string/back"
+            android:onClick="backToMain" />
+
+        <!--Logo and Name-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="65dp"
+                android:text="@string/name"
+                android:textColor="#040087"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <!--Information-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:text="Information"
+            android:textColor="#040087"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <!--Login information-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="125dp"
+            android:text="Login infomation"
+            android:textColor="#0839FF"
+            android:textSize="20sp" />
+
+        <!--Username-->
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="160dp"
+            android:background="@drawable/edittextborder"
+            android:maxLength="16"
+            android:paddingStart="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="hmtam1302"
+            android:enabled="false"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="150dp"
+            android:background="#FFFFFF"
+            android:text="User name"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="165dp"
+            android:src="@drawable/username" />
+
+        <!--Password-->
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="215dp"
+            android:background="@drawable/edittextborder"
+            android:enabled="false"
+            android:inputType="textPassword"
+            android:maxLength="16"
+            android:paddingStart="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Get from DB"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="205dp"
+            android:background="#FFFFFF"
+            android:text="Password"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="220dp"
+            android:src="@drawable/password" />
+
+        <!--Change password-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="260dp"
+            android:text="Change your password?"
+            android:textColor="#0839FF"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <!--Personal information-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="280dp"
+            android:text="Personal infomation"
+            android:textColor="#0839FF"
+            android:textSize="20sp" />
+
+        <!--Name-->
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="315dp"
+            android:background="@drawable/edittextborder"
+            android:enabled="false"
+            android:maxLength="16"
+            android:paddingStart="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Huỳnh Công Hải"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="305dp"
+            android:background="#FFFFFF"
+            android:text="Full name"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="320dp"
+            android:src="@drawable/username" />
+
+        <!--Gender-->
+        <Spinner
+            android:id="@+id/genderSpinner"
+            android:layout_width="350dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="370dp"
+            android:background="@drawable/edittextborder"
+            android:paddingStart="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="360dp"
+            android:background="#FFFFFF"
+            android:text="Gender"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="375dp"
+            android:src="@drawable/username" />
+
+        <!--Date of Birth-->
+        <EditText
+            android:id="@+id/dateofbirth"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="430dp"
+            android:background="@drawable/edittextborder"
+            android:enabled="false"
+            android:inputType="date"
+            android:maxLength="16"
+            android:paddingStart="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="21/01/2000"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="420dp"
+            android:background="#FFFFFF"
+            android:text="Date of birth"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="490dp"
+            android:src="@drawable/username" />
+
+        <!--Email-->
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="485dp"
+            android:background="@drawable/edittextborder"
+            android:enabled="false"
+            android:paddingStart="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="conghai20@gmail.com"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="475dp"
+            android:background="#FFFFFF"
+            android:text="Email"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="435dp"
+            android:src="@drawable/username" />
+
+        <!--Phone number-->
+        <EditText
+            android:id="@+id/phonenumber"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="540dp"
+            android:background="@drawable/edittextborder"
+            android:enabled="false"
+            android:inputType="phone"
+            android:maxLength="16"
+            android:paddingStart="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="0942239400"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="530dp"
+            android:background="#FFFFFF"
+            android:text="Phone number"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="545dp"
+            android:src="@drawable/username" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="625dp"
+            android:background="#FFFFFF">
+
+            <ImageButton
+                android:id="@+id/editbtn"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/editbtn"
+                android:adjustViewBounds="true"
+                android:maxHeight="100dp"
+                android:maxWidth="40dp"
+                android:scaleType="fitCenter"
+                android:onClick="editPersonalInfo"/>
+
+            <ImageButton
+                android:id="@+id/savebtn"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="140dp"
+                android:adjustViewBounds="true"
+                android:maxHeight="100dp"
+                android:maxWidth="40dp"
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                android:src="@drawable/savebtndisable"
+                android:clickable="false"
+                android:onClick="savePersonalInfo"/>
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="260dp"
+                android:adjustViewBounds="true"
+                android:maxHeight="100dp"
+                android:maxWidth="40dp"
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                android:src="@drawable/canclebtn"
+                android:onClick="backToMain"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

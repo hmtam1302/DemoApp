@@ -8,6 +8,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/background">
 
+        <!--Welcome text-->
         <TextView
             android:id="@+id/welcomeString1"
             android:layout_width="wrap_content"
@@ -21,6 +22,7 @@
             android:textSize="33sp"
             android:textStyle="bold" />
 
+        <!--Slogan-->
         <TextView
             android:id="@+id/welcomeString2"
             android:layout_width="wrap_content"
@@ -33,6 +35,7 @@
             android:textSize="25sp"
             android:textStyle="italic" />
 
+        <!--Sign in button-->
         <ImageButton
             android:id="@+id/btnSignIn"
             android:layout_width="wrap_content"
@@ -42,6 +45,7 @@
             android:background="@drawable/signin"
             android:onClick="loginActivity" />
 
+        <!--Sign up button-->
         <ImageButton
             android:id="@+id/btnSignUp"
             android:layout_width="wrap_content"
