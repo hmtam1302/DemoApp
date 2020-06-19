@@ -139,7 +139,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="500dp"
             android:background="@drawable/login"
-            android:onClick="displayInfo"/>
+            android:onClick="displayHome"/>
 
         <!--Create account-->
         <TextView
@@ -160,6 +160,8 @@
             android:text="Create a new account"
             android:textColor="#0839FF"
             android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:onClick="signupActivity"
+            android:clickable="true"/>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

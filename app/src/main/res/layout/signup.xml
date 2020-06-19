@@ -236,6 +236,8 @@
             android:text="Login"
             android:textColor="#0839FF"
             android:textSize="15sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:onClick="loginActivity"
+            android:clickable="true"/>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+        <!--Back button-->
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back"
+            android:contentDescription="@string/back"
+            android:onClick="backToMain" />
+        <!--Name-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/name"
+            android:layout_centerHorizontal="true"
+            android:textColor="#040087"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="360dp"
+            android:src="@drawable/logo" />
+
+        <!--Search-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="Search"
+                android:textColor="#040087"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="90dp"
+                android:background="@drawable/edittextborder"
+                android:hint="Enter food"
+                android:paddingLeft="10dp" />
+
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="350dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/searchbtn"
+                android:scaleType="fitCenter" />
+        </RelativeLayout>
+
+
+        <!--List of restaurant-->
+        <ListView
+            android:id="@+id/listFood"
+            android:layout_width="400dp"
+            android:layout_height="535dp"
+            android:layout_marginTop="100dp"
+            android:layout_centerHorizontal="true"
+            android:background="#FFFFFF">
+
+        </ListView>
+
+        <!--Navigation bar-->
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TableRow>
+
+                <ImageButton
+                    android:layout_width="140dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:background="#FEF8A6"
+                    android:src="@drawable/homebtn" />
+
+                <ImageButton
+                    android:layout_width="140dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/order" />
+
+                <ImageButton
+                    android:id="@+id/infobtn"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/accountbtn"
+                    android:onClick="displayInfo"/>
+            </TableRow>
+
+        </TableLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

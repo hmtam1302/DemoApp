@@ -16,7 +16,7 @@
             android:layout_height="50dp"
             android:background="@drawable/back"
             android:contentDescription="@string/back"
-            android:onClick="backToMain" />
+            android:onClick="displayHome" />
 
         <!--Logo and Name-->
         <RelativeLayout
@@ -137,7 +137,9 @@
             android:text="Change your password?"
             android:textColor="#0839FF"
             android:textSize="15sp"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            android:onClick="displayChangePassword"
+            android:clickable="true"/>
 
         <!--Personal information-->
         <TextView
@@ -361,7 +363,7 @@
                 android:scaleType="fitCenter"
                 android:background="#FFFFFF"
                 android:src="@drawable/canclebtn"
-                android:onClick="backToMain"/>
+                android:onClick="displayHome"/>
         </RelativeLayout>
     </RelativeLayout>
 
