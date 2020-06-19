@@ -48,6 +48,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/foodKey"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
                 android:layout_centerVertical="true"
@@ -57,12 +58,13 @@
                 android:paddingLeft="10dp" />
 
             <ImageButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="23dp"
+                android:layout_height="22dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="350dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/searchbtn"
+                android:onClick="searchFood"
                 android:scaleType="fitCenter" />
         </RelativeLayout>
 

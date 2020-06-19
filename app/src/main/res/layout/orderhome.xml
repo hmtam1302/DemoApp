@@ -48,6 +48,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/resKey"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
                 android:layout_centerVertical="true"
@@ -63,7 +64,8 @@
                 android:layout_marginLeft="350dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/searchbtn"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter"
+                android:onClick="searchRes"/>
         </RelativeLayout>
 
 

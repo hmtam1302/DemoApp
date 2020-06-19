@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -28,6 +29,8 @@ public class DisplayHome extends AppCompatActivity {
 
     private Scene homeScene;
     private Scene foodScene;
+    private List<Restaurant> listRes;
+    private List<Food> listFood;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -80,7 +83,7 @@ public class DisplayHome extends AppCompatActivity {
         startActivity(intent);
     }
     private  List<Restaurant> getListRestaurantData() {
-        List<Restaurant> list = new ArrayList<Restaurant>();
+        listRes = new ArrayList<Restaurant>();
         Restaurant kfc = new Restaurant("KFC", "kfc", "Discription: KFC Chicken","4.5/5.0");
         Restaurant kichikichi = new Restaurant("Kichi Kichi", "kichikichi", "Discription: Hotpot", "4.0/5.0");
         Restaurant loteria = new Restaurant("Lotteria", "lotteria", "Discription: Chiken, Cake, and Chips", "5.0/5.0");
@@ -89,14 +92,14 @@ public class DisplayHome extends AppCompatActivity {
         Restaurant mcdonald = new Restaurant("McDonald's","mcdonald", "Discription: McDonald's Chicken", "4.5/5.0");
 
 
-        list.add(kfc);
-        list.add(kichikichi);
-        list.add(loteria);
-        list.add(phuclong);
-        list.add(thecoffeehouse);
-        list.add(mcdonald);
+        listRes.add(kfc);
+        listRes.add(kichikichi);
+        listRes.add(loteria);
+        listRes.add(phuclong);
+        listRes.add(thecoffeehouse);
+        listRes.add(mcdonald);
 
-        return list;
+        return listRes;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -109,7 +112,7 @@ public class DisplayHome extends AppCompatActivity {
         listView.setAdapter(new CustomListFoodAdapter(this, image_details));
     }
     private List<Food> getListFoodData() {
-        List<Food> list = new ArrayList<Food>();
+        listFood = new ArrayList<Food>();
         Food duiga = new Food("Đùi Gà KFC", "duiga", 15,"Đùi gà chiên thơm giòn", "35000", "4.5/5.0");
         Food canhga = new Food("Cánh Gà KFC", "canhga", 20, "Cánh gà chiên nước mắm", "30000", "4.5/5.0");
         Food khoaitaychien = new Food("Khoai Tây Chiên KFC", "khoaitaychien", 25, "Khoai tây chiên giòn rụm", "20000", "4.5/5.0");
@@ -117,17 +120,54 @@ public class DisplayHome extends AppCompatActivity {
         Food trahoahong = new Food("Trà Hoa Hồng", "trahoahong", 35, "Trà hoa hồng thơm dịu dàng", "45000", "5.0/5.0");
 
 
-        list.add(duiga);
-        list.add(canhga);
-        list.add(khoaitaychien);
-        list.add(tranhanlai);
-        list.add(trahoahong);
+        listFood.add(duiga);
+        listFood.add(canhga);
+        listFood.add(khoaitaychien);
+        listFood.add(tranhanlai);
+        listFood.add(trahoahong);
 
-        return list;
+        return listFood;
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void backToMain(View view){
         Intent intent = new Intent(this, DisplayWelcome.class);
         startActivity(intent);
     }
+
+    public void searchRes(View view){
+        String key = ((EditText)findViewById(R.id.resKey)).getText().toString();
+        List<Restaurant> temp = new ArrayList<>();
+        for(int i = 0; i < listRes.size(); i++){
+            Restaurant restaurant = listRes.get(i);
+            String name = restaurant.getName().toLowerCase();
+            if(key != null){
+                if(name.contains(key.toLowerCase())) temp.add(restaurant);
+                final ListView listView = (ListView) findViewById(R.id.listRestaurant);
+                listView.setAdapter(new CustomListRestaurantAdapter(this, temp));
+            }
+            else{
+                final ListView listView = (ListView) findViewById(R.id.listRestaurant);
+                listView.setAdapter(new CustomListRestaurantAdapter(this, listRes));
+            }
+        }
+    }
+
+    public void searchFood(View view){
+        String key = ((EditText)findViewById(R.id.foodKey)).getText().toString();
+        List<Food> temp = new ArrayList<>();
+        for(int i = 0; i < listFood.size(); i++){
+            Food food = listFood.get(i);
+            String name = food.getName().toLowerCase();
+            if(key != null){
+                if(name.contains(key.toLowerCase())) temp.add(food);
+                final ListView listView = (ListView) findViewById(R.id.listFood);
+                listView.setAdapter(new CustomListFoodAdapter(this, temp));
+            }
+            else{
+                final ListView listView = (ListView) findViewById(R.id.listFood);
+                listView.setAdapter(new CustomListFoodAdapter(this, listFood));
+            }
+        }
+    }
+
 }
