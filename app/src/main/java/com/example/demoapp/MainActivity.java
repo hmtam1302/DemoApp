@@ -52,9 +52,8 @@ public class MainActivity extends AppCompatActivity {
         loginScene = Scene.getSceneForLayout(root, R.layout.login, this);
         signupScene = Scene.getSceneForLayout(root, R.layout.signup, this);
         informationScene =Scene.getSceneForLayout(root, R.layout.accountinfo, this);
+
         mainScene.enter();
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

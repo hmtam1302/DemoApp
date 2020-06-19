@@ -86,7 +86,6 @@
             android:background="#FFFFFF"
             android:text="User name"
             android:textColor="#00197B" />
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
