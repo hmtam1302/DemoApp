@@ -62,4 +62,14 @@ public class DisplaySignUp extends AppCompatActivity {
             startActivity(intent);
         }
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void backToMain(View view){
+        Intent intent = new Intent(this, DisplayWelcome.class);
+        startActivity(intent);
+    }
+
+    public void loginActivity(View view){
+        Intent intent = new Intent(this, DisplayLogin.class);
+        startActivity(intent);
+    }
 }
