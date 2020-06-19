@@ -27,6 +27,7 @@ public class DisplayInfomation extends AppCompatActivity {
     private Spinner genderSpinner = null;
     private Scene changepasswordScene = null;
     private Scene passwordScene = null;
+    private UserData userData = DisplaySignUp.userManager.getData(DisplaySignUp.sUserName);
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -62,9 +63,28 @@ public class DisplayInfomation extends AppCompatActivity {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genderSpinner.setAdapter(arrayAdapter);
         genderSpinner.setEnabled(false);
+
+        //Display information
+        EditText edtUserName = (EditText)findViewById(R.id.edtUsername);
+        edtUserName.setText(userData.getUserName());
+
+        EditText edtPassword = (EditText)findViewById(R.id.edtPassword);
+        edtPassword.setText(userData.getPassword());
+
+        EditText edtFullName = (EditText)findViewById(R.id.fullname);
+        edtFullName.setText(userData.getFullName());
+
+        EditText edtDateofbirth = (EditText)findViewById(R.id.dateofbirth);
+        edtDateofbirth.setText(userData.getDateOfBirth());
+
+        EditText edtPhone = (EditText)findViewById(R.id.phonenumber);
+        edtPhone.setText(userData.getPhoneNumber());
+
+        EditText edtEmail = (EditText)findViewById(R.id.email);
+        edtEmail.setText(userData.getEmail());
     }
     public void editPersonalInfo(View view){
-        EditText name = (EditText)findViewById(R.id.name);
+        EditText name = (EditText)findViewById(R.id.fullname);
         EditText dateofbirth = (EditText)findViewById(R.id.dateofbirth);
         EditText email = (EditText)findViewById(R.id.email);
         EditText phonenumber = (EditText)findViewById(R.id.phonenumber);
@@ -86,7 +106,7 @@ public class DisplayInfomation extends AppCompatActivity {
         editBtn.setImageResource(R.drawable.editbtndisable);
     }
     public void savePersonalInfo(View view){
-        EditText name = (EditText)findViewById(R.id.name);
+        EditText name = (EditText)findViewById(R.id.fullname);
         EditText dateofbirth = (EditText)findViewById(R.id.dateofbirth);
         EditText email = (EditText)findViewById(R.id.email);
         EditText phonenumber = (EditText)findViewById(R.id.phonenumber);
@@ -99,6 +119,13 @@ public class DisplayInfomation extends AppCompatActivity {
         genderSpinner.setEnabled(false);
         email.setEnabled(false);
         phonenumber.setEnabled(false);
+
+        //Set information
+        userData.setFullName(name.getText().toString());
+        userData.setDateOfBirth(dateofbirth.getText().toString());
+        userData.setEmail(email.getText().toString());
+        userData.setPhoneNumber(phonenumber.getText().toString());
+
         //Set up edit button
         editBtn.setClickable(true);
         editBtn.setImageResource(R.drawable.editbtn);
@@ -106,6 +133,7 @@ public class DisplayInfomation extends AppCompatActivity {
         ImageButton saveBtn = (ImageButton)view;
         saveBtn.setClickable(false);
         saveBtn.setImageResource(R.drawable.savebtndisable);
+
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayChangePassword(View view){

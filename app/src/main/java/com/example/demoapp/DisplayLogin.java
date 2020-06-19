@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 
 public class DisplayLogin extends AppCompatActivity {
 
@@ -39,7 +40,14 @@ public class DisplayLogin extends AppCompatActivity {
         TransitionManager.go(loginScene);
     }
     public void displayLoginPop(View view){
-        Intent intent = new Intent(this, PopUpActivity.class);
-        startActivity(intent);
+        EditText userName = (EditText)findViewById(R.id.loginUsername);
+        EditText passWord = (EditText)findViewById(R.id.loginPassword);
+
+        UserData userData = DisplaySignUp.userManager.getData(userName.getText().toString());
+        if(userData != null && userData.getPassword().equals(passWord.getText().toString())){
+            Intent intent = new Intent(this, PopUpActivity.class);
+            DisplaySignUp.sUserName = userName.getText().toString();
+            startActivity(intent);
+        }
     }
 }

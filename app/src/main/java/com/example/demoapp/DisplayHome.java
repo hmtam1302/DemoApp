@@ -125,4 +125,9 @@ public class DisplayHome extends AppCompatActivity {
 
         return list;
     }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void backToMain(View view){
+        Intent intent = new Intent(this, DisplayWelcome.class);
+        startActivity(intent);
+    }
 }

@@ -57,6 +57,7 @@
 
         <!--Username-->
         <EditText
+            android:id="@+id/usernameEdt"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -89,6 +90,7 @@
 
         <!--Password-->
         <EditText
+            android:id="@+id/passwordEdt"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -120,6 +122,7 @@
 
         <!--Confirm password-->
         <EditText
+            android:id="@+id/confirmPasswordEdt"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -151,6 +154,7 @@
 
         <!--Phone number-->
         <EditText
+            android:id="@+id/phoneEdt"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -182,6 +186,7 @@
 
         <!--Email-->
         <EditText
+            android:id="@+id/emailEdt"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -215,7 +220,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="575dp"
-            android:background="@drawable/createaccount" />
+            android:background="@drawable/createaccount"
+            android:onClick="createAccount"/>
 
         <!--Login-->
         <TextView

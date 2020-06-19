@@ -60,6 +60,7 @@
 
         <!--Username-->
         <EditText
+            android:id="@+id/loginUsername"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -92,6 +93,7 @@
 
         <!--Password-->
         <EditText
+            android:id="@+id/loginPassword"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
