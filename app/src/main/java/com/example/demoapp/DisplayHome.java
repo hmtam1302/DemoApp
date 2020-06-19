@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.transition.Explode;
@@ -70,6 +72,12 @@ public class DisplayHome extends AppCompatActivity {
                 displayFood(v);
             }
         });
+    }
+
+    public void displayInfo(View view){
+        view.setBackgroundColor(Color.parseColor("#FEF8A6"));
+        Intent intent = new Intent(this, DisplayInfomation.class);
+        startActivity(intent);
     }
     private  List<Restaurant> getListRestaurantData() {
         List<Restaurant> list = new ArrayList<Restaurant>();

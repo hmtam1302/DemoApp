@@ -3,6 +3,7 @@ package com.example.demoapp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,7 +28,7 @@ public class DisplayInfomation extends AppCompatActivity {
     private Scene changepasswordScene = null;
     private Scene passwordScene = null;
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +46,13 @@ public class DisplayInfomation extends AppCompatActivity {
         informationScene = Scene.getSceneForLayout(root, R.layout.accountinfo, this);
         changepasswordScene = Scene.getSceneForLayout(root, R.layout.changepassword, this);
         passwordScene = Scene.getSceneForLayout(root, R.layout.changepassword, this);
+
+        displayInfo();
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void displayInfo(View view){
+    public void displayInfo(){
         Transition explode = new Explode();
         TransitionManager.go(informationScene, explode);
-        view.setBackgroundColor(Color.parseColor("#FEF8A6"));
         //Set up gender spinner
         genderSpinner = (Spinner) findViewById(R.id.genderSpinner);
         ArrayList<String> genderList = new ArrayList<String>();
@@ -109,5 +111,10 @@ public class DisplayInfomation extends AppCompatActivity {
     public void displayChangePassword(View view){
         Transition explode = new Explode();
         TransitionManager.go(passwordScene, explode);
+    }
+
+    public void displayHome(View view){
+        Intent intent = new Intent(this, DisplayHome.class);
+        startActivity(intent);
     }
 }
