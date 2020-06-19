@@ -139,7 +139,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="500dp"
             android:background="@drawable/login"
-            android:onClick="displayHome"/>
+            android:onClick="displayLoginPop"/>
 
         <!--Create account-->
         <TextView
