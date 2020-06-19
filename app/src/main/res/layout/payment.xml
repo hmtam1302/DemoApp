@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        >
+        <!--Back_button-->
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back"
+            android:contentDescription="@string/back"
+            />
+        <!--Display_text-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="7dp"
+            android:text="PAYMENT"
+            android:textColor="#06208B"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+        <!--Display_text-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="80dp"
+            android:text="Deliver Time"
+            android:textColor="#707070"
+            android:textSize="15dp"
+            android:textStyle="italic" />
+        <!--Display_text-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="110dp"
+            android:text="Deliver Now"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:textStyle="normal" />
+        <!--Display_text-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="280dp"
+            android:layout_marginTop="110dp"
+            android:text="Change Time"
+            android:textColor="#06208b"
+            android:textSize="18dp"
+            android:textStyle="normal" />
+        <!--Display_text-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="150dp"
+            android:text="Order Summary"
+            android:textColor="#06208B"
+            android:textSize="27dp"
+            android:textStyle="bold" />
+        <!--List of dishes-->
+        <ListView
+            android:id="@+id/listFood"
+            android:layout_width="360dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="200dp"
+            android:layout_centerHorizontal="true"
+            android:background="#FFFFFF">
+
+        </ListView>
+        <!--Display_text-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="450dp"
+            android:text="Payment Method"
+            android:textColor="#06208B"
+            android:textSize="27dp"
+            android:textStyle="bold" />
+        <!--Choose_cash_button-->
+        <ImageButton
+            android:layout_width="360dp"
+            android:layout_height="40dp"
+            android:background="@drawable/cash_payment"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="490dp"
+            />
+        <!--Display_text-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="540dp"
+            android:text="Total"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <!--Display_text-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="540dp"
+            android:text="Price VND"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="normal" />
+        <!--Order_button-->
+        <ImageButton
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/order_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="600dp"
+            />
+
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
