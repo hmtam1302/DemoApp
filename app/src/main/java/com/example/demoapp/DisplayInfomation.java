@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -140,6 +141,35 @@ public class DisplayInfomation extends AppCompatActivity {
         Transition explode = new Explode();
         TransitionManager.go(passwordScene, explode);
     }
+
+    //edit and check new password function
+    public void checkPassword(View view){
+        EditText curPassword = (EditText)findViewById(R.id.curPassword);
+        EditText newPassword = (EditText)findViewById(R.id.newPassword);
+        EditText newPasswordconfirm = (EditText)findViewById(R.id.newPasswordconfirm);
+
+        //Step 1: check curPassword is userData.password
+        if(!userData.getPassword().equals(curPassword.getText().toString())){
+            //Display wrong message
+            TextView messageTxt = (TextView)findViewById(R.id.wrong_message);
+            messageTxt.setText("Your operations were wrong.");
+            return;
+        }
+        //Step 2: check newPassword is newPasswordconfirmed
+        if(newPassword.getText().toString().equals(newPasswordconfirm.getText().toString())){
+            userData.setPassword(newPassword.getText().toString());
+
+            return;
+        }
+        else{
+            //Display wrong message
+            TextView messageTxt = (TextView)findViewById(R.id.wrong_message);
+            messageTxt.setText("Your operations were wrong.");
+            return;
+        }
+    }
+
+
 
     public void displayHome(View view){
         Intent intent = new Intent(this, DisplayHome.class);
