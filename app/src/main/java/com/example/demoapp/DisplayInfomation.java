@@ -152,20 +152,21 @@ public class DisplayInfomation extends AppCompatActivity {
         if(!userData.getPassword().equals(curPassword.getText().toString())){
             //Display wrong message
             TextView messageTxt = (TextView)findViewById(R.id.wrong_message);
-            messageTxt.setText("Your operations were wrong.");
+            messageTxt.setText("Enter wrong current password! Try again!");
             return;
         }
         //Step 2: check newPassword is newPasswordconfirmed
-        if(newPassword.getText().toString().equals(newPasswordconfirm.getText().toString())){
-            userData.setPassword(newPassword.getText().toString());
+        else {
+            if (newPassword.getText().toString().equals(newPasswordconfirm.getText().toString())) {
+                userData.setPassword(newPassword.getText().toString());
 
-            return;
-        }
-        else{
-            //Display wrong message
-            TextView messageTxt = (TextView)findViewById(R.id.wrong_message);
-            messageTxt.setText("Your operations were wrong.");
-            return;
+                return;
+            } else {
+                //Display wrong message
+                TextView messageTxt = (TextView) findViewById(R.id.wrong_message);
+                messageTxt.setText("Enter wrong confirm password! Try again!");
+                return;
+            }
         }
     }
 
