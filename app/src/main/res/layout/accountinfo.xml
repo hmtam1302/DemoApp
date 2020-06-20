@@ -249,14 +249,14 @@
             android:background="#FFFFFF"
             android:text="Date of birth"
             android:textColor="#00197B" />
-
+        <!--day of birth image-->
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="490dp"
-            android:src="@drawable/username" />
+            android:layout_marginTop="435dp"
+            android:src="@drawable/dayofbirth_icon" />
 
         <!--Email-->
         <EditText
@@ -283,14 +283,14 @@
             android:background="#FFFFFF"
             android:text="Email"
             android:textColor="#00197B" />
-
+        <!--gmail image-->
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="435dp"
-            android:src="@drawable/username" />
+            android:layout_marginTop="490dp"
+            android:src="@drawable/gmail_icon" />
 
         <!--Phone number-->
         <EditText
@@ -321,12 +321,12 @@
             android:textColor="#00197B" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="545dp"
-            android:src="@drawable/username" />
+            android:src="@drawable/phone_icon" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
