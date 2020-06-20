@@ -13,7 +13,7 @@
             android:layout_height="50dp"
             android:background="@drawable/back"
             android:contentDescription="@string/back"
-            android:onClick="backToMain" />
+            android:onClick="displayHome" />
         <!--Name-->
         <TextView
             android:layout_width="wrap_content"
@@ -48,6 +48,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:maxLines="1"
                 android:id="@+id/foodKey"
                 android:layout_width="300dp"
                 android:layout_height="45dp"

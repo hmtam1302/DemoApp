@@ -28,7 +28,7 @@
             android:layout_marginTop="85dp"
             android:background="#FFFFFF"
             android:src="@drawable/okbtn"
-            android:onClick="confirmLogin"
+            android:onClick="displayHome"
             />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

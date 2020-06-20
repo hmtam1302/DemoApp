@@ -70,13 +70,14 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="160dp"
             android:background="@drawable/edittextborder"
+            android:enabled="false"
             android:maxLength="16"
+            android:maxLines="1"
             android:paddingStart="50dp"
             android:paddingLeft="50dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="hmtam1302"
-            android:enabled="false"
             android:textColor="#707070" />
 
         <TextView
@@ -87,6 +88,7 @@
             android:background="#FFFFFF"
             android:text="User name"
             android:textColor="#00197B" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -106,6 +108,7 @@
             android:enabled="false"
             android:inputType="textPassword"
             android:maxLength="16"
+            android:maxLines="1"
             android:paddingStart="50dp"
             android:paddingLeft="50dp"
             android:paddingTop="10dp"
@@ -136,12 +139,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="220dp"
             android:layout_marginTop="260dp"
+            android:clickable="true"
+            android:onClick="displayChangePassword"
             android:text="Change your password?"
             android:textColor="#0839FF"
             android:textSize="15sp"
-            android:textStyle="italic"
-            android:onClick="displayChangePassword"
-            android:clickable="true"/>
+            android:textStyle="italic" />
 
         <!--Personal information-->
         <TextView
@@ -163,6 +166,7 @@
             android:background="@drawable/edittextborder"
             android:enabled="false"
             android:maxLength="16"
+            android:maxLines="1"
             android:paddingStart="50dp"
             android:paddingLeft="50dp"
             android:paddingTop="10dp"
@@ -229,6 +233,7 @@
             android:enabled="false"
             android:inputType="date"
             android:maxLength="16"
+            android:maxLines="1"
             android:paddingStart="50dp"
             android:paddingLeft="50dp"
             android:paddingTop="10dp"
@@ -262,6 +267,7 @@
             android:layout_marginTop="485dp"
             android:background="@drawable/edittextborder"
             android:enabled="false"
+            android:maxLines="1"
             android:paddingStart="50dp"
             android:paddingLeft="50dp"
             android:paddingTop="10dp"
@@ -297,6 +303,7 @@
             android:enabled="false"
             android:inputType="phone"
             android:maxLength="16"
+            android:maxLines="1"
             android:paddingStart="50dp"
             android:paddingLeft="50dp"
             android:paddingTop="10dp"
@@ -333,13 +340,13 @@
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
-                android:background="#FFFFFF"
-                android:src="@drawable/editbtn"
                 android:adjustViewBounds="true"
-                android:maxHeight="100dp"
+                android:background="#FFFFFF"
                 android:maxWidth="40dp"
+                android:maxHeight="100dp"
+                android:onClick="editPersonalInfo"
                 android:scaleType="fitCenter"
-                android:onClick="editPersonalInfo"/>
+                android:src="@drawable/editbtn" />
 
             <ImageButton
                 android:id="@+id/savebtn"
@@ -347,13 +354,13 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="140dp"
                 android:adjustViewBounds="true"
-                android:maxHeight="100dp"
-                android:maxWidth="40dp"
-                android:scaleType="fitCenter"
                 android:background="#FFFFFF"
-                android:src="@drawable/savebtndisable"
                 android:clickable="false"
-                android:onClick="savePersonalInfo"/>
+                android:maxWidth="40dp"
+                android:maxHeight="100dp"
+                android:onClick="savePersonalInfo"
+                android:scaleType="fitCenter"
+                android:src="@drawable/savebtndisable" />
 
             <ImageButton
                 android:layout_width="100dp"

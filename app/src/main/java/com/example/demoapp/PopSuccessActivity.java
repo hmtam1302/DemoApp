@@ -1,5 +1,6 @@
 package com.example.demoapp;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +8,10 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.Toast;
 
-public class PopUpActivity extends Activity {
+public class PopSuccessActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,7 @@ public class PopUpActivity extends Activity {
         getWindow().setAttributes(params);
     }
 
-    public void confirmLogin(View view){
+    public void displayHome(View view){
         Intent intent = new Intent(this, DisplayHome.class);
         startActivity(intent);
     }
