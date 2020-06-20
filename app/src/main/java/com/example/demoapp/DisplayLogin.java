@@ -13,9 +13,10 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class DisplayLogin extends AppCompatActivity {
-
     private Scene loginScene = null;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -45,9 +46,17 @@ public class DisplayLogin extends AppCompatActivity {
 
         UserData userData = DisplaySignUp.userManager.getData(userName.getText().toString());
         if(userData != null && userData.getPassword().equals(passWord.getText().toString())){
-            Intent intent = new Intent(this, PopUpActivity.class);
             DisplaySignUp.sUserName = userName.getText().toString();
+
+            TextView message = (TextView)findViewById(R.id.message);
+            message.setText("");
+
+            Intent intent = new Intent(this, PopSuccessActivity.class);
             startActivity(intent);
+        }
+        else{
+            TextView message = (TextView)findViewById(R.id.message);
+            message.setText("Wrong username or password");
         }
     }
 
