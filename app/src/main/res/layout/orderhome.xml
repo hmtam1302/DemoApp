@@ -104,7 +104,8 @@
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
                     android:background="#FFFFFF"
-                    android:src="@drawable/order" />
+                    android:src="@drawable/order"
+                    android:onClick="displayCart"/>
 
                 <ImageButton
                     android:id="@+id/infobtn"

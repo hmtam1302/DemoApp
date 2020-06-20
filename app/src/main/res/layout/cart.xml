@@ -54,16 +54,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="false"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="115dp"
-                android:text="Deliver Now"
-                android:textColor="#000000"
-                android:textSize="18dp"
-                android:textStyle="normal" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="false"
                 android:layout_marginLeft="280dp"
                 android:layout_marginTop="30dp"
                 android:text="Change Time"

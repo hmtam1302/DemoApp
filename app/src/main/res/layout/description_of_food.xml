@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <!--File Description of Food when selecting Food Item-->
@@ -15,154 +14,181 @@
             android:background="@drawable/back"
             android:contentDescription="@string/back"
             android:onClick="list_food_interface" />
+
         <!--Display Name of Food-->
         <TextView
+            android:id="@+id/name_of_food"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="[Name of Food]"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:textColor="#06208B"
-            android:layout_marginTop="5dp"
             android:layout_marginLeft="55dp"
-            android:id="@+id/name_of_food"/>
+            android:layout_marginTop="5dp"
+            android:text="[Name of Food]"
+            android:textColor="#06208B"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
         <!--Display Image-->
         <ImageView
-            android:layout_width="420dp"
+            android:id="@+id/logo_of_food"
+            android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginTop="50dp"
-            android:background="@drawable/banhmi" />
-        <!--Description of Food-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Description: "
-            android:textStyle="italic"
-            android:textSize="15dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="310dp" />
-        <!--Description of Food in detailed-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[Description of food]"
-            android:textStyle="italic"
-            android:textSize="15dp"
-            android:layout_marginLeft="90dp"
-            android:layout_marginTop="310dp"
-            android:id="@+id/des_of_food"/>
-        <!--Display star icon-->
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/star_icon"
-            android:layout_marginTop="380dp"
-            android:layout_marginLeft="20dp"/>
-        <!--Display rating of food-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[rate]"
-            android:textStyle="italic"
-            android:textSize="15dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="385dp"
-            android:id="@+id/rating_of_food"/>
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
 
-        <!--Display price icon-->
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/price"
-            android:layout_marginTop="380dp"
-            android:layout_marginLeft="150dp"/>
-        <!--Display price of food-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[price]"
-            android:textStyle="italic"
-            android:textSize="15dp"
-            android:layout_marginLeft="190dp"
-            android:layout_marginTop="385dp"
-            android:id="@+id/price"/>
-
-        <!--Display REMAIN text-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remain: "
-            android:textStyle="italic"
-            android:textSize="15dp"
-            android:layout_marginLeft="260dp"
-            android:layout_marginTop="385dp"/>
-
-        <!--Display remain of dishes-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[remain]"
-            android:textStyle="italic"
-            android:textSize="15dp"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="385dp"
-            android:id="@+id/remain"/>
-
-        <!--Display Special instruction text-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Special instruction"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:textSize="15dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="420dp"/>
-
-        <!--Enter optional-->
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp">
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="320dp">
+            <!--Description of Food-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Description: "
+                android:textSize="20dp"
+                android:textStyle="italic" />
+            <!--Description of Food in detailed-->
+            <TextView
+                android:id="@+id/des_of_food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:text="[Description of food]"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+        </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="380dp">
+            <!--Display star icon-->
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/star_icon" />
+            <!--Display rating of food-->
+            <TextView
+                android:id="@+id/rating_of_food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="60dp"
+                android:text="[rate]"
+                android:textSize="15dp"
+                android:textStyle="italic" />
+
+            <!--Display price icon-->
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="150dp"
+                android:background="@drawable/price" />
+            <!--Display price of food-->
+            <TextView
+                android:id="@+id/price_of_food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="190dp"
+                android:text="[price]"
+                android:textSize="15dp"
+                android:textStyle="italic" />
+
+            <!--Display REMAIN text-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="260dp"
+                android:text="Remain: "
+                android:textSize="15dp"
+                android:textStyle="italic" />
+
+            <!--Display remain of dishes-->
+            <TextView
+                android:id="@+id/remain_of_food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="320dp"
+                android:text="[remain]"
+                android:textSize="15dp"
+                android:textStyle="italic" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="420dp">
+            <!--Display Special instruction text-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Special instruction"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <!--Enter optional-->
             <EditText
-                android:maxLines="1"
                 android:id="@+id/optinal"
-                android:layout_width="400dp"
-                android:layout_height="45dp"
+                android:layout_width="500dp"
+                android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginLeft="90dp"
-                android:layout_marginTop="400dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="25dp"
                 android:background="@drawable/edittextborder"
                 android:hint="E.g. No opinion, etc."
+                android:maxLines="1"
                 android:paddingLeft="10dp" />
         </RelativeLayout>
 
-        <!--display plus_icon-->
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="48dp"
-            android:background="@drawable/plus_icon"
-            android:layout_marginLeft="110dp"
-            android:layout_marginTop="510dp"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="510dp">
+            <!--display sur-plus_icon-->
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="48dp"
+                android:background="@drawable/surplus_icon"
+                android:onClick="downNumber"/>
 
-        <!--display surplus_icon-->
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="48dp"
-            android:background="@drawable/surplus_icon"
-            android:layout_marginLeft="250dp"
-            android:layout_marginTop="510dp"/>
-
+            <TextView
+                android:id="@+id/quantity_of_food"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="60dp"
+                android:text="01"
+                android:gravity="center"
+                android:textColor="#000"
+                android:textSize="40sp"
+                android:textStyle="bold"/>
+            <!--display plus_icon-->
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="125dp"
+                android:background="@drawable/plus_icon"
+                android:onClick="upNumber"/>
+        </RelativeLayout>
         <!--Order_button-->
         <ImageButton
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:background="@drawable/add_to_cart"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="610dp"
-            />
-
+            android:layout_marginTop="600dp"
+            android:background="@drawable/add_to_cart" />
     </RelativeLayout>
 
 
