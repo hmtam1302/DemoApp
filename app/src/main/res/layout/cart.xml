@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+        <!--Back_button-->
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back"
+            android:contentDescription="@string/back"
+            android:onClick="displayHome"/>
+        <!--Display_text-->
+        <!--Display_text-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="7dp"
+            android:text="CART"
+            android:textColor="#06208B"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+        <!--Time-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deliver Time"
+                android:textColor="#707070"
+                android:textSize="15dp"
+                android:textStyle="italic" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="false"
+                android:layout_marginTop="30dp"
+                android:text="Deliver Now"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="normal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="false"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="115dp"
+                android:text="Deliver Now"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="normal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="false"
+                android:layout_marginLeft="280dp"
+                android:layout_marginTop="30dp"
+                android:text="Change Time"
+                android:textColor="#06208b"
+                android:textSize="18dp"
+                android:textStyle="normal" />
+        </RelativeLayout>
+
+        <!--Order summary-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="115dp"
+            android:text="Order Summary"
+            android:textColor="#06208B"
+            android:textSize="27dp"
+            android:textStyle="bold" />
+        <!--List of dishes-->
+        <ListView
+            android:id="@+id/listCart"
+            android:layout_width="400dp"
+            android:layout_height="350dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:background="#FFFFFF">
+
+        </ListView>
+        <!--Display_text-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="510dp"
+            android:text="Payment Method"
+            android:textColor="#06208B"
+            android:textSize="27dp"
+            android:textStyle="bold" />
+        <!--Choose_cash_button-->
+        <ImageButton
+            android:layout_width="400dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="550dp"
+            android:background="@drawable/cash_payment"
+            android:onClick="displayPaymentMethod"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="600dp">
+            <!--Total text-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="10dp"
+            android:text="Total"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <!--Total price-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="false"
+                android:layout_marginLeft="200dp"
+                android:text="Total price"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_marginLeft="350dp"
+            android:text="VND"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+        </RelativeLayout>
+        <!--Order_button-->
+        <ImageButton
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="630dp"
+            android:background="@drawable/order_button"
+            />
+
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
