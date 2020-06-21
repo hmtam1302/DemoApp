@@ -48,7 +48,7 @@ public class CustomListRestaurantAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = layoutInflater.inflate(R.layout.list_item, null);
+            convertView = layoutInflater.inflate(R.layout.list_res_item, null);
             holder = new ViewHolder();
             holder.logoView = (ImageView) convertView.findViewById(R.id.imageView);
             holder.restaurantNameView = (TextView) convertView.findViewById(R.id.restaurantName);

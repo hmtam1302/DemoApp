@@ -139,7 +139,7 @@
 
             <!--Enter optional-->
             <EditText
-                android:id="@+id/optinal"
+                android:id="@+id/note_of_food"
                 android:layout_width="500dp"
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
@@ -188,7 +188,8 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="600dp"
-            android:background="@drawable/add_to_cart" />
+            android:background="@drawable/add_to_cart"
+            android:onClick="add_to_cart"/>
     </RelativeLayout>
 
 

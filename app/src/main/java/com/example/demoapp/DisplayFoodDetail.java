@@ -110,4 +110,42 @@ public class DisplayFoodDetail extends AppCompatActivity {
     public void list_food_interface(View view){
         finish();
     }
+
+    public void add_to_cart(View view){
+        Bill bill = DisplayCart.billManager.getBill();
+        String itemName = ((TextView)findViewById(R.id.name_of_food)).getText().toString();
+        String itemPrice = ((TextView)findViewById(R.id.price_of_food)).getText().toString();
+        String itemQuantity = ((TextView)findViewById(R.id.quantity_of_food)).getText().toString();
+        String itemNote = ((TextView)findViewById(R.id.note_of_food)).getText().toString();
+
+        int index = getItemIndex(itemName);
+
+        if(index == -1){
+
+            bill.addNewItem(new Item(itemName, itemPrice, itemQuantity, itemNote));
+        }
+        else{
+            Item item = bill.itemList.get(index);
+            int number = Integer.valueOf(item.getQuantity()) + Integer.valueOf(itemQuantity);
+            if(number < 9) itemQuantity = "0" + String.valueOf(number);
+            else itemQuantity = String.valueOf(number);
+
+            item.setQuantity(itemQuantity); //Update item quantity
+            if(itemNote != null) item.setNote(itemNote); //Update note
+        }
+        //Update selected quantity after add to cart
+        selectedFood.setQuantity(selectedFood.getQuantity() - Integer.valueOf(itemQuantity));
+
+        //finish current activity
+        finish();
+    }
+
+    private int getItemIndex(String name){
+        for(int i = 0; i< DisplayCart.billManager.getBill().itemList.size(); i++){
+            if(DisplayCart.billManager.getBill().itemList.get(i).getName().equals(name)){
+                return i;
+            }
+        }
+        return -1;
+    }
 }

@@ -14,7 +14,7 @@
             android:layout_height="50dp"
             android:background="@drawable/back"
             android:contentDescription="@string/back"
-            android:onClick="displayHome"/>
+            android:onClick="backToPrevious"/>
         <!--Display_text-->
         <!--Display_text-->
         <TextView
@@ -73,13 +73,46 @@
             android:textColor="#06208B"
             android:textSize="27dp"
             android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="165dp"
+            android:layout_centerHorizontal="false"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textStyle="italic"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number"
+                android:textStyle="italic"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:layout_marginLeft="200dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:textStyle="italic"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:layout_marginLeft="350dp"/>
+        </RelativeLayout>
+
         <!--List of dishes-->
         <ListView
             android:id="@+id/listCart"
             android:layout_width="400dp"
-            android:layout_height="350dp"
+            android:layout_height="300dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="200dp"
             android:background="#FFFFFF">
 
         </ListView>
@@ -96,6 +129,7 @@
             android:textStyle="bold" />
         <!--Choose_cash_button-->
         <ImageButton
+            android:id="@+id/cart_payment"
             android:layout_width="400dp"
             android:layout_height="40dp"
             android:layout_centerHorizontal="true"
@@ -120,11 +154,12 @@
             android:textStyle="bold" />
         <!--Total price-->
             <TextView
+                android:id="@+id/cart_totalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="false"
                 android:layout_marginLeft="200dp"
-                android:text="Total price"
+                android:text="0"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 android:textStyle="bold" />

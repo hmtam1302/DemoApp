@@ -41,14 +41,6 @@
             android:textSize="20dp"
             android:textStyle="italic" />
         <!--Confirm_button-->
-        <ImageButton
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:background="@drawable/confirm"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="620dp"
-            android:onClick="displayCart"
-            />
         <!--Choose_cash_button-->
         <ImageButton
             android:layout_width="400dp"
@@ -57,6 +49,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="100dp"
+            android:onClick="cash"
             />
         <!--Choose_momo_button-->
         <ImageButton
@@ -66,6 +59,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="141dp"
+            android:onClick="momo"
             />
         <!--Choose_internet_banking_button-->
         <ImageButton
@@ -75,6 +69,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="182dp"
+            android:onClick="mobile"
             />
 
     </RelativeLayout>

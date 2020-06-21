@@ -14,11 +14,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class DisplayCart extends AppCompatActivity {
 
+    public static BillManager billManager = new BillManager();
+
     private Scene cartScene;
     private Scene payMethodScene;
+
+    private static String payment = "Cash";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -46,11 +53,18 @@ public class DisplayCart extends AppCompatActivity {
         Transition explode = new Explode();
         TransitionManager.go(cartScene, explode);
 
+        ListView listView = (ListView)findViewById(R.id.listCart);
+        listView.setAdapter(new CustomListItemAdapter(this, billManager.getBill().itemList));
+
+        TextView totalPriceTxt = (TextView)findViewById(R.id.cart_totalPrice);
+        String totalPrice = billManager.getBill().getTotalPrice();
+        totalPriceTxt.setText(totalPrice);
+
+        setPayment();
     }
 
-    public void displayHome(View view){
-        Intent intent = new Intent(this, DisplayHome.class);
-        startActivity(intent);
+    public void backToPrevious(View view){
+        finish();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -58,8 +72,35 @@ public class DisplayCart extends AppCompatActivity {
         displayCart();
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
     public void displayPaymentMethod(View view){
         Transition explode = new Explode();
         TransitionManager.go(payMethodScene, explode);
+    }
+
+    private void setPayment(){
+        //Display payment method
+        ImageButton method = (ImageButton)findViewById(R.id.cart_payment);
+        if (payment == "Cash") method.setBackgroundResource(R.drawable.cash_payment);
+        else if (payment == "MoMo") method.setBackgroundResource(R.drawable.momo_icon);
+        else method.setBackgroundResource(R.drawable.mobile_internet_banking);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void  cash(View view){
+        payment = "Cash";
+        displayCart();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void  momo(View view){
+        payment = "MoMo";
+        displayCart();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void  mobile(View view){
+        payment = "Mobile";
+        displayCart();
     }
 }

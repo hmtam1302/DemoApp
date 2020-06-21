@@ -6,6 +6,13 @@ public class Item {
     private String quantity;
     private String note;
 
+    public Item(String name, String price, String quantity, String note){
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.note = note;
+    }
+
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
@@ -32,5 +39,9 @@ public class Item {
 
     public String getQuantity() {
         return quantity;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }
