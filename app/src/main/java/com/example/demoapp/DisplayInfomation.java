@@ -168,4 +168,7 @@ public class DisplayInfomation extends AppCompatActivity {
             }
         }
     }
+    public void backToPrevious(View view){
+        finish();
+    }
 }
