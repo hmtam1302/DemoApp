@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="-32dp"
         tools:layout_editor_absoluteY="0dp">
         <!--Back button-->
         <ImageButton
@@ -256,7 +256,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="435dp"
-            android:src="@drawable/dayofbirth_icon" />
+            android:src="@drawable/stock_birth_cake" />
 
         <!--Email-->
         <EditText
