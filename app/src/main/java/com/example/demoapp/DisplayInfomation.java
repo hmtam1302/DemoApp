@@ -4,7 +4,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.transition.Explode;
@@ -100,7 +99,7 @@ public class DisplayInfomation extends AppCompatActivity {
         phonenumber.setEnabled(true);
         //Set up save button
         saveBtn.setClickable(true);
-        saveBtn.setImageResource(R.drawable.savebtn);
+        saveBtn.setImageResource(R.drawable.save);
         //Set up edit button
         ImageButton editBtn = (ImageButton)view;
         editBtn.setClickable(false);

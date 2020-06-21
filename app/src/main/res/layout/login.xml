@@ -31,8 +31,8 @@
 
         <!--Logo-->
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp"
             android:contentDescription="@string/logo"
@@ -132,7 +132,7 @@
             android:layout_marginLeft="260dp"
             android:layout_marginTop="425dp"
             android:text="@string/forgotpassword"
-            android:textColor="#0839FF"
+            android:textColor="@drawable/clikabletext"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -151,7 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="500dp"
-            android:background="@drawable/login"
+            android:background="@drawable/loginbtn"
             android:onClick="displayLoginPop" />
 
         <!--Create account-->
@@ -166,6 +166,7 @@
             android:textStyle="italic" />
 
         <TextView
+            android:id="@+id/createtext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="210dp"
@@ -173,7 +174,7 @@
             android:clickable="true"
             android:onClick="signupActivity"
             android:text="Create a new account"
-            android:textColor="#0839FF"
+            android:textColor="@drawable/clikabletext"
             android:textSize="15sp"
             android:textStyle="bold" />
     </RelativeLayout>

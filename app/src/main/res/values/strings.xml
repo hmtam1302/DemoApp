@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">DemoApp</string>
-    <string name="welcomeString1">Welcome to\nSmart Food Court System</string>
-    <string name="welcomeString2">The best way to get best food. Let\'s get start!</string>
+    <string name="welcomeString1">WELCOME\nto\nSmart Food Court System</string>
+    <string name="welcomeString2">The best way to get best food.\nLet\'s get start!</string>
     <string name="forgotpassword"><u>Forgot password?</u></string>
     <string name="back">Back</string>
     <string name="name">Smart Food Court System</string>

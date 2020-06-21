@@ -66,6 +66,7 @@ public class DisplayLogin extends AppCompatActivity {
         startActivity(intent);
     }
     public void signupActivity(View view){
+
         Intent intent = new Intent(this, DisplaySignUp.class);
         startActivity(intent);
     }

@@ -14,7 +14,7 @@
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/back"
+            android:background="@drawable/backbtn"
             android:contentDescription="@string/back"
             android:onClick="backToPrevious"
             />
@@ -91,7 +91,7 @@
         <ImageButton
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:background="@drawable/confirm"
+            android:background="@drawable/confirmbtn"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="610dp"
             android:onClick="backToHome"

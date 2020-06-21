@@ -11,7 +11,7 @@
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/back"
+            android:background="@drawable/backbtn"
             android:contentDescription="@string/back"
             android:onClick="backToMain" />
 
@@ -27,8 +27,8 @@
 
         <!--Logo-->
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
             android:contentDescription="@string/logo"
@@ -234,7 +234,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="575dp"
-            android:background="@drawable/createaccount"
+            android:background="@drawable/createbtn"
             android:onClick="createAccount" />
 
         <!--Login-->
@@ -256,7 +256,7 @@
             android:clickable="true"
             android:onClick="loginActivity"
             android:text="Login"
-            android:textColor="#0839FF"
+            android:textColor="@drawable/clikabletext"
             android:textSize="15sp"
             android:textStyle="bold" />
     </RelativeLayout>

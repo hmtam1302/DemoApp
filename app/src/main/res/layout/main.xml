@@ -10,29 +10,28 @@
 
         <!--Welcome text-->
         <TextView
-            android:id="@+id/welcomeString1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="casual"
             android:gravity="center"
             android:text="@string/welcomeString1"
             android:textColor="#FFFFFF"
-            android:textSize="33sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <!--Slogan-->
         <TextView
-            android:id="@+id/welcomeString2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="415dp"
-            android:fontFamily="cursive"
+            android:layout_marginTop="420dp"
+            android:fontFamily="monospace"
+            android:gravity="center"
             android:text="@string/welcomeString2"
             android:textColor="#FFFFFF"
-            android:textSize="25sp"
+            android:textSize="10sp"
             android:textStyle="italic" />
 
         <!--Sign in button-->
@@ -42,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="545dp"
-            android:background="@drawable/signin"
+            android:background="@drawable/signinbtn"
             android:onClick="displayLogin" />
 
         <!--Sign up button-->
@@ -52,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="600dp"
-            android:background="@drawable/signup"
+            android:background="@drawable/signupbtn"
             android:onClick="displaySignup"/>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,7 @@
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/back"
+            android:background="@drawable/backbtn"
             android:contentDescription="@string/back"
             android:onClick="list_food_interface" />
 
@@ -160,7 +160,7 @@
             <ImageButton
                 android:layout_width="40dp"
                 android:layout_height="48dp"
-                android:background="@drawable/surplus_icon"
+                android:background="@drawable/downbtn"
                 android:onClick="downNumber"/>
 
             <TextView
@@ -179,7 +179,7 @@
                 android:layout_width="40dp"
                 android:layout_height="48dp"
                 android:layout_marginLeft="125dp"
-                android:background="@drawable/plus_icon"
+                android:background="@drawable/upbtn"
                 android:onClick="upNumber"/>
         </RelativeLayout>
         <!--Order_button-->
@@ -188,7 +188,7 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="600dp"
-            android:background="@drawable/add_to_cart"
+            android:background="@drawable/addcartbtn"
             android:onClick="add_to_cart"/>
     </RelativeLayout>
 
