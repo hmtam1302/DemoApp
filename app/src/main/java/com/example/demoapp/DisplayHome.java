@@ -215,13 +215,11 @@ public class DisplayHome extends AppCompatActivity {
     }
 
     public void displayInfo(View view) {
-        view.setBackgroundColor(Color.parseColor("#FEF8A6"));
         Intent intent = new Intent(this, DisplayInfomation.class);
         startActivity(intent);
     }
 
     public void displayCart(View view) {
-        view.setBackgroundColor(Color.parseColor("#FEF8A6"));
         Intent intent = new Intent(this, DisplayCart.class);
         startActivity(intent);
     }

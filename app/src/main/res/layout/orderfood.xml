@@ -96,7 +96,7 @@
                     android:layout_height="40dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:background="#FEF8A6"
+                    android:background="#FFFFFF"
                     android:src="@drawable/homebtn" />
 
                 <ImageButton
@@ -105,7 +105,7 @@
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
                     android:background="#FFFFFF"
-                    android:src="@drawable/order"
+                    android:src="@drawable/cartbtn"
                     android:onClick="displayCart" />
 
                 <ImageButton
