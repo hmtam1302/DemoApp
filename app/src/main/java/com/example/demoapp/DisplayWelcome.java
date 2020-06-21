@@ -10,8 +10,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.transition.Explode;
 import android.transition.Scene;
+import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -54,8 +56,8 @@ public class DisplayWelcome extends AppCompatActivity {
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void backToMain(View view){
-        Transition explode = new Explode();
-        TransitionManager.go(mainScene, explode);
+        Transition slide = new Slide(Gravity.LEFT);
+        TransitionManager.go(mainScene, slide);
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displaySignup(View view){

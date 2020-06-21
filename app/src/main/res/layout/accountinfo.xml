@@ -16,7 +16,7 @@
             android:layout_height="50dp"
             android:background="@drawable/backbtn"
             android:contentDescription="@string/back"
-            android:onClick="displayHome" />
+            android:onClick="backToPrevious" />
 
         <!--Logo and Name-->
         <RelativeLayout
@@ -370,7 +370,7 @@
                 android:background="#FFFFFF"
                 android:maxWidth="40dp"
                 android:maxHeight="100dp"
-                android:onClick="displayHome"
+                android:onClick="backToPrevious"
                 android:scaleType="fitCenter"
                 android:src="@drawable/canclebtn" />
         </RelativeLayout>

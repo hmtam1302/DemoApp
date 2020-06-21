@@ -8,8 +8,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.transition.Explode;
 import android.transition.Scene;
+import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -52,8 +54,8 @@ public class DisplayInfomation extends AppCompatActivity {
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayInfo(){
-        Transition explode = new Explode();
-        TransitionManager.go(informationScene, explode);
+        Transition slide = new Slide(Gravity.RIGHT);
+        TransitionManager.go(informationScene, slide);
         //Set up gender spinner
         genderSpinner = (Spinner) findViewById(R.id.genderSpinner);
         ArrayList<String> genderList = new ArrayList<String>();
@@ -137,8 +139,8 @@ public class DisplayInfomation extends AppCompatActivity {
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayChangePassword(View view){
-        Transition explode = new Explode();
-        TransitionManager.go(passwordScene, explode);
+        Transition slide = new Slide(Gravity.RIGHT);
+        TransitionManager.go(passwordScene, slide);
     }
 
     //edit and check new password function
@@ -167,5 +169,8 @@ public class DisplayInfomation extends AppCompatActivity {
                 messageTxt.setText("Enter wrong confirm password! Try again!");
             }
         }
+    }
+    public void backToPrevious(View view){
+        finish();
     }
 }

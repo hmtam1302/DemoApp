@@ -8,8 +8,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.transition.Explode;
 import android.transition.Scene;
+import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -43,8 +45,8 @@ public class DisplayBill extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void displayBill(){
-        Transition explode = new Explode();
-        TransitionManager.go(billScene, explode);
+        Transition slide = new Slide(Gravity.RIGHT);
+        TransitionManager.go(billScene, slide);
 
         ListView listView = (ListView)findViewById(R.id.bill_list);
         listView.setAdapter(new CustomListItemAdapter(this, DisplayCart.billManager.getBill().itemList));

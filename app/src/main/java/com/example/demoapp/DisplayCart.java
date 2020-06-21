@@ -8,8 +8,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.transition.Explode;
 import android.transition.Scene;
+import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -50,8 +52,8 @@ public class DisplayCart extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void displayCart() {
-        Transition explode = new Explode();
-        TransitionManager.go(cartScene, explode);
+        Transition slide = new Slide(Gravity.RIGHT);
+        TransitionManager.go(cartScene, slide);
 
         ListView listView = (ListView)findViewById(R.id.listCart);
         listView.setAdapter(new CustomListItemAdapter(this, billManager.getBill().itemList));
@@ -74,8 +76,8 @@ public class DisplayCart extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 
     public void displayPaymentMethod(View view){
-        Transition explode = new Explode();
-        TransitionManager.go(payMethodScene, explode);
+        Transition slide = new Slide(Gravity.RIGHT);
+        TransitionManager.go(payMethodScene, slide);
     }
 
     private void setPayment(){
