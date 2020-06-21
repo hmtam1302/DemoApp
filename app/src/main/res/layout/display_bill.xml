@@ -16,6 +16,7 @@
             android:layout_height="50dp"
             android:background="@drawable/back"
             android:contentDescription="@string/back"
+            android:onClick="backToPrevious"
             />
         <!--Display_text-->
         <TextView
@@ -24,7 +25,7 @@
             android:layout_centerHorizontal="false"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="7dp"
-            android:text="BILLS"
+            android:text="YOUR BILL"
             android:textColor="#06208B"
             android:textSize="25dp"
             android:textStyle="bold" />
@@ -40,14 +41,12 @@
             android:textSize="18dp"
             android:textStyle="bold" />
         <!--Display_text-->
-        <!--Display_text-->
-        <!--Display_text-->
-        <!--Display_text-->
+
         <!--List of dishes-->
         <ListView
-            android:id="@+id/listFood"
-            android:layout_width="360dp"
-            android:layout_height="40dp"
+            android:id="@+id/bill_list"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
             android:layout_marginTop="120dp"
             android:layout_centerHorizontal="true"
             android:background="#FFFFFF">
@@ -60,7 +59,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="580dp"
-            android:text="Are you OK? Please select 'Confirm'"
+            android:text="Are you done? Please select 'Confirm'"
             android:textColor="#707070"
             android:textSize="15dp"
             android:textStyle="italic" />
@@ -78,15 +77,16 @@
             android:textStyle="bold" />
         <!--Display_text-->
         <TextView
+            android:id="@+id/bill_totalPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="false"
-            android:layout_marginLeft="300dp"
+            android:layout_marginLeft="200dp"
             android:layout_marginTop="540dp"
             android:text="Price VND"
             android:textColor="#000000"
             android:textSize="20dp"
-            android:textStyle="normal" />
+            android:textStyle="italic" />
         <!--Order_button-->
         <ImageButton
             android:layout_width="300dp"
@@ -94,9 +94,8 @@
             android:background="@drawable/confirm"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="610dp"
+            android:onClick="backToHome"
             />
-
-
     </RelativeLayout>
 
 

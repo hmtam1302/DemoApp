@@ -103,4 +103,9 @@ public class DisplayCart extends AppCompatActivity {
         payment = "Mobile";
         displayCart();
     }
+
+    public void displayBill(View view){
+        Intent intent = new Intent(this, DisplayBill.class);
+        startActivity(intent);
+    }
 }
