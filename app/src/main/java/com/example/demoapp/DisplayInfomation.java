@@ -153,27 +153,20 @@ public class DisplayInfomation extends AppCompatActivity {
             //Display wrong message
             TextView messageTxt = (TextView)findViewById(R.id.wrong_message);
             messageTxt.setText("Enter wrong current password! Try again!");
-            return;
         }
         //Step 2: check newPassword is newPasswordconfirmed
         else {
             if (newPassword.getText().toString().equals(newPasswordconfirm.getText().toString())) {
+                //set newPassword to userData password
                 userData.setPassword(newPassword.getText().toString());
-
-                return;
+                //Display successful operation.
+                Intent intent = new Intent(this, PopLoginAgain.class);
+                startActivity(intent);
             } else {
                 //Display wrong message
                 TextView messageTxt = (TextView) findViewById(R.id.wrong_message);
                 messageTxt.setText("Enter wrong confirm password! Try again!");
-                return;
             }
         }
-    }
-
-
-
-    public void displayHome(View view){
-        Intent intent = new Intent(this, DisplayHome.class);
-        startActivity(intent);
     }
 }
