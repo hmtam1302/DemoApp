@@ -79,6 +79,8 @@ public class DisplaySignUp extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+    //Method to check userName, password, confirmPassword, email and phone number.
     String check(String userName, String password, String confirmPassword, String email, String phone) {
         //Check userName
         String alphabet = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
@@ -88,7 +90,26 @@ public class DisplaySignUp extends AppCompatActivity {
             }
         }
 
-        //Check password
+        /*
+        //Check password has the length more than 6 characters.
+        String uniqueCharacter ="!@#$%^&*";
+        if(password.length() < 6){
+            return "Your password needs at least 6 characters";
+        }
+
+        //Check password has at least 1 unique character.
+        int i;
+        for(i = 0; i<password.length(); i++){
+            if((uniqueCharacter.contains(String.valueOf(password.charAt(i))))){
+                return null;
+            }
+        }
+        if(i==password.length()){
+            return "Your password needs at least 1 unique character.";
+        }
+         */
+
+        //Check confirmed password is new password
         if (!password.equals(confirmPassword)) {
             return "Wrong confirm password!";
         } else {
