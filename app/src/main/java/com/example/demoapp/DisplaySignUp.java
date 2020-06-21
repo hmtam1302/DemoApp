@@ -43,8 +43,7 @@ public class DisplaySignUp extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displaySignup() {
-        Transition explode = new Explode();
-        TransitionManager.go(signupScene, explode);
+        signupScene.enter();
     }
 
     public void createAccount(View view) {

@@ -69,8 +69,8 @@ public class DisplayHome extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayHome() {
-        Transition explode = new Explode();
-        TransitionManager.go(homeScene, explode);
+        Transition slide = new Slide(Gravity.LEFT);
+        TransitionManager.go(homeScene, slide);
 
         ImageButton infoBtn = (ImageButton) findViewById(R.id.infobtn);
         infoBtn.setBackgroundColor(android.R.color.white);
