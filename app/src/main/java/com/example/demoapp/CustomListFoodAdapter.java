@@ -47,6 +47,7 @@ public class CustomListFoodAdapter extends BaseAdapter {
         TextView ratingView;
     }
 
+    //View food information in food court's interface.
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {

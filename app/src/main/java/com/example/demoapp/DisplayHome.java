@@ -115,13 +115,31 @@ public class DisplayHome extends AppCompatActivity {
         Food khoaitaychien = new Food("Khoai Tây Chiên KFC", "khoaitaychien", 25, "Khoai tây chiên giòn rụm", "20000", "4.5/5.0");
         Food tranhanlai = new Food("Trà Nhãn Lài", "tranhanlai", 40, "Trà nhãn lài ngọt ngào", "50000", "5.0/5.0");
         Food trahoahong = new Food("Trà Hoa Hồng", "trahoahong", 35, "Trà hoa hồng thơm dịu dàng", "45000", "5.0/5.0");
+        Food hamburger = new Food("Hamburger", "hamburger",20,"Hamburger Bò", "55000", "4.5/5.0");
+        Food pepsi = new Food("Pepsi", "pepsi", 60,"Đã quá Pepsi ơi!", "10000","5.0/5.0");
+        Food trasuaphuclong = new Food("Trà Sữa", "trasuaphuclong",50,"Trà sữa Phúc Long","25000","5.0/5.0");
+        Food coffeephuclong = new Food("Coffee","coffee",50,"Coffee Phúc Long", "30000","5.0/5.0");
+        Food hamburgermcdonal = new Food("Hamburger", "hamburgermcdonal",20,"Hamburger Bò", "55000", "4.5/5.0");
+        Food duigamcdonal = new Food("Đùi Gà McDonald's", "duigamcdonal", 15, "Đùi gà chiên thơm giòn", "35000", "4.5/5.0");
+        Food sodachanhtch = new Food("Soda chanh", "sodachanhtch",50,"Soda chanh", "50000", "4.7/5.0");
+        Food combobuffet = new Food("Combo Buffet","combobuffetkichikichi", 100,"Combo Buffet", "100000", "5.0/5.0");
+        Food comga = new Food("Cơm gà", "comga",50,"Cơm gà viên","35000","5.0/5.0");
 
 
         restaurantManager.addNewFood("KFC", duiga);
         restaurantManager.addNewFood("KFC", canhga);
+        restaurantManager.addNewFood("KFC", hamburger);
+        restaurantManager.addNewFood("KFC", pepsi);
         restaurantManager.addNewFood("McDonald's", khoaitaychien);
+        restaurantManager.addNewFood("McDonald's", hamburgermcdonal);
+        restaurantManager.addNewFood("McDonald's", duigamcdonal);
         restaurantManager.addNewFood("Phúc Long", trahoahong);
         restaurantManager.addNewFood("Phúc Long", tranhanlai);
+        restaurantManager.addNewFood("Phúc Long", trasuaphuclong);
+        restaurantManager.addNewFood("Phúc Long", coffeephuclong);
+        restaurantManager.addNewFood("THE COFFEE HOUSE", sodachanhtch);
+        restaurantManager.addNewFood("Kichi Kichi", combobuffet);
+        restaurantManager.addNewFood("Lotteria",comga);
     }
 
     public void searchRes(View view) {
