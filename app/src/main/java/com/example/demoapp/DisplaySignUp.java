@@ -113,7 +113,7 @@ public class DisplaySignUp extends AppCompatActivity {
             return "Wrong confirm password!";
         } else {
             //Check email
-            if (!email.contains(String.valueOf('@'))) {
+            if (!email.contains(String.valueOf('@')) || !email.contains(".com")) {
                 return "Wrong email format!";
             } else {
                 //Check phone
