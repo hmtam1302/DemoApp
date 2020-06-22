@@ -99,13 +99,15 @@ public class DisplayInfomation extends AppCompatActivity {
         genderSpinner.setEnabled(true);
         email.setEnabled(true);
         phonenumber.setEnabled(true);
+
         //Set up save button
         saveBtn.setClickable(true);
-        saveBtn.setImageResource(R.drawable.save);
+        saveBtn.setBackgroundResource(R.drawable.savebtn);
+
         //Set up edit button
         ImageButton editBtn = (ImageButton)view;
         editBtn.setClickable(false);
-        editBtn.setImageResource(R.drawable.editbtndisable);
+        editBtn.setBackgroundResource(R.drawable.editbtndisable);
     }
     public void savePersonalInfo(View view){
         EditText name = (EditText)findViewById(R.id.fullname);
@@ -130,11 +132,11 @@ public class DisplayInfomation extends AppCompatActivity {
 
         //Set up edit button
         editBtn.setClickable(true);
-        editBtn.setImageResource(R.drawable.editbtn);
+        editBtn.setBackgroundResource(R.drawable.editbtn);
         //Set up save button
         ImageButton saveBtn = (ImageButton)view;
         saveBtn.setClickable(false);
-        saveBtn.setImageResource(R.drawable.savebtndisable);
+        saveBtn.setBackgroundResource(R.drawable.savebtndisable);
 
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
