@@ -85,8 +85,8 @@
             android:textColor="#00197B" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="306dp"
@@ -119,8 +119,8 @@
             android:textColor="#00197B" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="381dp"
             android:src="@drawable/password" />
