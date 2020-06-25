@@ -11,18 +11,6 @@ public class Customer {
     private String mPhoneNumber;
     private String mEmail;
 
-    public Customer(int ID, String mUsername, String mPassword, String mConfirmPassword, String mName, String mGender, String mDateOfBirth, String mPhoneNumber, String mEmail) {
-        this.ID = ID;
-        this.mUsername = mUsername;
-        this.mPassword = mPassword;
-        this.mConfirmPassword = mConfirmPassword;
-        this.mName = mName;
-        this.mGender = mGender;
-        this.mDateOfBirth = mDateOfBirth;
-        this.mPhoneNumber = mPhoneNumber;
-        this.mEmail = mEmail;
-    }
-
     public Customer(String mUsername, String mPassword, String mConfirmPassword, String mName, String mGender, String mDateOfBirth, String mPhoneNumber, String mEmail) {
         this.mUsername = mUsername;
         this.mPassword = mPassword;

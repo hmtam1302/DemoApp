@@ -1,26 +1,34 @@
 package com.example.demoapp;
 
-        import androidx.annotation.RequiresApi;
-        import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
-        import android.content.Intent;
-        import android.os.Build;
-        import android.os.Bundle;
-        import android.transition.Explode;
-        import android.transition.Scene;
-        import android.transition.Transition;
-        import android.transition.TransitionManager;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.view.Window;
-        import android.view.WindowManager;
-        import android.widget.EditText;
-        import android.widget.TextView;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
+import android.os.Bundle;
+import android.transition.Explode;
+import android.transition.Scene;
+import android.transition.Transition;
+import android.transition.TransitionManager;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.example.demoapp.DataControl.CustomerManager;
+import com.example.demoapp.model.Customer;
+
+import java.util.regex.Pattern;
 
 public class DisplaySignUp extends AppCompatActivity {
 
     public static UserManager userManager = new UserManager();
-    public static String sUserName;
+    public static String sUserName = "";
+    public static int ID = -1;
     private Scene signupScene = null;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -43,7 +51,8 @@ public class DisplaySignUp extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displaySignup() {
-        signupScene.enter();
+        Transition explode = new Explode();
+        TransitionManager.go(signupScene, explode);
     }
 
     public void createAccount(View view) {
@@ -54,14 +63,19 @@ public class DisplaySignUp extends AppCompatActivity {
         String phone = ((EditText) findViewById(R.id.phoneEdt)).getText().toString();
         String email = ((EditText) findViewById(R.id.emailEdt)).getText().toString();
 
+        Log.d("pass:", password);
+        Log.d("pass confirm", confirmPassword);
         String message = check(userName, password, confirmPassword, email, phone);
 
         TextView messageTxt = (TextView) findViewById(R.id.messageSignup);
         messageTxt.setText(message);
 
         if (password.equals(confirmPassword) && message == null) {
-            userManager.addData(userName, password, email, phone);
+            Customer customer = new Customer(userName, password, confirmPassword, phone, email);
+            final CustomerManager cusMan = new CustomerManager(this);
+            cusMan.addCustomer(customer);
             sUserName = userName;
+            ID = customer.getID();
             Intent intent = new Intent(this, PopSuccessActivity.class);
             startActivity(intent);
         }
@@ -78,42 +92,24 @@ public class DisplaySignUp extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-    //Method to check userName, password, confirmPassword, email and phone number.
     String check(String userName, String password, String confirmPassword, String email, String phone) {
         //Check userName
-        String alphabet = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890";
+        String regex_username = "^[aA-zZ]\\w{5,29}$";
+        String regex_mail = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
         for (int i = 0; i < userName.length(); i++) {
-            if (!(alphabet.contains(String.valueOf(userName.charAt(i))))) {
+            Pattern pattern = Pattern.compile(regex_username);
+            if (!pattern.matcher(userName).matches()) {
                 return "Username contains a-z, A-Z and 0-9 only!";
             }
         }
 
-        /*
-        //Check password has the length more than 6 characters.
-        String uniqueCharacter ="!@#$%^&*";
-        if(password.length() < 6){
-            return "Your password needs at least 6 characters";
-        }
-
-        //Check password has at least 1 unique character.
-        int i;
-        for(i = 0; i<password.length(); i++){
-            if((uniqueCharacter.contains(String.valueOf(password.charAt(i))))){
-                return null;
-            }
-        }
-        if(i==password.length()){
-            return "Your password needs at least 1 unique character.";
-        }
-         */
-
-        //Check confirmed password is new password
+        //Check password
         if (!password.equals(confirmPassword)) {
             return "Wrong confirm password!";
         } else {
             //Check email
-            if (!email.contains(String.valueOf('@')) || !email.contains(".com")) {
+            Pattern pattern = Pattern.compile(regex_mail);
+            if (!pattern.matcher(email).matches()) {
                 return "Wrong email format!";
             } else {
                 //Check phone

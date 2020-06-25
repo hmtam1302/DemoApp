@@ -11,6 +11,7 @@ import android.transition.Scene;
 import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,11 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.demoapp.DataControl.CustomerManager;
+import com.example.demoapp.model.Customer;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class DisplayInfomation extends AppCompatActivity {
     private Scene informationScene = null;
@@ -30,6 +35,8 @@ public class DisplayInfomation extends AppCompatActivity {
     private Scene changepasswordScene = null;
     private Scene passwordScene = null;
     private UserData userData = DisplaySignUp.userManager.getData(DisplaySignUp.sUserName);
+    private String userNameRef;
+    private int userID = -1;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -54,8 +61,8 @@ public class DisplayInfomation extends AppCompatActivity {
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayInfo(){
-        Transition slide = new Slide(Gravity.RIGHT);
-        TransitionManager.go(informationScene, slide);
+        Transition explode = new Explode();
+        TransitionManager.go(informationScene, explode);
         //Set up gender spinner
         genderSpinner = (Spinner) findViewById(R.id.genderSpinner);
         ArrayList<String> genderList = new ArrayList<String>();
@@ -66,24 +73,47 @@ public class DisplayInfomation extends AppCompatActivity {
         genderSpinner.setAdapter(arrayAdapter);
         genderSpinner.setEnabled(false);
 
+        Log.d("check: ", DisplayLogin.sUserName);
+        Log.d("Check empty: ", DisplayLogin.sUserName.isEmpty()+"");
+
+        if(!DisplaySignUp.sUserName.isEmpty()) {
+            userNameRef = DisplaySignUp.sUserName;
+        } else {
+            userNameRef = DisplayLogin.sUserName;
+        }
+        CustomerManager cusMan = new CustomerManager(this);
+        List<Customer> listCustomer = new ArrayList<>();
+        listCustomer = cusMan.getAllCustomer();
+        Customer customer = new Customer();
+        for(int i = 0; i < listCustomer.size(); i++) {
+            if (userNameRef.equals(listCustomer.get(i).getUsername())) {
+                customer.setName(listCustomer.get(i).getName());
+                customer.setUsername(listCustomer.get(i).getUsername());
+                customer.setPassword(listCustomer.get(i).getPassword());
+                customer.setDateOfBirth(listCustomer.get(i).getDateOfBirth());
+                customer.setEmail(listCustomer.get(i).getEmail());
+                customer.setPhoneNumber(listCustomer.get(i).getPhoneNumber());
+                break;
+            }
+        }
         //Display information
         EditText edtUserName = (EditText)findViewById(R.id.edtUsername);
-        edtUserName.setText(userData.getUserName());
+        edtUserName.setText(customer.getUsername());
 
         EditText edtPassword = (EditText)findViewById(R.id.edtPassword);
-        edtPassword.setText(userData.getPassword());
+        edtPassword.setText(customer.getPassword());
 
         EditText edtFullName = (EditText)findViewById(R.id.fullname);
-        edtFullName.setText(userData.getFullName());
+        edtFullName.setText(customer.getName());
 
         EditText edtDateofbirth = (EditText)findViewById(R.id.dateofbirth);
-        edtDateofbirth.setText(userData.getDateOfBirth());
+        edtDateofbirth.setText(customer.getDateOfBirth());
 
         EditText edtPhone = (EditText)findViewById(R.id.phonenumber);
-        edtPhone.setText(userData.getPhoneNumber());
+        edtPhone.setText(customer.getPhoneNumber());
 
         EditText edtEmail = (EditText)findViewById(R.id.email);
-        edtEmail.setText(userData.getEmail());
+        edtEmail.setText(customer.getEmail());
     }
     public void editPersonalInfo(View view){
         EditText name = (EditText)findViewById(R.id.fullname);
@@ -110,7 +140,12 @@ public class DisplayInfomation extends AppCompatActivity {
         editBtn.setBackgroundResource(R.drawable.editbtndisable);
     }
     public void savePersonalInfo(View view){
+        // Get userID
+        EditText username = (EditText)findViewById(R.id.edtUsername);
+        EditText password = (EditText)findViewById(R.id.edtPassword);
+        // Get user data
         EditText name = (EditText)findViewById(R.id.fullname);
+        Spinner gender = (Spinner) findViewById(R.id.genderSpinner);
         EditText dateofbirth = (EditText)findViewById(R.id.dateofbirth);
         EditText email = (EditText)findViewById(R.id.email);
         EditText phonenumber = (EditText)findViewById(R.id.phonenumber);
@@ -123,21 +158,37 @@ public class DisplayInfomation extends AppCompatActivity {
         genderSpinner.setEnabled(false);
         email.setEnabled(false);
         phonenumber.setEnabled(false);
+        String nameChanging = name.getText().toString();
+        String genderChanging = gender.getSelectedItem().toString();
+        String dobChanging = dateofbirth.getText().toString();
+        String emailChanging = email.getText().toString();
+        String phoneChanging = phonenumber.getText().toString();
+        int ID = -1;
 
-        //Set information
-        userData.setFullName(name.getText().toString());
-        userData.setDateOfBirth(dateofbirth.getText().toString());
-        userData.setEmail(email.getText().toString());
-        userData.setPhoneNumber(phonenumber.getText().toString());
+        // Get username and password to get user ID
+        String userName = username.getText().toString();
+        String Password = password.getText().toString();
+
+        // Update customer information in database
+        CustomerManager cusMan = new CustomerManager(this);
+        List<Customer> listCustomer = new ArrayList<>();
+        listCustomer = cusMan.getAllCustomer();
+        Customer customer = new Customer(userName, Password, Password, nameChanging, genderChanging, dobChanging, phoneChanging, emailChanging);
+        for(int i = 0; i < listCustomer.size(); i++) {
+            if(userName.equals(listCustomer.get(i).getUsername()) && Password.equals(listCustomer.get(i).getPassword())) {
+                ID = listCustomer.get(i).getID();
+                break;
+            }
+        }
+        cusMan.updateCustomer(customer, ID);
 
         //Set up edit button
         editBtn.setClickable(true);
-        editBtn.setBackgroundResource(R.drawable.editbtn);
+        editBtn.setImageResource(R.drawable.editbtn);
         //Set up save button
         ImageButton saveBtn = (ImageButton)view;
         saveBtn.setClickable(false);
-        saveBtn.setBackgroundResource(R.drawable.savebtndisable);
-
+        saveBtn.setImageResource(R.drawable.savebtndisable);
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayChangePassword(View view){
@@ -150,25 +201,80 @@ public class DisplayInfomation extends AppCompatActivity {
         EditText curPassword = (EditText)findViewById(R.id.curPassword);
         EditText newPassword = (EditText)findViewById(R.id.newPassword);
         EditText newPasswordconfirm = (EditText)findViewById(R.id.newPasswordconfirm);
+        String userNameRef = "";
+        String name = "";
+        String password = "";
+        String confirmPassword = "";
+        String dateofbirth = "";
+        String gender = "";
+        String email = "";
+        String phone = "";
+        int ID = -1;
+
+        // Get password input from user
+        String currentPass = curPassword.getText().toString();
+        String newPass = newPassword.getText().toString();
+        String confirmNewPass = newPasswordconfirm.getText().toString();
+
+        if(!DisplaySignUp.sUserName.isEmpty()) {
+            userNameRef = DisplaySignUp.sUserName;
+        } else {
+            userNameRef = DisplayLogin.sUserName;
+        }
+
+        if(DisplaySignUp.ID != -1) {
+            ID = DisplaySignUp.ID;
+        } else {
+            ID = DisplayLogin.ID;
+        }
 
         //Step 1: check curPassword is userData.password
-        if(!userData.getPassword().equals(curPassword.getText().toString())){
+        CustomerManager cusMan = new CustomerManager(this);
+        List<Customer> listCustomer = new ArrayList<>();
+        listCustomer = cusMan.getAllCustomer();
+        for(int i = 0; i < listCustomer.size(); i++) {
+            if(userNameRef.equals(listCustomer.get(i).getUsername()) && ID == listCustomer.get(i).getID()) {
+                ID = listCustomer.get(i).getID();
+                name = listCustomer.get(i).getName();
+                password = listCustomer.get(i).getPassword();
+                confirmPassword = listCustomer.get(i).getConfirmPassword();
+                dateofbirth = listCustomer.get(i).getDateOfBirth();
+                gender = listCustomer.get(i).getGender();
+                email = listCustomer.get(i).getEmail();
+                phone = listCustomer.get(i).getPhoneNumber();
+                break;
+            }
+        }
+        Customer customer = new Customer(userNameRef, password, confirmPassword, name, gender, dateofbirth, phone, email);
+        Log.d("data: ", password);
+        Log.d("input: ", currentPass);
+        if(!password.equals(currentPass)) {
             //Display wrong message
+            Log.d("data: ", password);
+            Log.d("input: ", currentPass);
             TextView messageTxt = (TextView)findViewById(R.id.wrong_message);
             messageTxt.setText("Enter wrong current password! Try again!");
+            return;
         }
-        //Step 2: check newPassword is newPasswordconfirmed
+        //Step 2: check newPassword is same newPasswordconfirmed
         else {
-            if (newPassword.getText().toString().equals(newPasswordconfirm.getText().toString())) {
-                //set newPassword to userData password
-                userData.setPassword(newPassword.getText().toString());
-                //Display successful operation.
-                Intent intent = new Intent(this, PopLoginAgain.class);
-                startActivity(intent);
+            Log.d("data: ", newPass);
+            Log.d("input: ", confirmNewPass);
+            if (newPass.equals(confirmNewPass)) {
+                customer.setPassword(newPass);
+                customer.setConfirmPassword(confirmNewPass);
+                cusMan.updateCustomer(customer, ID);
+                // Add message to notify the change is successful
+
+
+
+
+                return;
             } else {
                 //Display wrong message
                 TextView messageTxt = (TextView) findViewById(R.id.wrong_message);
                 messageTxt.setText("Enter wrong confirm password! Try again!");
+                return;
             }
         }
     }

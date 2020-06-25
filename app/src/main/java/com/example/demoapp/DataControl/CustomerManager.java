@@ -22,6 +22,8 @@ public class CustomerManager extends SQLiteOpenHelper {
     private static final String NAME = "name";
     private static final String USER_NAME = "user_name";
     private static final String PASSWORD = "password";
+    private static final String DATE_OF_BIRTH = "date_of_birth";
+    private static final String GENDER = "gender";
     private static final String EMAIL = "email";
     private static final String PHONE = "phone";
     private static final int VERSION = 1;
@@ -31,6 +33,8 @@ public class CustomerManager extends SQLiteOpenHelper {
             NAME + " TEXT, " +
             USER_NAME + " TEXT, " +
             PASSWORD + " TEXT, " +
+            DATE_OF_BIRTH + " TEXT, "+
+            GENDER + " TEXT, " +
             EMAIL + " TEXT, " +
             PHONE + " TEXT)";
 
@@ -56,6 +60,8 @@ public class CustomerManager extends SQLiteOpenHelper {
         values.put(NAME, customer.getName());
         values.put(USER_NAME, customer.getUsername());
         values.put(PASSWORD, customer.getPassword());
+        values.put(DATE_OF_BIRTH, customer.getDateOfBirth());
+        values.put(GENDER, customer.getGender());
         values.put(EMAIL, customer.getEmail());
         values.put(PHONE, customer.getPhoneNumber());
         db.insert(TABLE_NAME, null, values);
@@ -76,8 +82,10 @@ public class CustomerManager extends SQLiteOpenHelper {
                 customer.setName(cursor.getString(1));
                 customer.setUsername(cursor.getString(2));
                 customer.setPassword(cursor.getString(3));
-                customer.setEmail(cursor.getString(4));
-                customer.setPhoneNumber(cursor.getString(5));
+                customer.setDateOfBirth(cursor.getString(4));
+                customer.setGender(cursor.getString(5));
+                customer.setEmail(cursor.getString(6));
+                customer.setPhoneNumber(cursor.getString(7));
                 listCustomer.add(customer);
             } while (cursor.moveToNext());
         }
@@ -85,20 +93,22 @@ public class CustomerManager extends SQLiteOpenHelper {
         return listCustomer;
     }
 
-    public int updateCustomer(Customer customer) {
+    public int updateCustomer(Customer customer, int ID) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(NAME, customer.getName());
         contentValues.put(USER_NAME, customer.getUsername());
         contentValues.put(PASSWORD, customer.getPassword());
+        contentValues.put(DATE_OF_BIRTH, customer.getDateOfBirth());
+        contentValues.put(GENDER, customer.getGender());
         contentValues.put(EMAIL, customer.getEmail());
         contentValues.put(PHONE, customer.getPhoneNumber());
-        return db.update(TABLE_NAME, contentValues, ID + "=?", new String[]{String.valueOf(customer.getID())});
+        return db.update(TABLE_NAME, contentValues, "ID =" + ID, null);
     }
 
     public int deleteCustomer(Customer customer) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME, ID+"=?", new String[]{String.valueOf(customer.getID())});
+        return db.delete(TABLE_NAME, ID+"=?", null);
     }
 }
 
