@@ -18,9 +18,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.demoapp.DataControl.CustomerManager;
-import com.example.demoapp.model.Customer;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,23 +53,10 @@ public class DisplayLogin extends AppCompatActivity {
         String username = user_name.getText().toString();
         String password = pass_word.getText().toString();
         boolean access = false;
-        final CustomerManager cusMan = new CustomerManager(this);
-        List<Customer> listCustomer = new ArrayList<>();
-        listCustomer = cusMan.getAllCustomer();
         Log.d("name: ", username);
         Log.d("pass ", password);
-
-        for(int i = 0; i < listCustomer.size(); i++) {
-            Log.d("username: ", listCustomer.get(i).getUsername());
-            Log.d("password ", listCustomer.get(i).getPassword());
-            if(username.equals(listCustomer.get(i).getUsername()) && password.equals(listCustomer.get(i).getPassword())) {
-                access = true;
-                sUserName = username;
-                ID = listCustomer.get(i).getID();
-                break;
-            }
-        }
         Log.d("access ", access+"");
+
         if(access) {
             TextView message = (TextView)findViewById(R.id.message);
             message.setText("");

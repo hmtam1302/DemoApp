@@ -23,9 +23,6 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.demoapp.DataControl.CustomerManager;
-import com.example.demoapp.model.Customer;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,39 +78,24 @@ public class DisplayInfomation extends AppCompatActivity {
         } else {
             userNameRef = DisplayLogin.sUserName;
         }
-        CustomerManager cusMan = new CustomerManager(this);
-        List<Customer> listCustomer = new ArrayList<>();
-        listCustomer = cusMan.getAllCustomer();
-        Customer customer = new Customer();
-        for(int i = 0; i < listCustomer.size(); i++) {
-            if (userNameRef.equals(listCustomer.get(i).getUsername())) {
-                customer.setName(listCustomer.get(i).getName());
-                customer.setUsername(listCustomer.get(i).getUsername());
-                customer.setPassword(listCustomer.get(i).getPassword());
-                customer.setDateOfBirth(listCustomer.get(i).getDateOfBirth());
-                customer.setEmail(listCustomer.get(i).getEmail());
-                customer.setPhoneNumber(listCustomer.get(i).getPhoneNumber());
-                break;
-            }
-        }
         //Display information
         EditText edtUserName = (EditText)findViewById(R.id.edtUsername);
-        edtUserName.setText(customer.getUsername());
+        //edtUserName.setText(customer.getUsername());
 
         EditText edtPassword = (EditText)findViewById(R.id.edtPassword);
-        edtPassword.setText(customer.getPassword());
+        //edtPassword.setText(customer.getPassword());
 
         EditText edtFullName = (EditText)findViewById(R.id.fullname);
-        edtFullName.setText(customer.getName());
+        //edtFullName.setText(customer.getName());
 
         EditText edtDateofbirth = (EditText)findViewById(R.id.dateofbirth);
-        edtDateofbirth.setText(customer.getDateOfBirth());
+        //edtDateofbirth.setText(customer.getDateOfBirth());
 
         EditText edtPhone = (EditText)findViewById(R.id.phonenumber);
-        edtPhone.setText(customer.getPhoneNumber());
+        //edtPhone.setText(customer.getPhoneNumber());
 
         EditText edtEmail = (EditText)findViewById(R.id.email);
-        edtEmail.setText(customer.getEmail());
+        //edtEmail.setText(customer.getEmail());
     }
     public void editPersonalInfo(View view){
         EditText name = (EditText)findViewById(R.id.fullname);
@@ -170,7 +152,7 @@ public class DisplayInfomation extends AppCompatActivity {
         String Password = password.getText().toString();
 
         // Update customer information in database
-        CustomerManager cusMan = new CustomerManager(this);
+        /*CustomerManager cusMan = new CustomerManager(this);
         List<Customer> listCustomer = new ArrayList<>();
         listCustomer = cusMan.getAllCustomer();
         Customer customer = new Customer(userName, Password, Password, nameChanging, genderChanging, dobChanging, phoneChanging, emailChanging);
@@ -180,7 +162,7 @@ public class DisplayInfomation extends AppCompatActivity {
                 break;
             }
         }
-        cusMan.updateCustomer(customer, ID);
+        cusMan.updateCustomer(customer, ID); */
 
         //Set up edit button
         editBtn.setClickable(true);
@@ -229,6 +211,7 @@ public class DisplayInfomation extends AppCompatActivity {
         }
 
         //Step 1: check curPassword is userData.password
+        /*
         CustomerManager cusMan = new CustomerManager(this);
         List<Customer> listCustomer = new ArrayList<>();
         listCustomer = cusMan.getAllCustomer();
@@ -277,6 +260,7 @@ public class DisplayInfomation extends AppCompatActivity {
                 return;
             }
         }
+         */
     }
     public void backToPrevious(View view){
         finish();

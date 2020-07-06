@@ -19,9 +19,6 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.demoapp.DataControl.CustomerManager;
-import com.example.demoapp.model.Customer;
-
 import java.util.regex.Pattern;
 
 public class DisplaySignUp extends AppCompatActivity {
@@ -70,7 +67,7 @@ public class DisplaySignUp extends AppCompatActivity {
         TextView messageTxt = (TextView) findViewById(R.id.messageSignup);
         messageTxt.setText(message);
 
-        if (password.equals(confirmPassword) && message == null) {
+        /*if (password.equals(confirmPassword) && message == null) {
             Customer customer = new Customer(userName, password, confirmPassword, phone, email);
             final CustomerManager cusMan = new CustomerManager(this);
             cusMan.addCustomer(customer);
@@ -78,7 +75,7 @@ public class DisplaySignUp extends AppCompatActivity {
             ID = customer.getID();
             Intent intent = new Intent(this, PopSuccessActivity.class);
             startActivity(intent);
-        }
+        }*/
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
