@@ -35,7 +35,7 @@ public class PopLogout extends Activity {
     }
 
     public void confirmLogout(View view){
-        DisplaySignUp.sUserName = null;
+        //DisplaySignUp.sUserName = null;
         Intent intent = new Intent(this, DisplayWelcome.class);
         startActivity(intent);
     }

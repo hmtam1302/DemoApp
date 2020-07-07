@@ -31,7 +31,7 @@ public class DisplayInfomation extends AppCompatActivity {
     private Spinner genderSpinner = null;
     private Scene changepasswordScene = null;
     private Scene passwordScene = null;
-    private UserData userData = DisplaySignUp.userManager.getData(DisplaySignUp.sUserName);
+    //private UserData userData = DisplaySignUp.userManager.getData(DisplaySignUp.sUserName);
     private String userNameRef;
     private int userID = -1;
 
@@ -70,14 +70,9 @@ public class DisplayInfomation extends AppCompatActivity {
         genderSpinner.setAdapter(arrayAdapter);
         genderSpinner.setEnabled(false);
 
-        Log.d("check: ", DisplayLogin.sUserName);
-        Log.d("Check empty: ", DisplayLogin.sUserName.isEmpty()+"");
+        //Log.d("check: ", DisplayLogin.sUserName);
+        //Log.d("Check empty: ", DisplayLogin.sUserName.isEmpty()+"");
 
-        if(!DisplaySignUp.sUserName.isEmpty()) {
-            userNameRef = DisplaySignUp.sUserName;
-        } else {
-            userNameRef = DisplayLogin.sUserName;
-        }
         //Display information
         EditText edtUserName = (EditText)findViewById(R.id.edtUsername);
         //edtUserName.setText(customer.getUsername());
@@ -197,18 +192,6 @@ public class DisplayInfomation extends AppCompatActivity {
         String currentPass = curPassword.getText().toString();
         String newPass = newPassword.getText().toString();
         String confirmNewPass = newPasswordconfirm.getText().toString();
-
-        if(!DisplaySignUp.sUserName.isEmpty()) {
-            userNameRef = DisplaySignUp.sUserName;
-        } else {
-            userNameRef = DisplayLogin.sUserName;
-        }
-
-        if(DisplaySignUp.ID != -1) {
-            ID = DisplaySignUp.ID;
-        } else {
-            ID = DisplayLogin.ID;
-        }
 
         //Step 1: check curPassword is userData.password
         /*

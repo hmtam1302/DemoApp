@@ -19,14 +19,24 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.demoapp.Data.Customer;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class DisplaySignUp extends AppCompatActivity {
 
-    public static UserManager userManager = new UserManager();
-    public static String sUserName = "";
-    public static int ID = -1;
+    public static Customer customerSignUp = null;
     private Scene signupScene = null;
+    String urlInsertData = "http://192.168.0.101/androidwebservice/insert.php";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -67,15 +77,12 @@ public class DisplaySignUp extends AppCompatActivity {
         TextView messageTxt = (TextView) findViewById(R.id.messageSignup);
         messageTxt.setText(message);
 
-        /*if (password.equals(confirmPassword) && message == null) {
-            Customer customer = new Customer(userName, password, confirmPassword, phone, email);
-            final CustomerManager cusMan = new CustomerManager(this);
-            cusMan.addCustomer(customer);
-            sUserName = userName;
-            ID = customer.getID();
+        if (password.equals(confirmPassword) && message == null) {
+            addData(urlInsertData);
+            Customer customer = new Customer(userName, password, phone, email);
             Intent intent = new Intent(this, PopSuccessActivity.class);
             startActivity(intent);
-        }*/
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -116,5 +123,42 @@ public class DisplaySignUp extends AppCompatActivity {
                 return null;
             }
         }
+    }
+
+    private void addData(String url) {
+        final String userName = ((EditText) findViewById(R.id.usernameEdt)).getText().toString();
+        final String password = ((EditText) findViewById(R.id.passwordEdt)).getText().toString();
+        final String phone = ((EditText) findViewById(R.id.phoneEdt)).getText().toString();
+        final String email = ((EditText) findViewById(R.id.emailEdt)).getText().toString();
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.trim().equals("success")) {
+                            Log.d("msg", "add new customer successfully");
+                        } else {
+                            Log.d("msg", "add new customer failure");
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("msg","Loi server/link " + error.toString());
+                    }
+                }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("UsernameCus",userName);
+                params.put("PasswordCus",password);
+                params.put("PhoneCus", phone);
+                params.put("EmailCus", email);
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
     }
 }

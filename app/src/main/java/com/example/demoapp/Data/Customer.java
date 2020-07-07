@@ -23,6 +23,13 @@ public class Customer {
         Phone = phone;
     }
 
+    public Customer(String username, String passWord, String email, String phone) {
+        Username = username;
+        PassWord = passWord;
+        Email = email;
+        Phone = phone;
+    }
+
     public int getID() {
         return ID;
     }
