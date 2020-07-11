@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="0xFFFFFF"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="26dp">
+
+        <!--Back button-->
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/backbtn"
+            android:contentDescription="@string/back"
+            android:onClick="backToPrevious" />
+
+        <!--Logo and Name-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp">
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/name"
+            android:textColor="#040087"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <!--Forgot Password-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:text="CHANGE SYSTEM MODE"
+            android:textColor="#040087"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+
+        <!--Phone number-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp">
+
+            <!--Service Mode-->
+            <ImageButton
+                android:layout_width="320dp"
+                android:layout_height="100dp"
+                android:src="@drawable/service_mode"
+                android:layout_centerHorizontal="true"
+             />
+
+            <!--Service Mode-->
+            <ImageButton
+                android:layout_width="320dp"
+                android:layout_height="100dp"
+                android:src="@drawable/maintenance_mode"
+                android:layout_marginTop="120dp"
+                android:layout_centerHorizontal="true"
+                />
+
+        </RelativeLayout>
+
+
+        <!--Button-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="600dp">
+
+            <ImageButton
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="70dp"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:maxWidth="120dp"
+                android:maxHeight="40dp"
+                android:onClick="checkPassword"
+                android:scaleType="fitCenter"
+                android:src="@drawable/confirm_button" />
+
+            <ImageButton
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="240dp"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:maxWidth="200dp"
+                android:maxHeight="100dp"
+                android:onClick="displayInfo"
+                android:scaleType="fitCenter"
+                android:src="@drawable/cancel_button" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
