@@ -36,7 +36,7 @@ public class DisplaySignUp extends AppCompatActivity {
 
     public static Customer customerSignUp = null;
     private Scene signupScene = null;
-    String urlInsertData = "http://192.168.0.101/androidwebservice/insert.php";
+    String urlInsertData = "http://192.168.0.105/androidwebservice/insert.php";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -63,7 +63,6 @@ public class DisplaySignUp extends AppCompatActivity {
     }
 
     public void createAccount(View view) {
-
         String userName = ((EditText) findViewById(R.id.usernameEdt)).getText().toString();
         String password = ((EditText) findViewById(R.id.passwordEdt)).getText().toString();
         String confirmPassword = ((EditText) findViewById(R.id.confirmPasswordEdt)).getText().toString();
@@ -79,7 +78,7 @@ public class DisplaySignUp extends AppCompatActivity {
 
         if (password.equals(confirmPassword) && message == null) {
             addData(urlInsertData);
-            Customer customer = new Customer(userName, password, phone, email);
+            customerSignUp = new Customer(userName, password, email, phone);
             Intent intent = new Intent(this, PopSuccessActivity.class);
             startActivity(intent);
         }

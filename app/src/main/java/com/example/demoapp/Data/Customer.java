@@ -14,20 +14,30 @@ public class Customer {
 
     public Customer(int ID, String username, String passWord, String name, String dateOfBirth, int gender, String email, String phone) {
         this.ID = ID;
-        Username = username;
-        PassWord = passWord;
-        Name = name;
-        DateOfBirth = dateOfBirth;
-        Gender = gender;
-        Email = email;
-        Phone = phone;
+        this.Username = username;
+        this.PassWord = passWord;
+        this.Name = name;
+        this.DateOfBirth = dateOfBirth;
+        this.Gender = gender;
+        this.Email = email;
+        this.Phone = phone;
     }
 
     public Customer(String username, String passWord, String email, String phone) {
-        Username = username;
-        PassWord = passWord;
-        Email = email;
-        Phone = phone;
+        this.Username = username;
+        this.PassWord = passWord;
+        this.Email = email;
+        this.Phone = phone;
+    }
+
+    public Customer(int id, String passChanging, String nameChanging, String dobChanging, int genderChanging, String emailChanging, String phoneChanging) {
+        this.ID = id;
+        this.PassWord = passChanging;
+        this.Name = nameChanging;
+        this.DateOfBirth = dobChanging;
+        this.Gender = genderChanging;
+        this.Email = emailChanging;
+        this.Phone = phoneChanging;
     }
 
     public int getID() {

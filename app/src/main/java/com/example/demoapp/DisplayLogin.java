@@ -3,7 +3,6 @@ package com.example.demoapp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.accounts.AccountManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,7 +15,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,18 +29,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DisplayLogin extends AppCompatActivity {
     private Scene loginScene = null;
     public static Customer customerLogin = null;
     String urlGetData = "http://192.168.0.101/androidwebservice/getData.php";
-    ArrayList<Customer> cusList = new ArrayList<>();
+    public static ArrayList<Customer> cusList = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getData(urlGetData);
+        Log.d("msg", cusList.size()+"");
         //Hide title bar and enable full-screen mode
         requestWindowFeature(Window.FEATURE_NO_TITLE); //hide the title
         getSupportActionBar().hide(); //hide the title bar
@@ -62,7 +61,6 @@ public class DisplayLogin extends AppCompatActivity {
     }
     public void displayLoginPop(View view){
         boolean access = false;
-        getData(urlGetData);
         EditText user_name = (EditText)findViewById(R.id.loginUsername);
         EditText pass_word = (EditText)findViewById(R.id.loginPassword);
         String username = user_name.getText().toString();
@@ -74,13 +72,10 @@ public class DisplayLogin extends AppCompatActivity {
             if(username.equals(cusList.get(i).getUsername()) && password.equals(cusList.get(i).getPassWord())){
                 access = true;
                 customerLogin = cusList.get(i);
+                Log.d("Login. ID = ", customerLogin.getID()+"");
                 break;
             }
         }
-
-        Log.d("name: ", username);
-        Log.d("pass ", password);
-        Log.d("access ", access+"");
 
         if(access) {
             TextView message = (TextView)findViewById(R.id.message);
@@ -112,12 +107,11 @@ public class DisplayLogin extends AppCompatActivity {
                         for(int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject object = response.getJSONObject(i);
-                                //int ID = object.getInt("ID");
-                                int ID = i + 1;
+                                int ID = object.getInt("ID");
                                 String UserName = object.getString("UserName");
                                 String PassWord = object.getString("PassWord");
                                 String Name = object.getString("Name");
-                                Log.d("test", "name " + Name);
+                                Log.d("test", "id: " + ID+"");
                                 String DateOfBirth = object.getString("DateOfBirth");
                                 int Gender = object.getInt("Gender");
                                 String Email = object.getString("Email");
@@ -140,4 +134,5 @@ public class DisplayLogin extends AppCompatActivity {
         );
         requestQueue.add(jsonArrayRequest);
     }
+
 }
