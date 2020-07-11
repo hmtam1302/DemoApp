@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+        <!--Back button-->
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/backbtn"
+            android:contentDescription="@string/back"
+            android:onClick="backToPrevious" />
+
+        <!--Logo and Name-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="65dp"
+                android:text="@string/name"
+                android:textColor="#040087"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <!--Information-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:text="Information"
+            android:textColor="#040087"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <!--Personal information-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="140dp"
+            android:text="Employee infomation"
+            android:textColor="#0839FF"
+            android:textSize="20sp" />
+
+        <!--Name-->
+        <EditText
+            android:id="@+id/fullname_employee"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="175dp"
+            android:background="@drawable/edittextborder"
+            android:enabled="false"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:paddingStart="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Huỳnh Công Hải"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="165dp"
+            android:background="#FFFFFF"
+            android:text="Full name"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="180dp"
+            android:src="@drawable/username" />
+
+
+        <!--Name-->
+        <EditText
+            android:id="@+id/role"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="230dp"
+            android:background="@drawable/edittextborder"
+            android:enabled="false"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:paddingStart="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Role"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="225dp"
+            android:background="#FFFFFF"
+            android:text="Role"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="240dp"
+            android:src="@drawable/role" />
+
+        <!--Gender-->
+        <Spinner
+            android:id="@+id/genderSpinner_employee"
+            android:layout_width="350dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="285dp"
+            android:background="@drawable/edittextborder"
+            android:paddingStart="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="275dp"
+            android:background="#FFFFFF"
+            android:text="Gender"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="290dp"
+            android:src="@drawable/gender" />
+
+        <!--Date of Birth-->
+        <EditText
+            android:id="@+id/dateofbirth_employee"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="340dp"
+            android:background="@drawable/edittextborder"
+            android:enabled="false"
+            android:inputType="date"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:paddingStart="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="21/01/2000"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="335dp"
+            android:background="#FFFFFF"
+            android:text="Date of birth"
+            android:textColor="#00197B" />
+        <!--day of birth image-->
+        <ImageView
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="350dp"
+            android:src="@drawable/dayofbirth_icon" />
+
+        <!--Email-->
+        <EditText
+            android:id="@+id/email_employee"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="395dp"
+            android:background="@drawable/edittextborder"
+            android:enabled="false"
+            android:maxLines="1"
+            android:paddingStart="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="conghai20@gmail.com"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="390dp"
+            android:background="#FFFFFF"
+            android:text="Email"
+            android:textColor="#00197B" />
+        <!--gmail image-->
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="400dp"
+            android:src="@drawable/gmail_icon" />
+
+        <!--Phone number-->
+        <EditText
+            android:id="@+id/phonenumber_employee"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="450dp"
+            android:background="@drawable/edittextborder"
+            android:enabled="false"
+            android:inputType="phone"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:paddingStart="50dp"
+            android:paddingLeft="50dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="0942239400"
+            android:textColor="#707070" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="445dp"
+            android:background="#FFFFFF"
+            android:text="Phone number"
+            android:textColor="#00197B" />
+
+        <ImageView
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="460dp"
+            android:src="@drawable/phone_icon" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="625dp"
+            android:background="#FFFFFF">
+
+            <ImageButton
+                android:id="@+id/editbtn"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:adjustViewBounds="true"
+                android:maxWidth="40dp"
+                android:maxHeight="100dp"
+                android:onClick="editPersonalInfo"
+                android:scaleType="fitCenter"
+                android:background="@drawable/editbtn" />
+
+            <ImageButton
+                android:id="@+id/savebtn"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="140dp"
+                android:adjustViewBounds="true"
+                android:clickable="false"
+                android:maxWidth="40dp"
+                android:maxHeight="100dp"
+                android:onClick="savePersonalInfo"
+                android:scaleType="fitCenter"
+                android:background="@drawable/savebtndisable" />
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="260dp"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:maxWidth="40dp"
+                android:maxHeight="100dp"
+                android:onClick="backToPrevious"
+                android:scaleType="fitCenter"
+                android:src="@drawable/canclebtn" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
