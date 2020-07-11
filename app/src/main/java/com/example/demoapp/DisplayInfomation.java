@@ -50,7 +50,6 @@ public class DisplayInfomation extends AppCompatActivity {
     private Customer customer = null;
     private int ID = -1;
     ArrayList<Customer> cusList = new ArrayList<>();
-    String urlGetData = "http://192.168.0.105/androidwebservice/getData.php";
     String urlUpdateData = "http://192.168.0.101/androidwebservice/update.php";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -90,8 +89,13 @@ public class DisplayInfomation extends AppCompatActivity {
         genderSpinner.setAdapter(arrayAdapter);
         genderSpinner.setEnabled(false);
 
-        // Customer login
+        // Customer login or sign-up
         customer = DisplayLogin.customerLogin;
+        if(DisplayLogin.customerLogin != null) {
+            customer = DisplayLogin.customerLogin;
+        } else {
+            customer = DisplaySignUp.customerSignUp;
+        }
         Log.d("msg check", customer.getUsername());
         //Display information
         EditText edtUserName = (EditText)findViewById(R.id.edtUsername);
@@ -140,9 +144,6 @@ public class DisplayInfomation extends AppCompatActivity {
         editBtn.setBackgroundResource(R.drawable.editbtndisable);
     }
     public void savePersonalInfo(View view){
-        // Get userID
-        EditText username = (EditText)findViewById(R.id.edtUsername);
-        EditText password = (EditText)findViewById(R.id.edtPassword);
         // Get user data
         EditText name = (EditText)findViewById(R.id.fullname);
         Spinner gender = (Spinner) findViewById(R.id.genderSpinner);
@@ -158,6 +159,8 @@ public class DisplayInfomation extends AppCompatActivity {
         gender.setEnabled(false);
         email.setEnabled(false);
         phonenumber.setEnabled(false);
+
+        // Get user input data
         String nameChanging = name.getText().toString();
         int genderChanging = gender.getSelectedItemPosition();
         Log.d("Check gender: ", genderChanging+"");

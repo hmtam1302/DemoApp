@@ -23,7 +23,8 @@ public class Customer {
         this.Phone = phone;
     }
 
-    public Customer(String username, String passWord, String email, String phone) {
+    public Customer(int ID, String username, String passWord, String email, String phone) {
+        this.ID = ID;
         this.Username = username;
         this.PassWord = passWord;
         this.Email = email;
