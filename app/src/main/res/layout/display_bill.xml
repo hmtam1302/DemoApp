@@ -16,7 +16,7 @@
             android:layout_height="50dp"
             android:background="@drawable/backbtn"
             android:contentDescription="@string/back"
-            android:onClick="backToPrevious"
+            android:onClick="backToPrlevious"
             />
         <!--Display_text-->
         <TextView
