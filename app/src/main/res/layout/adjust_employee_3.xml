@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="70dp"
-            android:text="Information"
+            android:text="New Information"
             android:textColor="#040087"
             android:textSize="40sp"
             android:textStyle="bold" />
@@ -77,7 +77,7 @@
             android:paddingLeft="50dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="Huỳnh Công Hải"
+            android:hint="Enter employee's name"
             android:textColor="#707070" />
 
         <TextView
@@ -122,7 +122,7 @@
             android:layout_marginLeft="70dp"
             android:layout_marginTop="225dp"
             android:background="#FFFFFF"
-            android:text="Role"
+            android:hint="Role"
             android:textColor="#00197B" />
 
         <ImageView
@@ -180,7 +180,7 @@
             android:paddingLeft="50dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="21/01/2000"
+            android:hint="Enter day of birth"
             android:textColor="#707070" />
 
         <TextView
@@ -214,7 +214,7 @@
             android:paddingLeft="50dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="conghai20@gmail.com"
+            android:hint="Enter employee's email"
             android:textColor="#707070" />
 
         <TextView
@@ -250,7 +250,7 @@
             android:paddingLeft="50dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="0942239400"
+            android:hint="Enter employee's phone number"
             android:textColor="#707070" />
 
         <TextView
@@ -273,39 +273,27 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_centerHorizontal="false"
             android:layout_marginTop="625dp"
             android:background="#FFFFFF">
 
             <ImageButton
                 android:id="@+id/editbtn"
                 android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="80dp"
                 android:adjustViewBounds="true"
                 android:maxWidth="40dp"
                 android:maxHeight="100dp"
-                android:onClick="editPersonalInfo"
+                android:onClick="addNewEmployeeInfo"
                 android:scaleType="fitCenter"
-                android:background="@drawable/editbtn" />
+                android:background="@drawable/addbtn" />
 
-            <ImageButton
-                android:id="@+id/savebtn"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="140dp"
-                android:adjustViewBounds="true"
-                android:clickable="false"
-                android:maxWidth="40dp"
-                android:maxHeight="100dp"
-                android:onClick="savePersonalInfo"
-                android:scaleType="fitCenter"
-                android:background="@drawable/savebtndisable" />
 
             <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="260dp"
+                android:layout_marginLeft="240dp"
                 android:adjustViewBounds="true"
                 android:background="#FFFFFF"
                 android:maxWidth="40dp"
