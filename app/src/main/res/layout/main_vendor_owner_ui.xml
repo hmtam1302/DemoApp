@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="240dp"></ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[NAME OF RESTAURANT]"
+            android:textColor="#06208b"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:layout_marginTop="260dp"
+            android:layout_centerHorizontal="true"></TextView>
+
+        <RelativeLayout
+            android:layout_width="360dp"
+            android:layout_height="360dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="320dp">
+
+            <ImageButton
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:src="@drawable/preparing_main"></ImageButton>
+
+            <ImageButton
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="180dp"
+                android:src="@drawable/bill_preparing"
+                ></ImageButton>
+
+            <ImageButton
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginTop="180dp"
+                android:src="@drawable/setting_main"></ImageButton>
+
+            <ImageButton
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginTop="180dp"
+                android:layout_marginLeft="180dp"
+                android:src="@drawable/account_main"></ImageButton>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
