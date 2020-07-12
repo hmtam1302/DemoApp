@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/image"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="210dp"
+            android:text="[Name of Restaurant]"
+            android:textColor="#040087"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="260dp">
+
+            <ImageButton
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="5dp"
+                android:background="#FFFFFF"
+                android:padding="50dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/bill" />
+
+            <ImageButton
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="205dp"
+                android:background="#FFFFFF"
+                android:padding="50dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/bill_prepare" />
+
+            <ImageButton
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="205dp"
+                android:background="#FFFFFF"
+                android:padding="50dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/settings" />
+
+            <ImageButton
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="205dp"
+                android:layout_marginTop="205dp"
+                android:background="#FFFFFF"
+                android:padding="65dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/account" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
