@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rlFood"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+        <!--Back button-->
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/backbtn"
+            android:contentDescription="@string/back"
+            android:onClick="displayHome" />
+        <!--Name-->
+        <TextView
+            android:id="@+id/resTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/name"
+            android:textColor="#040087"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="360dp"
+            android:src="@drawable/logo" />
+
+        <!--Search-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="Search"
+                android:textColor="#040087"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:maxLines="1"
+                android:id="@+id/foodKey"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="90dp"
+                android:background="@drawable/edittextborder"
+                android:hint="Enter the name of restaurant"
+                android:paddingLeft="10dp" />
+
+            <ImageButton
+                android:layout_width="23dp"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="350dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/searchbtn"
+                android:onClick="searchFood"
+                android:scaleType="fitCenter" />
+        </RelativeLayout>
+
+
+        <!--List of restaurant-->
+        <ListView
+            android:id="@+id/list_setting_res"
+            android:layout_width="400dp"
+            android:layout_height="535dp"
+            android:layout_marginTop="100dp"
+            android:layout_centerHorizontal="true"
+            android:background="#FFFFFF">
+
+        </ListView>
+
+        <!--Navigation bar-->
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TableRow>
+
+                <ImageButton
+                    android:layout_width="102dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/home_vendor" />
+
+                <ImageButton
+                    android:layout_width="102dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:onClick="display"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/preparing" />
+
+                <ImageButton
+                    android:id="@+id/infobtn"
+                    android:layout_width="102dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:onClick="displayInfo"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/acoount_vendor" />
+
+                <ImageButton
+                    android:id="@+id/setting_res"
+                    android:layout_width="102dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:onClick="displayInfo"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/setting" />
+            </TableRow>
+
+        </TableLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

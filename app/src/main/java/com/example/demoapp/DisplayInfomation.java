@@ -201,6 +201,7 @@ public class DisplayInfomation extends AppCompatActivity {
         EditText curPassword = (EditText)findViewById(R.id.curPassword);
         EditText newPassword = (EditText)findViewById(R.id.newPassword);
         EditText newPasswordconfirm = (EditText)findViewById(R.id.newPasswordconfirm);
+
         String userNameRef = "";
         String name = "";
         String password = "";
@@ -254,7 +255,7 @@ public class DisplayInfomation extends AppCompatActivity {
             Log.d("input: ", currentPass);
             TextView messageTxt = (TextView)findViewById(R.id.wrong_message);
             messageTxt.setText("Enter wrong current password! Try again!");
-            return;
+            //return;
         }
         //Step 2: check newPassword is same newPasswordconfirmed
         else {
@@ -265,16 +266,15 @@ public class DisplayInfomation extends AppCompatActivity {
                 customer.setConfirmPassword(confirmNewPass);
                 cusMan.updateCustomer(customer, ID);
                 // Add message to notify the change is successful
+                Intent intent = new Intent(this, PopLoginAgain.class);
+                startActivity(intent);
 
-
-
-
-                return;
+                //return;
             } else {
                 //Display wrong message
                 TextView messageTxt = (TextView) findViewById(R.id.wrong_message);
                 messageTxt.setText("Enter wrong confirm password! Try again!");
-                return;
+                //return;
             }
         }
     }
