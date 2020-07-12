@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--Back button-->
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/backbtn"
+            android:contentDescription="@string/back"
+            android:onClick="backToPrevious" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:text="[Name of restaurant]"
+            android:textColor="#040087"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <!--List of foods-->
+        <ListView
+            android:id="@+id/listRestaurant"
+            android:layout_width="400dp"
+            android:layout_height="570dp"
+            android:layout_marginTop="70dp"
+            android:layout_centerHorizontal="true"
+            android:background="#FFFFFF"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:text="+ Add new foods"
+            android:textColor="#040087"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="660dp"/>
+
+        <!--Navigation bar-->
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TableRow>
+
+                <ImageButton
+                    android:layout_width="105dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/bill" />
+
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:onClick="displayCart"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/bill_prepare" />
+
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:onClick="displayInfo"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/settings" />
+
+                <ImageButton
+                    android:layout_width="105dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:onClick="displayInfo"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/accountbtn" />
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
