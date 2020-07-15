@@ -6,7 +6,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_height="match_parent">
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="120dp"
     tools:ignore="MissingConstraints">
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -16,12 +16,15 @@ android:layout_height="match_parent">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#000000"
             android:text="Bill ID:"
             android:textStyle="bold"
             android:textSize="20sp"/>
         <TextView
+            android:id="@+id/bill_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#000000"
             android:text="xxxxxx"
             android:textStyle="bold"
             android:textSize="20sp"
@@ -31,8 +34,8 @@ android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="220dp"
-        android:layout_marginTop="5dp">
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,6 +43,7 @@ android:layout_height="match_parent">
             android:textStyle="bold"
             android:textSize="20sp"/>
         <TextView
+            android:id="@+id/total_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="xxxxxx"
@@ -52,7 +56,7 @@ android:layout_height="match_parent">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="80dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,6 +64,7 @@ android:layout_height="match_parent">
             android:textStyle="bold"
             android:textSize="20sp"/>
         <TextView
+            android:id="@+id/delivery_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="xxxxxx"
@@ -69,11 +74,11 @@ android:layout_height="match_parent">
     </RelativeLayout>
 
     <ImageView
+        android:id="@+id/finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/check"
         android:layout_marginLeft="350dp"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="80dp"/>
 </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

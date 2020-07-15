@@ -2,9 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.demoapp">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".DisplayBill"></activity>
+        <activity android:name=".DisplayBillCook"></activity>
+        <activity android:name=".DisplayBill" />
         <activity android:name=".DisplayFoodDetail" />
         <activity android:name=".DisplayCart" />
         <activity android:name=".PopLogout" />
@@ -24,8 +25,9 @@
         <activity
             android:name=".PopSuccessActivity"
             android:theme="@style/AppTheme.PopUp" />
-        <activity android:name=".PopLoginAgain"
-            android:theme="@style/AppTheme.PopUp"/>
+        <activity
+            android:name=".PopLoginAgain"
+            android:theme="@style/AppTheme.PopUp" />
         <activity android:name=".DisplayWelcome" />
         <activity android:name=".MainActivity">
             <intent-filter>

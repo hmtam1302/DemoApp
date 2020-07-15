@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.transition.Explode;
 import android.transition.Scene;
 import android.transition.Slide;
 import android.transition.Transition;
@@ -56,12 +55,18 @@ public class DisplayCart extends AppCompatActivity {
         TransitionManager.go(cartScene, slide);
 
         ListView listView = (ListView)findViewById(R.id.listCart);
-        listView.setAdapter(new CustomListItemAdapter(this, billManager.getBill().itemList));
+        listView.setAdapter(new CustomListBillItemAdapter(this, billManager.getBill().billItemList));
 
         TextView totalPriceTxt = (TextView)findViewById(R.id.cart_totalPrice);
         String totalPrice = billManager.getBill().getTotalPrice();
         totalPriceTxt.setText(totalPrice);
 
+        //Set disable or enable button Order
+        if (billManager.getBill().billItemList.size() == 0){
+            ImageButton orderBtn = (ImageButton) findViewById(R.id.order_btn);
+            orderBtn.setBackgroundResource(R.drawable.order_btn_disable);
+            orderBtn.setClickable(false);
+        }
         setPayment();
     }
 
