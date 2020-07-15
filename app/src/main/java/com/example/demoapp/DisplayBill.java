@@ -75,6 +75,9 @@ public class DisplayBill extends AppCompatActivity {
 
         bill.setBillID(dtf.format(now).toString());
 
+        //Set bill status
+        bill.setStatus("unconfirmed");
+
         //Add new bill to database
         DisplayCart.billManager.addNewBill(bill);
 

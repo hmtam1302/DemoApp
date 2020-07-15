@@ -15,7 +15,15 @@
             android:contentDescription="@string/back"
             android:onClick="backToPrevious" />
 
+        <ImageView
+            android:id="@+id/status_bill_detail"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="360dp"/>
+
         <TextView
+            android:id="@+id/bill_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
@@ -39,33 +47,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bill ID:"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="80dp"
-                    android:text="xxxxxx"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="220dp"
-                android:layout_marginTop="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="Total Price:"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/total_price_bill_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="115dp"
@@ -83,11 +70,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:text="Delivery time:"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/delivery_time_bill_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="130dp"
@@ -109,9 +98,9 @@
 
         <!--List of dishes-->
         <ListView
-            android:id="@+id/listRestaurant"
+            android:id="@+id/list_bill_cook_item"
             android:layout_width="400dp"
-            android:layout_height="450dp"
+            android:layout_height="400dp"
             android:layout_marginTop="160dp"
             android:layout_centerHorizontal="true"
             android:background="#FFFFFF">
@@ -119,15 +108,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="620dp"
+            android:layout_marginTop="590dp"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Do you want confirm this bill?"
-                android:textStyle="italic"
-                android:layout_centerHorizontal="true"/>
-
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -136,11 +118,13 @@
                 android:layout_marginLeft="30dp"/>
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/command_btn"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/confirm_button"
-                android:layout_marginLeft="200dp"/>
+                android:layout_marginLeft="200dp"
+                android:onClick="commandBill"/>
         </RelativeLayout>
 
     </RelativeLayout>

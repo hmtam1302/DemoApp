@@ -12,7 +12,7 @@ public class BillManager {
         return bill;
     }
 
-    public Bill getBillID(String ID){
+    public Bill getBillByID(String ID){
         for(int i = 0; i < billList.size(); i++){
             Bill item = billList.get(i);
             if(item.getBillID() == ID) return item;
