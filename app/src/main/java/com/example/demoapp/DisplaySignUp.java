@@ -41,8 +41,8 @@ import java.util.regex.Pattern;
 public class DisplaySignUp extends AppCompatActivity {
     public static Customer customerSignUp = null;
     private Scene signupScene = null;
-    String urlGetData = "http://192.168.0.101/androidwebservice/getData.php";
-    String urlInsertData = "http://192.168.0.101/androidwebservice/insert.php";
+    String urlGetData = "http://192.168.1.56/androidwebservice/getData.php";
+    String urlInsertData = "http://192.168.1.56/androidwebservice/insert.php";
     public static ArrayList<Customer> cusList = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
