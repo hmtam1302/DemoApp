@@ -1,12 +1,12 @@
 package com.example.demoapp;
 
-public class Item {
+public class BillItem {
     private String name;
     private String price;
     private String quantity;
     private String note;
 
-    public Item(String name, String price, String quantity, String note){
+    public BillItem(String name, String price, String quantity, String note){
         this.name = name;
         this.price = price;
         this.quantity = quantity;

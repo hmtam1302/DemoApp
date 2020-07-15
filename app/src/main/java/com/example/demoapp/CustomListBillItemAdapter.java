@@ -1,36 +1,33 @@
 package com.example.demoapp;
 
 import android.content.Context;
-import android.util.Log;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
-public class CustomListItemAdapter extends BaseAdapter {
-    private List<Item> itemList;
+public class CustomListBillItemAdapter extends BaseAdapter {
+    private List<BillItem> billItemList;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public CustomListItemAdapter(Context aContext, List<Item> listData) {
+    public CustomListBillItemAdapter(Context aContext, List<BillItem> listData) {
         this.context = aContext;
-        this.itemList = listData;
+        this.billItemList = listData;
         layoutInflater = LayoutInflater.from(aContext);
     }
 
     @Override
     public int getCount() {
-        return itemList.size();
+        return billItemList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return itemList.get(position);
+        return billItemList.get(position);
     }
 
     @Override
@@ -60,11 +57,11 @@ public class CustomListItemAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Item item = this.itemList.get(position);
-        holder.nameView.setText(item.getName());
-        holder.quantityView.setText(item.getQuantity());
-        holder.priceView.setText(item.getPrice());
-        holder.noteView.setText("NOTE: " + item.getNote());
+        BillItem billItem = this.billItemList.get(position);
+        holder.nameView.setText(billItem.getName());
+        holder.quantityView.setText(billItem.getQuantity());
+        holder.priceView.setText(billItem.getPrice());
+        holder.noteView.setText("NOTE: " + billItem.getNote());
 
         return convertView;
     }

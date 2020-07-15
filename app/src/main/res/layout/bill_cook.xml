@@ -64,7 +64,7 @@
 
         <!--List of restaurant-->
         <ListView
-            android:id="@+id/listRestaurant"
+            android:id="@+id/bill_cook_List"
             android:layout_width="400dp"
             android:layout_height="535dp"
             android:layout_centerHorizontal="true"

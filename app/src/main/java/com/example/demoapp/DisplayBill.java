@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.transition.Explode;
 import android.transition.Scene;
 import android.transition.Slide;
 import android.transition.Transition;
@@ -18,6 +17,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class DisplayBill extends AppCompatActivity {
 
@@ -49,7 +51,7 @@ public class DisplayBill extends AppCompatActivity {
         TransitionManager.go(billScene, slide);
 
         ListView listView = (ListView)findViewById(R.id.bill_list);
-        listView.setAdapter(new CustomListItemAdapter(this, DisplayCart.billManager.getBill().itemList));
+        listView.setAdapter(new CustomListBillItemAdapter(this, DisplayCart.billManager.getBill().billItemList));
 
         TextView totalPriceTxt = (TextView)findViewById(R.id.bill_totalPrice);
         totalPriceTxt.setText(DisplayCart.billManager.getBill().getTotalPrice() + "VND");
@@ -57,9 +59,29 @@ public class DisplayBill extends AppCompatActivity {
 
     public void backToHome(View view){
         Bill bill = DisplayCart.billManager.getBill();
-        bill.itemList.clear();
+        bill.billItemList.clear();
 
         Intent intent = new Intent(this, DisplayHome.class);
+        startActivity(intent);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void addBillAndBack(View v){
+        Bill bill = DisplayCart.billManager.getBill();
+
+        //Generate Bill ID based on current date and time
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyMMddHHmms");
+        LocalDateTime now = LocalDateTime.now();
+
+        bill.setBillID(dtf.format(now).toString());
+
+        //Add new bill to database
+        DisplayCart.billManager.addNewBill(bill);
+
+        //Clear bill and return home
+        DisplayCart.billManager.setNewBill();
+
+        Intent intent = new Intent(this, DisplayBillCook.class);
         startActivity(intent);
     }
 

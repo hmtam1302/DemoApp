@@ -94,7 +94,7 @@
             android:background="@drawable/confirmbtn"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="610dp"
-            android:onClick="backToHome"
+            android:onClick="addBillAndBack"
             />
     </RelativeLayout>
 

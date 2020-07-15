@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.transition.Scene;
@@ -122,16 +121,16 @@ public class DisplayFoodDetail extends AppCompatActivity {
 
         if(index == -1){
 
-            bill.addNewItem(new Item(itemName, itemPrice, itemQuantity, itemNote));
+            bill.addNewItem(new BillItem(itemName, itemPrice, itemQuantity, itemNote));
         }
         else{
-            Item item = bill.itemList.get(index);
-            int number = Integer.valueOf(item.getQuantity()) + Integer.valueOf(itemQuantity);
+            BillItem billItem = bill.billItemList.get(index);
+            int number = Integer.valueOf(billItem.getQuantity()) + Integer.valueOf(itemQuantity);
             if(number < 9) itemQuantity = "0" + String.valueOf(number);
             else itemQuantity = String.valueOf(number);
 
-            item.setQuantity(itemQuantity); //Update item quantity
-            if(itemNote != null) item.setNote(itemNote); //Update note
+            billItem.setQuantity(itemQuantity); //Update billItem quantity
+            if(itemNote != null) billItem.setNote(itemNote); //Update note
         }
         //Update selected quantity after add to cart
         selectedFood.setQuantity(selectedFood.getQuantity() - Integer.valueOf(itemQuantity));
@@ -141,8 +140,8 @@ public class DisplayFoodDetail extends AppCompatActivity {
     }
 
     private int getItemIndex(String name){
-        for(int i = 0; i< DisplayCart.billManager.getBill().itemList.size(); i++){
-            if(DisplayCart.billManager.getBill().itemList.get(i).getName().equals(name)){
+        for(int i = 0; i< DisplayCart.billManager.getBill().billItemList.size(); i++){
+            if(DisplayCart.billManager.getBill().billItemList.get(i).getName().equals(name)){
                 return i;
             }
         }
