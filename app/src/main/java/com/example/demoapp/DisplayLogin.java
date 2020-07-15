@@ -28,12 +28,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 
 public class DisplayLogin extends AppCompatActivity {
     private Scene loginScene = null;
     public static Customer customerLogin = null;
-    String urlGetData = "http://192.168.0.101/androidwebservice/getData.php";
+    String urlGetData = "http://192.168.1.56/androidwebservice/getData.php";
     public static ArrayList<Customer> cusList = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -134,5 +138,4 @@ public class DisplayLogin extends AppCompatActivity {
         );
         requestQueue.add(jsonArrayRequest);
     }
-
 }

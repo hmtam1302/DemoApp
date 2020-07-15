@@ -50,7 +50,7 @@ public class DisplayInfomation extends AppCompatActivity {
     private Customer customer = null;
     private int ID = -1;
     ArrayList<Customer> cusList = new ArrayList<>();
-    String urlUpdateData = "http://192.168.0.101/androidwebservice/update.php";
+    String urlUpdateData = "http://192.168.1.56/androidwebservice/update.php";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
