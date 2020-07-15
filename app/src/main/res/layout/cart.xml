@@ -177,7 +177,7 @@
         <ImageButton
             android:id="@+id/order_btn"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="630dp"
             android:background="@drawable/orderbtn"

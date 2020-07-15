@@ -8,7 +8,7 @@ public class Bill {
     private String billID;
     private String totalPrice;
     private String time;
-    private boolean isFinished;
+    private String status;
 
     public Bill(){
         billItemList = new ArrayList<BillItem>();
@@ -16,9 +16,9 @@ public class Bill {
         time = "";
     }
 
-    public void setFinished(boolean isFinished){ this.isFinished = isFinished; }
+    public void setStatus(String status){ this.status = status; }
 
-    public boolean getFinished(){ return isFinished; }
+    public String getStatus(){ return status; }
 
     public void setBillID(String billID) { this.billID = billID; }
 

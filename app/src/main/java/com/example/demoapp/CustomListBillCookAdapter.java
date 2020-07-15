@@ -54,7 +54,7 @@ public class CustomListBillCookAdapter extends BaseAdapter {
             holder.billIDView = (TextView) convertView.findViewById(R.id.bill_id);
             holder.timeView = (TextView) convertView.findViewById(R.id.delivery_time);
             holder.priceView = (TextView)convertView.findViewById(R.id.total_price);
-            holder.finishedView = (ImageView) convertView.findViewById(R.id.finish);
+            holder.finishedView = (ImageView) convertView.findViewById(R.id.status);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -65,8 +65,14 @@ public class CustomListBillCookAdapter extends BaseAdapter {
         holder.timeView.setText(bill.getTime());
         holder.priceView.setText(bill.getTotalPrice() + "VNĐ");
 
-        if (bill.getFinished()){
-            holder.finishedView.setImageDrawable(context.getResources().getDrawable(R.drawable.check));
+        if (bill.getStatus().equals("unconfirmed")){
+            holder.finishedView.setImageDrawable(context.getResources().getDrawable(R.drawable.unconfirmed));
+        }
+        else if (bill.getStatus().equals("being_prepared")){
+            holder.finishedView.setImageDrawable(context.getResources().getDrawable(R.drawable.being_prepared));
+        }
+        else{
+            holder.finishedView.setImageDrawable(context.getResources().getDrawable(R.drawable.finished));
         }
 
         return convertView;
