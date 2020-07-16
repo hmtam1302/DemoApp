@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DisplayBillCook extends AppCompatActivity {
@@ -53,9 +55,19 @@ public class DisplayBillCook extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void displayBillCook(){
+    public void displayBillCook(){
         Transition slide = new Slide(Gravity.RIGHT);
         TransitionManager.go(billCookScene, slide);
+
+        //Set navigation bar
+        ImageButton listButton = (ImageButton) findViewById(R.id.list_button);
+        listButton.setImageDrawable(getResources().getDrawable(R.drawable.preparing_pressed));
+        listButton.setTag(R.drawable.preparing_pressed); //Set tag for searching
+        ImageButton completedButton = (ImageButton) findViewById(R.id.completed_button);
+        completedButton.setImageDrawable(getResources().getDrawable(R.drawable.complete));
+        completedButton.setTag(null);   //Set tag for searching
+        ImageButton settingButton = (ImageButton) findViewById(R.id.setting_button);
+        settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings));
 
         ListView listView = (ListView)findViewById(R.id.bill_cook_List);
         listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getBillList()));
@@ -115,6 +127,9 @@ public class DisplayBillCook extends AppCompatActivity {
         }
         else if (bill.getStatus().equals("being_prepared")){
             bill.setStatus("finished");
+
+            //Send the bill to the end of Bill List
+            DisplayCart.billManager.addToCompletedBillList(selectedID);
             displayBillCook();
         }
         else{
@@ -122,9 +137,72 @@ public class DisplayBillCook extends AppCompatActivity {
         }
     }
 
+    public void searchBill(View v){
+        EditText searchEdt = (EditText) findViewById(R.id.billKey);
+        String billKey = searchEdt.getText().toString();
+
+        //Determine what list bill is display
+        ImageButton billBtn = (ImageButton) findViewById(R.id.list_button);
+        Integer resource = (Integer) billBtn.getTag();
+        List<Bill> billList;
+        if (resource != null) {
+            billList = DisplayCart.billManager.getBillList();
+        }
+        else{
+            billList = DisplayCart.billManager.getCompletedBillList();
+        }
+
+        List<Bill> billResList = new ArrayList<>();
+
+        if (billKey != null) {
+            for (int i = 0; i < billList.size(); i++) {
+                Bill bill = billList.get(i);
+                if (bill.getBillID().contains(billKey)) billResList.add(bill);
+            }
+
+            //Display result of search
+            ListView listView = (ListView) findViewById(R.id.bill_cook_List);
+            listView.setAdapter(new CustomListBillCookAdapter(this, billResList));
+        }
+        else{
+            //Display result of search
+            ListView listView = (ListView) findViewById(R.id.bill_cook_List);
+            listView.setAdapter(new CustomListBillCookAdapter(this, billList));
+        }
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public  void displayCompletedBill(View v){
+        //Set navigation bar
+        ImageButton listButton = (ImageButton) findViewById(R.id.list_button);
+        listButton.setImageDrawable(getResources().getDrawable(R.drawable.preparing));
+        listButton.setTag(null);    //Set tag for searching
+        ImageButton completedButton = (ImageButton) findViewById(R.id.completed_button);
+        completedButton.setImageDrawable(getResources().getDrawable(R.drawable.complete_pressed));
+        completedButton.setTag(R.drawable.complete_pressed); //Set tag for searching
+        ImageButton settingButton = (ImageButton) findViewById(R.id.setting_button);
+        settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings));
+
+        //Display completed bill list
+        ListView listView = (ListView)findViewById(R.id.bill_cook_List);
+        listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getCompletedBillList()));
+        // When the user clicks on the ListItem
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+                displayBillCookDetail(v);
+            }
+        });
+    }
+
     public void backToPrevious(View v){
         Intent intent = new Intent(this, DisplayHome.class);
         startActivity(intent);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void displayBillCook(View v){
+        displayBillCook();
+    }
 }
