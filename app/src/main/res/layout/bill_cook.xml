@@ -41,13 +41,15 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/resKey"
+                android:id="@+id/billKey"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="90dp"
                 android:background="@drawable/edittextborder"
                 android:hint="Enter Bill ID"
+                android:maxLength="8"
+                android:inputType="number"
                 android:maxLines="1"
                 android:paddingLeft="10dp" />
 
@@ -58,7 +60,7 @@
                 android:layout_marginLeft="350dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/searchbtn"
-                android:onClick="searchRes"
+                android:onClick="searchBill"
                 android:scaleType="fitCenter" />
         </RelativeLayout>
 
@@ -69,7 +71,7 @@
             android:layout_height="535dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp"
-            android:background="#FFFFFF"></ListView>
+            android:background="#FFFFFF"/>
 
         <!--Navigation bar-->
         <TableLayout
@@ -81,23 +83,27 @@
             <TableRow>
 
                 <ImageButton
+                    android:id="@+id/list_button"
                     android:layout_width="105dp"
                     android:layout_height="40dp"
                     android:adjustViewBounds="true"
                     android:background="#FFFFFF"
+                    android:onClick="displayBillCook"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/bill" />
+                    android:src="@drawable/preparing_pressed" />
 
                 <ImageButton
+                    android:id="@+id/completed_button"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:adjustViewBounds="true"
                     android:background="#FFFFFF"
-                    android:onClick="displayCart"
+                    android:onClick="displayCompletedBill"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/bill_prepare" />
+                    android:src="@drawable/complete" />
 
                 <ImageButton
+                    android:id="@+id/setting_button"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:adjustViewBounds="true"

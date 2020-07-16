@@ -70,7 +70,7 @@ public class DisplayBill extends AppCompatActivity {
         Bill bill = DisplayCart.billManager.getBill();
 
         //Generate Bill ID based on current date and time
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyMMddHHmms");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyMMddHHmmss");
         LocalDateTime now = LocalDateTime.now();
 
         bill.setBillID(dtf.format(now).toString());
