@@ -10,49 +10,59 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="240dp"></ImageView>
+            android:layout_height="200dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="[NAME OF RESTAURANT]"
-            android:textColor="#06208b"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:layout_marginTop="260dp"
-            android:layout_centerHorizontal="true"></TextView>
+            android:layout_marginTop="210dp"
+            android:text="[Name of Restaurant]"
+            android:textColor="#040087"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <RelativeLayout
-            android:layout_width="360dp"
-            android:layout_height="360dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="320dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="260dp">
 
             <ImageButton
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:src="@drawable/preparing_main"></ImageButton>
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="5dp"
+                android:background="#FFFFFF"
+                android:padding="60dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/statistic_pressed" />
 
             <ImageButton
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_marginLeft="180dp"
-                android:src="@drawable/bill_preparing"
-                ></ImageButton>
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="205dp"
+                android:background="#FFFFFF"
+                android:padding="60dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/preparing_pressed" />
 
             <ImageButton
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_marginTop="180dp"
-                android:src="@drawable/setting_main"></ImageButton>
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="205dp"
+                android:background="#FFFFFF"
+                android:padding="60dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/settings_pressed" />
 
             <ImageButton
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_marginTop="180dp"
-                android:layout_marginLeft="180dp"
-                android:src="@drawable/account_main"></ImageButton>
-
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="205dp"
+                android:layout_marginTop="205dp"
+                android:background="#FFFFFF"
+                android:padding="65dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/account_pressed" />
         </RelativeLayout>
 
     </RelativeLayout>
