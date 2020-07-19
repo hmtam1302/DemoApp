@@ -89,7 +89,7 @@ public class DisplayBill extends AppCompatActivity {
         //startActivity(intent);
 
         //Here for test bill, when done, add new method to display bill on cook account
-        Intent intent = new Intent(this, DisplayCook.class);
+        Intent intent = new Intent(this, DisplayBillCook.class);
         startActivity(intent);
     }
 
