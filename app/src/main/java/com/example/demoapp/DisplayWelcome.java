@@ -18,7 +18,6 @@ import android.view.WindowManager;
 
 public class DisplayWelcome extends AppCompatActivity {
     private Scene mainScene =null;
-    public static RestaurantManager restaurantManager = new RestaurantManager(); //This line for test
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -36,7 +35,7 @@ public class DisplayWelcome extends AppCompatActivity {
 
         //mainScene = Scene.getSceneForLayout(root, R.layout.orderhome, this);
         //mainScene.enter();
-        go();
+        displayHome();
     }
 
     public void displayHome(){
@@ -57,63 +56,5 @@ public class DisplayWelcome extends AppCompatActivity {
     public void displaySignup(View view){
         Intent intent = new Intent(this, DisplaySignUp.class);
         startActivity(intent);
-    }
-
-    //This code below for test
-    public void go(){
-        addRestaurant();
-        addFood();
-        Intent intent = new Intent(this, DisplayCook.class);
-        startActivity(intent);
-    }
-
-    private void addRestaurant() {
-        Restaurant kfc = new Restaurant("KFC", "kfc", "Discription: KFC Chicken", "4.5/5.0");
-        Restaurant kichikichi = new Restaurant("Kichi Kichi", "kichikichi", "Discription: Hotpot", "4.0/5.0");
-        Restaurant lotteria = new Restaurant("Lotteria", "lotteria", "Discription: Chiken, Cake, and Chips", "5.0/5.0");
-        Restaurant phuclong = new Restaurant("Phúc Long", "phuclong", "Discription: MilkTea", "4.75/5.0");
-        Restaurant thecoffeehouse = new Restaurant("THE COFFEE HOUSE", "thecoffeehouse", "Discription: Milktea, Cake", "4.5/5.0");
-        Restaurant mcdonald = new Restaurant("McDonald's", "mcdonald", "Discription: McDonald's Chicken", "4.5/5.0");
-
-
-        restaurantManager.addRestaurant(kfc);
-        restaurantManager.addRestaurant(kichikichi);
-        restaurantManager.addRestaurant(lotteria);
-        restaurantManager.addRestaurant(phuclong);
-        restaurantManager.addRestaurant(thecoffeehouse);
-        restaurantManager.addRestaurant(mcdonald);
-    }
-
-    private void addFood() {
-        Food duiga = new Food("Đùi Gà KFC", "duiga", 15, "Đùi gà chiên thơm giòn", "35000", "4.5/5.0");
-        Food canhga = new Food("Cánh Gà KFC", "canhga", 20, "Cánh gà chiên nước mắm", "30000", "4.5/5.0");
-        Food khoaitaychien = new Food("Khoai Tây Chiên KFC", "khoaitaychien", 25, "Khoai tây chiên giòn rụm", "20000", "4.5/5.0");
-        Food tranhanlai = new Food("Trà Nhãn Lài", "tranhanlai", 40, "Trà nhãn lài ngọt ngào", "50000", "5.0/5.0");
-        Food trahoahong = new Food("Trà Hoa Hồng", "trahoahong", 35, "Trà hoa hồng thơm dịu dàng", "45000", "5.0/5.0");
-        Food hamburger = new Food("Hamburger", "hamburger",20,"Hamburger Bò", "55000", "4.5/5.0");
-        Food pepsi = new Food("Pepsi", "pepsi", 60,"Đã quá Pepsi ơi!", "10000","5.0/5.0");
-        Food trasuaphuclong = new Food("Trà Sữa", "trasuaphuclong",50,"Trà sữa Phúc Long","25000","5.0/5.0");
-        Food coffeephuclong = new Food("Coffee","coffee",50,"Coffee Phúc Long", "30000","5.0/5.0");
-        Food hamburgermcdonal = new Food("Hamburger", "hamburgermcdonal",20,"Hamburger Bò", "55000", "4.5/5.0");
-        Food duigamcdonal = new Food("Đùi Gà McDonald's", "duigamcdonal", 15, "Đùi gà chiên thơm giòn", "35000", "4.5/5.0");
-        Food sodachanhtch = new Food("Soda chanh", "sodachanhtch",50,"Soda chanh", "50000", "4.7/5.0");
-        Food combobuffet = new Food("Combo Buffet","combobuffetkichikichi", 100,"Combo Buffet", "100000", "5.0/5.0");
-        Food comga = new Food("Cơm gà", "comga",50,"Cơm gà viên","35000","5.0/5.0");
-
-
-        restaurantManager.addNewFood("KFC", duiga);
-        restaurantManager.addNewFood("KFC", canhga);
-        restaurantManager.addNewFood("KFC", hamburger);
-        restaurantManager.addNewFood("KFC", pepsi);
-        restaurantManager.addNewFood("McDonald's", khoaitaychien);
-        restaurantManager.addNewFood("McDonald's", hamburgermcdonal);
-        restaurantManager.addNewFood("McDonald's", duigamcdonal);
-        restaurantManager.addNewFood("Phúc Long", trahoahong);
-        restaurantManager.addNewFood("Phúc Long", tranhanlai);
-        restaurantManager.addNewFood("Phúc Long", trasuaphuclong);
-        restaurantManager.addNewFood("Phúc Long", coffeephuclong);
-        restaurantManager.addNewFood("THE COFFEE HOUSE", sodachanhtch);
-        restaurantManager.addNewFood("Kichi Kichi", combobuffet);
-        restaurantManager.addNewFood("Lotteria",comga);
     }
 }
