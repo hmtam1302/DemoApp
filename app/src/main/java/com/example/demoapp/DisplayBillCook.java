@@ -27,13 +27,11 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DisplayCook extends AppCompatActivity {
+public class DisplayBillCook extends AppCompatActivity {
     private Scene billCookScene;
     private Scene billCookDetailScene;
-    private Scene settingScene;
 
     private String selectedID;
-    private String resName = "KFC"; //This variable is used to find which restaurant to display
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -47,16 +45,13 @@ public class DisplayCook extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
 
         //Set main content view
-        setContentView(R.layout.cook_main);
+        setContentView(R.layout.activity_main);
 
         ViewGroup root = findViewById(R.id.mainContainer);
         billCookScene = Scene.getSceneForLayout(root, R.layout.bill_cook, this);
         billCookDetailScene = Scene.getSceneForLayout(root, R.layout.display_bill_cook_detail, this);
-        settingScene = Scene.getSceneForLayout(root, R.layout.setting, this);
 
-        String cmd = getIntent().getStringExtra("cmd");
-        if (cmd != null) displayCompletedBill();
-        else displayBillCook();
+        displayBillCook();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -65,8 +60,6 @@ public class DisplayCook extends AppCompatActivity {
         TransitionManager.go(billCookScene, slide);
 
         //Set navigation bar
-        TextView title = (TextView) findViewById(R.id.title);
-        title.setText("Waiting Bill");
         ImageButton listButton = (ImageButton) findViewById(R.id.list_button);
         listButton.setImageDrawable(getResources().getDrawable(R.drawable.preparing_pressed));
         listButton.setTag(R.drawable.preparing_pressed); //Set tag for searching
@@ -87,14 +80,61 @@ public class DisplayCook extends AppCompatActivity {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayBillCookDetail(View view) {
+        Transition slide = new Slide(Gravity.RIGHT);
+        TransitionManager.go(billCookDetailScene, slide);
+
+        final ListView listView = (ListView) findViewById(R.id.list_bill_cook_item);
+
         //Set the title with Bill: ID
         TextView billID = (TextView) view.findViewById(R.id.bill_id);
         selectedID = billID.getText().toString();
+        TextView title = (TextView) findViewById(R.id.bill_title);
+        title.setText("Bill: " + selectedID);
 
-        Intent intent = new Intent(this, DisplayBillCookDetail.class);
-        intent.putExtra("Bill_ID", selectedID);
-        startActivity(intent);
+        TextView priceView = (TextView) findViewById(R.id.total_price_bill_detail);
+        TextView timeView = (TextView) findViewById(R.id.delivery_time_bill_detail);
+        ImageView statusView = (ImageView) findViewById(R.id.status_bill_detail);
+        ImageButton button = (ImageButton) findViewById(R.id.command_btn);
+
+        Bill bill = DisplayCart.billManager.getBillByID(selectedID);
+
+        listView.setAdapter(new CustomListBillItemAdapter(this, bill.billItemList));
+        priceView.setText(bill.getTotalPrice() + "VND");
+        timeView.setText(bill.getTime());
+
+        if(bill.getStatus().equals("being_prepared")){
+            statusView.setImageDrawable(getResources().getDrawable(R.drawable.being_prepared));
+            button.setBackground(getResources().getDrawable(R.drawable.finish_button));
+        }
+        else if (bill.getStatus().equals("finished")){
+            statusView.setImageDrawable(getResources().getDrawable(R.drawable.finished));
+            button.setBackground(getResources().getDrawable(R.drawable.ok_button));
+        }
+        else{
+            statusView.setImageDrawable(getResources().getDrawable(R.drawable.unconfirmed));
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void commandBill(View v){
+        Bill bill = DisplayCart.billManager.getBillByID(selectedID);
+
+        if(bill.getStatus().equals("unconfirmed")){
+            bill.setStatus("being_prepared");
+            displayBillCook();
+        }
+        else if (bill.getStatus().equals("being_prepared")){
+            bill.setStatus("finished");
+
+            //Send the bill to the end of Bill List
+            DisplayCart.billManager.addToCompletedBillList(selectedID);
+            displayBillCook();
+        }
+        else{
+            displayBillCook();
+        }
     }
 
     public void searchBill(View v){
@@ -133,13 +173,8 @@ public class DisplayCook extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public  void displayCompletedBill(){
-        Transition slide = new Slide(Gravity.RIGHT);
-        TransitionManager.go(billCookScene, slide);
-
+    public  void displayCompletedBill(View v){
         //Set navigation bar
-        TextView title = (TextView) findViewById(R.id.title);
-        title.setText("Completed Bill");
         ImageButton listButton = (ImageButton) findViewById(R.id.list_button);
         listButton.setImageDrawable(getResources().getDrawable(R.drawable.preparing));
         listButton.setTag(null);    //Set tag for searching
@@ -160,7 +195,6 @@ public class DisplayCook extends AppCompatActivity {
             }
         });
     }
-
 
     public void backToPrevious(View v){
         Intent intent = new Intent(this, DisplayHome.class);
@@ -169,96 +203,6 @@ public class DisplayCook extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayBillCook(View v){
-        //Set navigation bar
-        TextView title = (TextView) findViewById(R.id.title);
-        title.setText("Waiting Bill");
-        ImageButton listButton = (ImageButton) findViewById(R.id.list_button);
-        listButton.setImageDrawable(getResources().getDrawable(R.drawable.preparing_pressed));
-        listButton.setTag(R.drawable.preparing_pressed); //Set tag for searching
-        ImageButton completedButton = (ImageButton) findViewById(R.id.completed_button);
-        completedButton.setImageDrawable(getResources().getDrawable(R.drawable.complete));
-        completedButton.setTag(null);   //Set tag for searching
-        ImageButton settingButton = (ImageButton) findViewById(R.id.setting_button);
-        settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings));
-        ListView listView = (ListView)findViewById(R.id.bill_cook_List);
-        listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getBillList()));
-
-        // When the user clicks on the ListItem
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                displayBillCookDetail(v);
-            }
-        });
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void displayCompletedBill(View v){
-        //Set title
-        TextView title = (TextView) findViewById(R.id.title);
-        title.setText("Completed Bill");
-        //Set navigation bar
-        ImageButton listButton = (ImageButton) findViewById(R.id.list_button);
-        listButton.setImageDrawable(getResources().getDrawable(R.drawable.preparing));
-        listButton.setTag(null);    //Set tag for searching
-        ImageButton completedButton = (ImageButton) findViewById(R.id.completed_button);
-        completedButton.setImageDrawable(getResources().getDrawable(R.drawable.complete_pressed));
-        completedButton.setTag(R.drawable.complete_pressed); //Set tag for searching
-        ImageButton settingButton = (ImageButton) findViewById(R.id.setting_button);
-        settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings));
-
-        //Display completed bill list
-        ListView listView = (ListView) findViewById(R.id.bill_cook_List);
-        listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getCompletedBillList()));
-        // When the user clicks on the ListItem
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                displayBillCookDetail(v);
-            }
-        });
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void displaySettings(View v){
-        Transition slide = new Slide(Gravity.RIGHT);
-        TransitionManager.go(settingScene, slide);
-
-        //Set title
-        TextView title = (TextView) findViewById(R.id.title);
-        title.setText("Settings");
-        //Set navigation bar
-        ImageButton listButton = (ImageButton) findViewById(R.id.list_button);
-        listButton.setImageDrawable(getResources().getDrawable(R.drawable.preparing));
-        ImageButton completedButton = (ImageButton) findViewById(R.id.completed_button);
-        completedButton.setImageDrawable(getResources().getDrawable(R.drawable.complete));
-        ImageButton settingButton = (ImageButton) findViewById(R.id.setting_button);
-        settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings_pressed));
-
-        //Display food for settings
-        ListView listView = (ListView) findViewById(R.id.list_food);
-
-        //Find restaurant match given name
-        List<Restaurant> resList = DisplayWelcome.restaurantManager.getRestaurantList(); //Get from database, later
-        Restaurant res = null;
-        for(int i = 0; i < resList.size(); i++){
-            res = resList.get(i);
-            if (res.getName().equals(resName)){
-                break;
-            }
-        }
-
-        listView.setAdapter(new CustomListFoodAdapter(this, res.getListFoodData()));
-        // When the user clicks on the ListItem
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                displayFoodSettings(v);
-            }
-        });
-    }
-
-    public void displayFoodSettings(View v){
-        // Implement code for change food settings
+        displayBillCook();
     }
 }
