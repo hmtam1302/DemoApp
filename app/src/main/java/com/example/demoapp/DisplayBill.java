@@ -84,6 +84,11 @@ public class DisplayBill extends AppCompatActivity {
         //Clear bill and return home
         DisplayCart.billManager.setNewBill();
 
+        //Display Home for order new bill
+        //Intent intent = new Intent(this, DisplayHome.class);
+        //startActivity(intent);
+
+        //Here for test bill, when done, add new method to display bill on cook account
         Intent intent = new Intent(this, DisplayBillCook.class);
         startActivity(intent);
     }
