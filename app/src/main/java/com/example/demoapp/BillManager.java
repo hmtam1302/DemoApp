@@ -16,11 +16,11 @@ public class BillManager {
     public Bill getBillByID(String ID){
         for(int i = 0; i < billList.size(); i++){
             Bill item = billList.get(i);
-            if(item.getBillID() == ID) return item;
+            if(item.getBillID().equals(ID)) return item;
         }
         for(int i = 0; i < completedBillList.size(); i++){
-            Bill item = billList.get(i);
-            if(item.getBillID() == ID) return item;
+            Bill item = completedBillList.get(i);
+            if(item.getBillID().equals(ID)) return item;
         }
         return null;
     }
