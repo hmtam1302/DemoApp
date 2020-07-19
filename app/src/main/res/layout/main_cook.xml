@@ -17,19 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="210dp"
-            android:text="Welcome"
-            android:fontFamily="casual"
-            android:layout_marginLeft="20dp"
-            android:textColor="#040087"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="250dp"
-            android:text="Huỳnh Công Hải"
-            android:layout_centerHorizontal="true"
+            android:text="[Name of Restaurant]"
             android:textColor="#040087"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -37,7 +25,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="300dp">
+            android:layout_marginTop="260dp">
 
             <ImageButton
                 android:layout_width="200dp"
@@ -46,8 +34,7 @@
                 android:background="#FFFFFF"
                 android:padding="60dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/preparing"
-                android:onClick="displayBillCook"/>
+                android:src="@drawable/preparing" />
 
             <ImageButton
                 android:layout_width="200dp"

@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-android:layout_height="match_parent"
-android:layout_width="match_parent"
-xmlns:android="http://schemas.android.com/apk/res/android">
-<RelativeLayout
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="690dp"
-    android:id="@+id/mainContainer">
-</RelativeLayout>
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="690dp"
+        android:id="@+id/mainContainer">
+    </RelativeLayout>
 
-<!--Navigation bar-->
-<TableLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:orientation="vertical">
-    <TableRow>
+    <!--Navigation bar-->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+        <TableRow>
 
-        <ImageButton
-            android:layout_width="140dp"
-            android:layout_height="40dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:background="#FFFFFF"
-            android:src="@drawable/homebtn" />
+            <ImageButton
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                android:src="@drawable/homebtn" />
 
-        <ImageButton
-            android:layout_width="140dp"
-            android:layout_height="40dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:background="#FFFFFF"
-            android:src="@drawable/cartbtn"
-            android:onClick="displayCart"/>
+            <ImageButton
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:background="#FFFFFF"
+                android:src="@drawable/cartbtn"
+                android:onClick="displayCart"/>
 
-        <ImageButton
-            android:id="@+id/infobtn"
-            android:layout_width="130dp"
-            android:layout_height="40dp"
-            android:adjustViewBounds="true"
-            android:background="#FFFFFF"
-            android:onClick="displayInfo"
-            android:scaleType="fitCenter"
-            android:src="@drawable/accountbtn" />
-    </TableRow>
-</TableLayout>
+            <ImageButton
+                android:id="@+id/infobtn"
+                android:layout_width="130dp"
+                android:layout_height="40dp"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:onClick="displayInfo"
+                android:scaleType="fitCenter"
+                android:src="@drawable/accountbtn" />
+        </TableRow>
+    </TableLayout>
 </RelativeLayout>

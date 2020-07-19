@@ -13,9 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DisplayBillCookDetail" />
         <activity android:name=".DisplayFoodSetting" />
-        <activity android:name=".DisplayCook" />
+        <activity android:name=".DisplayBillCook" />
         <activity android:name=".DisplayBill" />
         <activity android:name=".DisplayFoodDetail" />
         <activity android:name=".DisplayCart" />

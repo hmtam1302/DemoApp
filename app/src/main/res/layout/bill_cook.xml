@@ -16,7 +16,6 @@
             android:onClick="backToPrevious" />
 
         <TextView
-            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
@@ -73,6 +72,57 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp"
             android:background="#FFFFFF"/>
+
+        <!--Navigation bar-->
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TableRow>
+
+                <ImageButton
+                    android:id="@+id/list_button"
+                    android:layout_width="105dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:onClick="displayBillCook"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/preparing_pressed" />
+
+                <ImageButton
+                    android:id="@+id/completed_button"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:onClick="displayCompletedBill"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/complete" />
+
+                <ImageButton
+                    android:id="@+id/setting_button"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:onClick="displayInfo"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/settings" />
+
+                <ImageButton
+                    android:layout_width="105dp"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:background="#FFFFFF"
+                    android:onClick="displayInfo"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/accountbtn" />
+            </TableRow>
+        </TableLayout>
+
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
