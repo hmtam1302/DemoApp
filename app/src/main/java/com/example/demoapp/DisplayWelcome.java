@@ -3,12 +3,9 @@ package com.example.demoapp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.transition.Explode;
 import android.transition.Scene;
 import android.transition.Slide;
 import android.transition.Transition;
@@ -18,15 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.Spinner;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DisplayWelcome extends AppCompatActivity {
     private Scene mainScene =null;
@@ -42,14 +30,19 @@ public class DisplayWelcome extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
 
         //Set main content view
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.customer_main);
         ViewGroup root = findViewById(R.id.mainContainer);
 
-        mainScene = Scene.getSceneForLayout(root, R.layout.main, this);
-
-
-        mainScene.enter();
+        //mainScene = Scene.getSceneForLayout(root, R.layout.orderhome, this);
+        //mainScene.enter();
+        displayHome();
     }
+
+    public void displayHome(){
+        Intent intent = new Intent(this, DisplayHome.class);
+        startActivity(intent);
+    }
+
     public void displayLogin(View view){
         Intent intent = new Intent(this, DisplayLogin.class);
         startActivity(intent);

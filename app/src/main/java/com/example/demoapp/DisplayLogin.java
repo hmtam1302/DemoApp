@@ -28,10 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 
 public class DisplayLogin extends AppCompatActivity {
