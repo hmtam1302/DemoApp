@@ -67,7 +67,9 @@ public class CustomListRestaurantAdapter extends BaseAdapter {
         holder.ratingView.setText(restaurant.getRating());
 
         int imageId = this.getMipmapResIdByName(restaurant.getLogo());
+
         holder.logoView.setImageResource(imageId);
+
         return convertView;
     }
 

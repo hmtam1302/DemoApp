@@ -39,8 +39,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class DisplayHome extends AppCompatActivity {
-
-    private static int count = 0;
     private String selectedRestaurant = null;
     private Scene homeScene;
     private Scene foodScene;

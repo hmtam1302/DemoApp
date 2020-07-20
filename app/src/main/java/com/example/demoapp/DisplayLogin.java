@@ -170,7 +170,7 @@ public class DisplayLogin extends AppCompatActivity {
                         Log.d("test", error.toString());
                     }
                 }
-                );
+        );
         requestQueue.add(jsonArrayRequest);
     }
 

@@ -72,7 +72,7 @@ public class DisplayFoodDetail extends AppCompatActivity {
         TextView price = (TextView)findViewById(R.id.price_of_food); price.setText(selectedFood.getPrice());
         TextView quantity = (TextView)findViewById(R.id.remain_of_food); quantity.setText(Integer.toString(selectedFood.getQuantity()));
         TextView description = (TextView)findViewById(R.id.des_of_food); description.setText(selectedFood.getDescription());
-        ImageView logo = (ImageView)findViewById(R.id.logo_of_food); 
+        ImageView logo = (ImageView)findViewById(R.id.logo_of_food);
         int id = getMipmapResIdByName(selectedFood.getLogo()); logo.setImageResource(id);
     }
 
