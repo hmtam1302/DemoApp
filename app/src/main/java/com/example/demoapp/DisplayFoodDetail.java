@@ -20,6 +20,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.demoapp.Data.Food;
+
 public class DisplayFoodDetail extends AppCompatActivity {
 
     private Scene foodDetailScene;
@@ -60,16 +62,9 @@ public class DisplayFoodDetail extends AppCompatActivity {
         TextView name_of_food = (TextView)findViewById(R.id.name_of_food);
         name_of_food.setText(foodName);
 
-        for(int i =0; i < DisplayHome.restaurantManager.getRestaurantList().size(); i++){
-            Restaurant restaurant = DisplayHome.restaurantManager.getRestaurantList().get(i);
-            if(restaurant.getName().equals(resName)){
-                for(int j = 0; j<restaurant.getListFoodData().size();j++){
-                    if(restaurant.getListFoodData().get(j).getName().equals(foodName)){
-                        selectedFood = restaurant.getListFoodData().get(j);
-                        break;
-                    }
-                }
-                if(selectedFood != null) break;
+        for(int i = 0; i < DisplayHome.foodList.size(); i++) {
+            if(DisplayHome.foodList.get(i).getName().equals(foodName)) {
+                selectedFood = DisplayHome.foodList.get(i);
             }
         }
 

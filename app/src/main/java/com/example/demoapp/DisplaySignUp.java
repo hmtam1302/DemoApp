@@ -28,6 +28,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.demoapp.Data.Customer;
+import com.example.demoapp.Data.Food;
+import com.example.demoapp.Data.Restaurant;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,16 +43,22 @@ import java.util.regex.Pattern;
 public class DisplaySignUp extends AppCompatActivity {
     public static Customer customerSignUp = null;
     private Scene signupScene = null;
-    String urlGetData = "http://192.168.0.101/androidwebservice/getData.php";
-    String urlInsertData = "http://192.168.0.101/androidwebservice/insert.php";
+    String urlGetDataCustomer = "http://192.168.0.101/androidwebservice/customer/getData.php";
+    String urlGetDataRestaurant = "http://192.168.0.101/androidwebservice/restaurant/getData.php";
+    String urlGetDataFood = "http://192.168.0.101/androidwebservice/food/getData.php";
+    String urlInsertData = "http://192.168.0.101/androidwebservice/customer/insert.php";
     public static ArrayList<Customer> cusList = new ArrayList<>();
+    public static ArrayList<Restaurant> resList = new ArrayList<>();
+    public static ArrayList<Food> foodList = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Get database
-        getData(urlGetData);
+        getDataCustomer(urlGetDataCustomer);
+        getDataRestaurant(urlGetDataRestaurant);
+        getDataFood(urlGetDataFood);
         //Hide title bar and enable full-screen mode
         requestWindowFeature(Window.FEATURE_NO_TITLE); //hide the title
         getSupportActionBar().hide(); //hide the title bar
@@ -135,7 +143,7 @@ public class DisplaySignUp extends AppCompatActivity {
         }
     }
 
-    private void getData(String url) {
+    private void getDataCustomer(String url) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -160,6 +168,78 @@ public class DisplaySignUp extends AppCompatActivity {
                             }
                         }
                         Log.d("msg", cusList.size()+"");
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("test", "-------------------");
+                        Log.d("test", error.toString());
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    private void getDataRestaurant(String url) {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d("test", "Get Restaurant Array");
+                        for(int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject object = response.getJSONObject(i);
+                                int ID = object.getInt("ID");
+                                String Name = object.getString("Name");
+                                String Logo = object.getString("Logo");
+                                String Description = object.getString("Description");
+                                String Rating = object.getString("Rating");
+                                resList.add(new Restaurant(ID, Name, Logo, Description, Rating));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.d("msg", resList.size()+"");
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("test", "-------------------");
+                        Log.d("test", error.toString());
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    private void getDataFood(String url) {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d("test", "Get Food Array");
+                        for(int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject object = response.getJSONObject(i);
+                                int ID = object.getInt("ID");
+                                int Res_ID = object.getInt("Res_ID");
+                                String Name = object.getString("Name");
+                                String Logo = object.getString("Logo");
+                                int Quantity = object.getInt("Quantity");
+                                String Description = object.getString("Description");
+                                String Price = object.getString("Price");
+                                String Rating = object.getString("Rating");
+                                String Enable = object.getString("Enable");
+                                foodList.add(new Food(ID, Res_ID, Name, Logo, Quantity, Description, Price, Rating, Enable));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.d("msg", foodList.size()+"");
                     }
                 },
                 new Response.ErrorListener() {
