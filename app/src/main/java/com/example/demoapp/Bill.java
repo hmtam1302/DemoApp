@@ -44,10 +44,10 @@ public class Bill {
     private void calcTotalPrice(){
         int sum = 0;
         for(int i = 0; i < billItemList.size(); i++){
-            int itemPrice = Integer.valueOf(billItemList.get(i).getPrice()) * Integer.valueOf(billItemList.get(i).getQuantity());
+            float itemPrice = Float.parseFloat(billItemList.get(i).getPrice()) * Integer.valueOf(billItemList.get(i).getQuantity());
             sum += itemPrice;
         }
-        totalPrice = String.valueOf(sum);
+        totalPrice = String.valueOf(sum) + ".000";
     }
 
     public void addNewItem(BillItem billItem){
