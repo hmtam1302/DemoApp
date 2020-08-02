@@ -18,7 +18,7 @@ import android.view.WindowManager;
 
 public class DisplayWelcome extends AppCompatActivity {
     private Scene mainScene =null;
-    public static RestaurantManager restaurantManager = new RestaurantManager(); //This line for test
+    //public static RestaurantManager restaurantManager = new RestaurantManager(); //This line for test
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -31,12 +31,15 @@ public class DisplayWelcome extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
 
         //Set main content view
-        setContentView(R.layout.customer_main);
+        setContentView(R.layout.activity_main);
         ViewGroup root = findViewById(R.id.mainContainer);
 
-        //mainScene = Scene.getSceneForLayout(root, R.layout.orderhome, this);
-        //mainScene.enter();
-        go();
+        mainScene = Scene.getSceneForLayout(root, R.layout.main, this);
+        mainScene.enter();
+
+
+        // For local variable
+        // go();
     }
 
     public void displayHome(){
@@ -61,13 +64,13 @@ public class DisplayWelcome extends AppCompatActivity {
 
     //This code below for test
     public void go(){
-        addRestaurant();
-        addFood();
+        //addRestaurant();
+        //addFood();
         Intent intent = new Intent(this, DisplayCook.class);
         startActivity(intent);
     }
 
-    private void addRestaurant() {
+    /*private void addRestaurant() {
         Restaurant kfc = new Restaurant("KFC", "kfc", "Discription: KFC Chicken", "4.5/5.0");
         Restaurant kichikichi = new Restaurant("Kichi Kichi", "kichikichi", "Discription: Hotpot", "4.0/5.0");
         Restaurant lotteria = new Restaurant("Lotteria", "lotteria", "Discription: Chiken, Cake, and Chips", "5.0/5.0");
@@ -116,4 +119,6 @@ public class DisplayWelcome extends AppCompatActivity {
         restaurantManager.addNewFood("Kichi Kichi", combobuffet);
         restaurantManager.addNewFood("Lotteria",comga);
     }
+
+     */
 }

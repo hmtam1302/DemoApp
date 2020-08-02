@@ -61,7 +61,7 @@ public class CustomListBillItemAdapter extends BaseAdapter {
         holder.nameView.setText(billItem.getName());
         holder.quantityView.setText(billItem.getQuantity());
         holder.priceView.setText(billItem.getPrice());
-        holder.noteView.setText("NOTE: " + billItem.getNote());
+        holder.noteView.setText("NOTE: " + billItem.getDescription());
 
         return convertView;
     }

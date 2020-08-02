@@ -11,6 +11,7 @@ import android.transition.Scene;
 import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.demoapp.Data.Food;
 
 public class DisplayFoodDetail extends AppCompatActivity {
 
@@ -59,16 +62,9 @@ public class DisplayFoodDetail extends AppCompatActivity {
         TextView name_of_food = (TextView)findViewById(R.id.name_of_food);
         name_of_food.setText(foodName);
 
-        for(int i =0; i < DisplayHome.restaurantManager.getRestaurantList().size(); i++){
-            Restaurant restaurant = DisplayHome.restaurantManager.getRestaurantList().get(i);
-            if(restaurant.getName().equals(resName)){
-                for(int j = 0; j<restaurant.getListFoodData().size();j++){
-                    if(restaurant.getListFoodData().get(j).getName().equals(foodName)){
-                        selectedFood = restaurant.getListFoodData().get(j);
-                        break;
-                    }
-                }
-                if(selectedFood != null) break;
+        for(int i = 0; i < DisplayHome.foodList.size(); i++) {
+            if(DisplayHome.foodList.get(i).getName().equals(foodName)) {
+                selectedFood = DisplayHome.foodList.get(i);
             }
         }
 
@@ -76,7 +72,7 @@ public class DisplayFoodDetail extends AppCompatActivity {
         TextView price = (TextView)findViewById(R.id.price_of_food); price.setText(selectedFood.getPrice());
         TextView quantity = (TextView)findViewById(R.id.remain_of_food); quantity.setText(Integer.toString(selectedFood.getQuantity()));
         TextView description = (TextView)findViewById(R.id.des_of_food); description.setText(selectedFood.getDescription());
-        ImageView logo = (ImageView)findViewById(R.id.logo_of_food); 
+        ImageView logo = (ImageView)findViewById(R.id.logo_of_food);
         int id = getMipmapResIdByName(selectedFood.getLogo()); logo.setImageResource(id);
     }
 
@@ -112,25 +108,29 @@ public class DisplayFoodDetail extends AppCompatActivity {
 
     public void add_to_cart(View view){
         Bill bill = DisplayCart.billManager.getBill();
+        Log.d("OrderID", DisplayHome.num_of_order+"");
+        int OrderID = DisplayHome.num_of_order + 1;
+        int customerID = DisplayHome.customerID;
+        int restaurantID = DisplayHome.restaurantID;
         String itemName = ((TextView)findViewById(R.id.name_of_food)).getText().toString();
         String itemPrice = ((TextView)findViewById(R.id.price_of_food)).getText().toString();
         String itemQuantity = ((TextView)findViewById(R.id.quantity_of_food)).getText().toString();
         String itemNote = ((TextView)findViewById(R.id.note_of_food)).getText().toString();
+        String itemStatus = "prepare";
 
         int index = getItemIndex(itemName);
 
         if(index == -1){
-
-            bill.addNewItem(new BillItem(itemName, itemPrice, itemQuantity, itemNote));
+            bill.addNewItem(new BillItem(OrderID, customerID,restaurantID, selectedFood.getID(), itemName, itemPrice, itemQuantity, itemNote, itemStatus));
         }
         else{
-            BillItem billItem = bill.billItemList.get(index);
-            int number = Integer.valueOf(billItem.getQuantity()) + Integer.valueOf(itemQuantity);
+            BillItem item = bill.billItemList.get(index);
+            int number = Integer.valueOf(item.getQuantity()) + Integer.valueOf(itemQuantity);
             if(number < 9) itemQuantity = "0" + String.valueOf(number);
             else itemQuantity = String.valueOf(number);
 
-            billItem.setQuantity(itemQuantity); //Update billItem quantity
-            if(itemNote != null) billItem.setNote(itemNote); //Update note
+            item.setQuantity(itemQuantity); //Update item quantity
+            if(itemNote != null) item.setDescription(itemNote); //Update note
         }
         //Update selected quantity after add to cart
         selectedFood.setQuantity(selectedFood.getQuantity() - Integer.valueOf(itemQuantity));

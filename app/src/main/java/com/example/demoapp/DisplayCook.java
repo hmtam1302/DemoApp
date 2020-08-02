@@ -22,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.demoapp.Data.Restaurant;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -239,7 +241,7 @@ public class DisplayCook extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.list_food);
 
         //Find restaurant match given name
-        List<Restaurant> resList = DisplayWelcome.restaurantManager.getRestaurantList(); //Get from database, later
+        List<Restaurant> resList = DisplayHome.resList; //Get from database, ****** Cho nay fix roi nha
         Restaurant res = null;
         for(int i = 0; i < resList.size(); i++){
             res = resList.get(i);
@@ -248,7 +250,7 @@ public class DisplayCook extends AppCompatActivity {
             }
         }
 
-        listView.setAdapter(new CustomListFoodAdapter(this, res.getListFoodData()));
+        listView.setAdapter(new CustomListFoodAdapter(this, DisplayHome.foodList));
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

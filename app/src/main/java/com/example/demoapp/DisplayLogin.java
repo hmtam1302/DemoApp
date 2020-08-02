@@ -23,26 +23,38 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.demoapp.Data.Customer;
+import com.example.demoapp.Data.Food;
+import com.example.demoapp.Data.Restaurant;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.net.InetAddress;
 
 
 public class DisplayLogin extends AppCompatActivity {
     private Scene loginScene = null;
     public static Customer customerLogin = null;
-    String urlGetData = "http://192.168.1.56/androidwebservice/getData.php";
+    String urlGetDataCustomer = "http://192.168.0.101/androidwebservice/customer/getData.php";
+    String urlGetDataRestaurant = "http://192.168.0.101/androidwebservice/restaurant/getData.php";
+    String urlGetDataFood = "http://192.168.0.101/androidwebservice/food/getData.php";
+    String urlGetDataOrder = "http://192.168.0.101/androidwebservice/order/getData.php";
     public static ArrayList<Customer> cusList = new ArrayList<>();
+    public static ArrayList<Restaurant> resList = new ArrayList<>();
+    public static ArrayList<Food> foodList = new ArrayList<>();
+    public static ArrayList<BillItem> orderList = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getData(urlGetData);
-        Log.d("msg", cusList.size()+"");
+        getDataCustomer(urlGetDataCustomer);
+        getDataRestaurant(urlGetDataRestaurant);
+        getDataFood(urlGetDataFood);
+        getOrderFood(urlGetDataOrder);
         //Hide title bar and enable full-screen mode
         requestWindowFeature(Window.FEATURE_NO_TITLE); //hide the title
         getSupportActionBar().hide(); //hide the title bar
@@ -66,14 +78,10 @@ public class DisplayLogin extends AppCompatActivity {
         EditText pass_word = (EditText)findViewById(R.id.loginPassword);
         String username = user_name.getText().toString();
         String password = pass_word.getText().toString();
-        Log.d("check", cusList.size()+"");
         for(int i = 0; i < cusList.size(); i++) {
-            Log.d("name: ", cusList.get(i).getUsername());
-            Log.d("pass ", cusList.get(i).getPassWord());
             if(username.equals(cusList.get(i).getUsername()) && password.equals(cusList.get(i).getPassWord())){
                 access = true;
                 customerLogin = cusList.get(i);
-                Log.d("Login. ID = ", customerLogin.getID()+"");
                 break;
             }
         }
@@ -98,13 +106,13 @@ public class DisplayLogin extends AppCompatActivity {
         Intent intent = new Intent(this, DisplaySignUp.class);
         startActivity(intent);
     }
-    private void getData(String url) {
+    private void getDataCustomer(String url) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.d("test", "generate");
+                        Log.d("test", "Get Customer Array");
                         for(int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject object = response.getJSONObject(i);
@@ -112,7 +120,6 @@ public class DisplayLogin extends AppCompatActivity {
                                 String UserName = object.getString("UserName");
                                 String PassWord = object.getString("PassWord");
                                 String Name = object.getString("Name");
-                                Log.d("test", "id: " + ID+"");
                                 String DateOfBirth = object.getString("DateOfBirth");
                                 int Gender = object.getInt("Gender");
                                 String Email = object.getString("Email");
@@ -135,4 +142,119 @@ public class DisplayLogin extends AppCompatActivity {
         );
         requestQueue.add(jsonArrayRequest);
     }
+
+    private void getDataRestaurant(String url) {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d("test", "Get Restaurant Array");
+                        for(int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject object = response.getJSONObject(i);
+                                int ID = object.getInt("ID");
+                                String Name = object.getString("Name");
+                                String Logo = object.getString("Logo");
+                                String Description = object.getString("Description");
+                                String Rating = object.getString("Rating");
+                                resList.add(new Restaurant(ID, Name, Logo, Description, Rating));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.d("msg", resList.size()+"");
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("test", "-------------------");
+                        Log.d("test", error.toString());
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    private void getDataFood(String url) {
+        {
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            Log.d("test", "Get Food Array");
+                            for(int i = 0; i < response.length(); i++) {
+                                try {
+                                    JSONObject object = response.getJSONObject(i);
+                                    int ID = object.getInt("ID");
+                                    int Res_ID = object.getInt("Res_ID");
+                                    String Name = object.getString("Name");
+                                    String Logo = object.getString("Logo");
+                                    int Quantity = object.getInt("Quantity");
+                                    String Description = object.getString("Description");
+                                    String Price = object.getString("Price");
+                                    String Rating = object.getString("Rating");
+                                    String Enable = object.getString("Enable");
+                                    foodList.add(new Food(ID, Res_ID, Name, Logo, Quantity, Description, Price, Rating, Enable));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            Log.d("msg", foodList.size()+"");
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.d("test", "-------------------");
+                            Log.d("test", error.toString());
+                        }
+                    }
+            );
+            requestQueue.add(jsonArrayRequest);
+        }
+    }
+
+    private void getOrderFood(String url) {
+        {
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            Log.d("test", "Get Order Array");
+                            for(int i = 0; i < response.length(); i++) {
+                                try {
+                                    JSONObject object = response.getJSONObject(i);
+                                    int Order_ID = object.getInt("OrderID");
+                                    int Cus_ID = object.getInt("CustomerID");
+                                    int Res_ID = object.getInt("RestaurantID");
+                                    int Food_ID = object.getInt("FoodID");
+                                    String Name = object.getString("Name");
+                                    String Quantity = object.getInt("Quantity")+"";
+                                    String Description = object.getString("Description");
+                                    String Price = object.getString("Price");
+                                    String Status = object.getString("Status");
+                                    orderList.add(new BillItem(Order_ID, Cus_ID, Res_ID, Food_ID, Name, Quantity, Description, Price, Status));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            Log.d("msg", orderList.size()+"");
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.d("test", "-------------------");
+                            Log.d("test", error.toString());
+                        }
+                    }
+            );
+            requestQueue.add(jsonArrayRequest);
+        }
+    }
+
 }

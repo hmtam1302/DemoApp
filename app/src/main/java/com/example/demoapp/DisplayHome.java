@@ -11,6 +11,7 @@ import android.transition.Scene;
 import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,17 +23,22 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.demoapp.Data.Food;
+import com.example.demoapp.Data.Restaurant;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class DisplayHome extends AppCompatActivity {
-
-    public static RestaurantManager restaurantManager = new RestaurantManager();
-
-    private static int count = 0;
+    public static int num_of_order = 0;
+    public static int customerID = 0;
+    public static int restaurantID = 0;
     private String selectedRestaurant = null;
     private Scene homeScene;
     private Scene foodScene;
+    public static ArrayList<Restaurant> resList = new ArrayList<>();
+    public static ArrayList<Food> foodList = new ArrayList<>();
+    public static ArrayList<BillItem> orderList = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -46,7 +52,7 @@ public class DisplayHome extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
 
         //Set main content view
-        setContentView(R.layout.customer_main);
+        setContentView(R.layout.activity_main);
 
         ViewGroup root = findViewById(R.id.mainContainer);
         homeScene = Scene.getSceneForLayout(root, R.layout.orderhome, this);
@@ -65,14 +71,26 @@ public class DisplayHome extends AppCompatActivity {
         ImageButton infoBtn = (ImageButton) findViewById(R.id.infobtn);
         infoBtn.setBackgroundColor(android.R.color.white);
 
-        if (count == 0) {
-            addRestaurant();
-            addFood();
-            count++;
-        }
         ListView listView = (ListView) findViewById(R.id.listRestaurant);
-        List<Restaurant> image_details = restaurantManager.getRestaurantList();
-        listView.setAdapter(new CustomListRestaurantAdapter(this, image_details));
+        if(DisplayLogin.resList.size() != 0) {
+            customerID = DisplayLogin.customerLogin.getID();
+            resList = DisplayLogin.resList;
+            foodList = DisplayLogin.foodList;
+            orderList = DisplayLogin.orderList;
+        }
+        else {
+            customerID = DisplaySignUp.customerSignUp.getID();
+            resList = DisplaySignUp.resList;
+            foodList = DisplaySignUp.foodList;
+            orderList = DisplaySignUp.orderList;
+        }
+
+        // Calculate number of order in system
+        for(int i = 0; i < orderList.size(); i++) {
+            if(orderList.get(i).getID() > num_of_order) num_of_order = orderList.get(i).getID();
+        }
+        Log.d("num_of_order", num_of_order+"");
+        listView.setAdapter(new CustomListRestaurantAdapter(this, resList));
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -82,7 +100,7 @@ public class DisplayHome extends AppCompatActivity {
         });
     }
 
-    private void addRestaurant() {
+    /*private void addRestaurant() {
         Restaurant kfc = new Restaurant("KFC", "kfc", "Discription: KFC Chicken", "4.5/5.0");
         Restaurant kichikichi = new Restaurant("Kichi Kichi", "kichikichi", "Discription: Hotpot", "4.0/5.0");
         Restaurant lotteria = new Restaurant("Lotteria", "lotteria", "Discription: Chiken, Cake, and Chips", "5.0/5.0");
@@ -132,12 +150,14 @@ public class DisplayHome extends AppCompatActivity {
         restaurantManager.addNewFood("Lotteria",comga);
     }
 
+     */
+
     public void searchRes(View view) {
         String key = ((EditText) findViewById(R.id.resKey)).getText().toString();
         List<Restaurant> temp = new ArrayList<Restaurant>();
 
-        for (int i = 0; i < restaurantManager.getRestaurantList().size(); i++) {
-            Restaurant restaurant = restaurantManager.getRestaurantList().get(i);
+        for (int i = 0; i < resList.size(); i++) {
+            Restaurant restaurant = resList.get(i);
             String name = restaurant.getName().toLowerCase();
             if (key != null) {
                 if (name.contains(key.toLowerCase())) temp.add(restaurant);
@@ -145,7 +165,7 @@ public class DisplayHome extends AppCompatActivity {
                 listView.setAdapter(new CustomListRestaurantAdapter(this, temp));
             } else {
                 final ListView listView = (ListView) findViewById(R.id.listRestaurant);
-                listView.setAdapter(new CustomListRestaurantAdapter(this, restaurantManager.getRestaurantList()));
+                listView.setAdapter(new CustomListRestaurantAdapter(this, resList));
             }
         }
     }
@@ -154,49 +174,61 @@ public class DisplayHome extends AppCompatActivity {
     public void displayFood(View view) {
         Transition slide = new Slide(Gravity.RIGHT);
         TransitionManager.go(foodScene, slide);
-
         final ListView listView = (ListView) findViewById(R.id.listFood);
 
         TextView resName = (TextView) view.findViewById(R.id.restaurantName);
+        ArrayList<Food> foodResList = new ArrayList<>(); // Menu of chosen restaurant
+
         String name = resName.getText().toString();
         selectedRestaurant = name;
-
+        //int resID = 0;
+        Log.d("restaurant chosen: ", selectedRestaurant);
         //Set title name (Restaurant name in orderfood scene)
         TextView title = (TextView) findViewById(R.id.resTitle);
         title.setText(name);
 
-        for (int i = 0; i < restaurantManager.getRestaurantList().size(); i++) {
-            Restaurant restaurant = restaurantManager.getRestaurantList().get(i);
-            if (restaurant.getName().equals(name)) {
-                listView.setAdapter(new CustomListFoodAdapter(this, restaurantManager.getRestaurantList().get(i).getListFoodData()));
-                // When the user clicks on the ListItem
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                        displayFoodDetail(v);
-                    }
-                });
+        for (int i = 0; i < resList.size(); i++) {
+            Restaurant restaurant = resList.get(i);
+            Log.d("Restaurant name ", restaurant.getName());
+            Log.d("Restaurant ID ", restaurant.getID()+"");
+            if(restaurant.getName().equals(selectedRestaurant)) {
+                //resID = resList.get(i).getID();
+                restaurantID = resList.get(i).getID();
                 break;
             }
         }
-
+        Log.d("ID res", restaurantID+"");
+        for (int i = 0; i < foodList.size(); i++) {
+            if(foodList.get(i).getRes_ID() == restaurantID) {
+                foodResList.add(foodList.get(i));
+            }
+        }
+        Log.d("msg: ", foodResList.size()+"");
+        listView.setAdapter(new CustomListFoodAdapter(this, foodResList));
+        // When the user clicks on the ListItem
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+                displayFoodDetail(v);
+            }
+        });
     }
 
     public void searchFood(View view) {
         String key = ((EditText) findViewById(R.id.foodKey)).getText().toString();
         List<Food> temp = new ArrayList<>();
 
-        //Find restaurant index
-        int index = 0;
-        for (int i = 0; i < restaurantManager.getRestaurantList().size(); i++) {
-            if (restaurantManager.getRestaurantList().get(i).getName().equals(selectedRestaurant)) {
-                index = i;
+        //Find restaurant ID
+        int Res_ID = 0;
+        for (int i = 0; i < resList.size(); i++) {
+            if (resList.get(i).getName().equals(selectedRestaurant)) {
+                Res_ID = i;
                 break;
             }
         }
 
-        for (int i = 0; i < restaurantManager.getRestaurantList().get(index).getListFoodData().size(); i++) {
-            Food food = restaurantManager.getRestaurantList().get(index).getListFoodData().get(i);
+        for (int i = 0; i < foodList.size(); i++) {
+            Food food = foodList.get(i);
 
             String name = food.getName().toLowerCase();
             if (key != null) {
@@ -205,7 +237,7 @@ public class DisplayHome extends AppCompatActivity {
                 listView.setAdapter(new CustomListFoodAdapter(this, temp));
             } else {
                 final ListView listView = (ListView) findViewById(R.id.listFood);
-                List<Food> listFood = restaurantManager.getRestaurantList().get(index).getListFoodData();
+                List<Food> listFood = foodList;
                 listView.setAdapter(new CustomListFoodAdapter(this, listFood));
             }
         }

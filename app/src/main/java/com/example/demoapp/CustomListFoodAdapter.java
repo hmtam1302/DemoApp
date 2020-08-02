@@ -10,6 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.demoapp.Data.Food;
+
 import java.util.List;
 
 public class CustomListFoodAdapter extends BaseAdapter {
