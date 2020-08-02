@@ -26,6 +26,7 @@
             android:textColor="#040087"
             android:textSize="25sp"
             android:textStyle="bold" />
+
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -49,7 +50,6 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:maxLines="1"
                 android:id="@+id/foodKey"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
@@ -57,6 +57,7 @@
                 android:layout_marginLeft="90dp"
                 android:background="@drawable/edittextborder"
                 android:hint="Enter the name of restaurant"
+                android:maxLines="1"
                 android:paddingLeft="10dp" />
 
             <ImageButton
@@ -76,59 +77,10 @@
             android:id="@+id/list_setting_res"
             android:layout_width="400dp"
             android:layout_height="535dp"
-            android:layout_marginTop="100dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
             android:background="#FFFFFF">
 
         </ListView>
-
-        <!--Navigation bar-->
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical">
-
-            <TableRow>
-
-                <ImageButton
-                    android:layout_width="102dp"
-                    android:layout_height="40dp"
-                    android:adjustViewBounds="true"
-                    android:background="#FFFFFF"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/statistic_pressed" />
-
-                <ImageButton
-                    android:layout_width="102dp"
-                    android:layout_height="40dp"
-                    android:adjustViewBounds="true"
-                    android:background="#FFFFFF"
-                    android:onClick="display"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/preparing_pressed" />
-
-                <ImageButton
-                    android:id="@+id/infobtn"
-                    android:layout_width="102dp"
-                    android:layout_height="40dp"
-                    android:adjustViewBounds="true"
-                    android:background="#FFFFFF"
-                    android:onClick="displayInfo"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/settings_pressed" />
-
-                <ImageButton
-                    android:id="@+id/setting_res"
-                    android:layout_width="102dp"
-                    android:layout_height="40dp"
-                    android:adjustViewBounds="true"
-                    android:background="#FFFFFF"
-                    android:onClick="displayInfo"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/account_pressed" />
-            </TableRow>
-
-        </TableLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
