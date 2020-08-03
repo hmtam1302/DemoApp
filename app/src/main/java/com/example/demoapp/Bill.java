@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bill {
-    List<BillItem> billItemList;
+    ArrayList<BillItem> billItemList;
     private String billID;
     private String totalPrice;
     private String time;
@@ -41,7 +41,7 @@ public class Bill {
         return totalPrice;
     }
 
-    private void calcTotalPrice(){
+    public void calcTotalPrice(){
         int sum = 0;
         for(int i = 0; i < billItemList.size(); i++){
             float itemPrice = Float.parseFloat(billItemList.get(i).getPrice()) * Integer.valueOf(billItemList.get(i).getQuantity());
@@ -53,4 +53,5 @@ public class Bill {
     public void addNewItem(BillItem billItem){
         billItemList.add(billItem);
     }
+    public ArrayList<BillItem> getBillItemList(){ return billItemList; }
 }

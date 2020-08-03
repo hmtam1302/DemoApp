@@ -38,10 +38,11 @@ import java.net.InetAddress;
 public class DisplayLogin extends AppCompatActivity {
     private Scene loginScene = null;
     public static Customer customerLogin = null;
-    String urlGetDataCustomer = "http://192.168.0.101/androidwebservice/customer/getData.php";
-    String urlGetDataRestaurant = "http://192.168.0.101/androidwebservice/restaurant/getData.php";
-    String urlGetDataFood = "http://192.168.0.101/androidwebservice/food/getData.php";
-    String urlGetDataOrder = "http://192.168.0.101/androidwebservice/order/getData.php";
+    public static Customer vendorLogin = null;
+    String urlGetDataCustomer = "http://192.168.0.102:8080/androidwebservice/customer/getData.php";
+    String urlGetDataRestaurant = "http://192.168.0.102:8080/androidwebservice/restaurant/getData.php";
+    String urlGetDataFood = "http://192.168.0.102:8080/androidwebservice/food/getData.php";
+    String urlGetDataOrder = "http://192.168.0.102:8080/androidwebservice/order/getData.php";
     public static ArrayList<Customer> cusList = new ArrayList<>();
     public static ArrayList<Restaurant> resList = new ArrayList<>();
     public static ArrayList<Food> foodList = new ArrayList<>();
@@ -73,23 +74,32 @@ public class DisplayLogin extends AppCompatActivity {
         TransitionManager.go(loginScene);
     }
     public void displayLoginPop(View view){
-        boolean access = false;
+        boolean accessCus = false;
+        boolean accessVendor = false;
         EditText user_name = (EditText)findViewById(R.id.loginUsername);
         EditText pass_word = (EditText)findViewById(R.id.loginPassword);
         String username = user_name.getText().toString();
         String password = pass_word.getText().toString();
         for(int i = 0; i < cusList.size(); i++) {
-            if(username.equals(cusList.get(i).getUsername()) && password.equals(cusList.get(i).getPassWord())){
-                access = true;
+            if(username.equals(cusList.get(i).getUsername()) && password.equals(cusList.get(i).getPassWord()) && cusList.get(i).getRole().equals("user")){
+                accessCus = true;
                 customerLogin = cusList.get(i);
+                break;
+            } else if(username.equals(cusList.get(i).getUsername()) && password.equals(cusList.get(i).getPassWord()) && cusList.get(i).getRole().equals("vendor")) {
+                accessVendor = true;
+                vendorLogin = cusList.get(i);
                 break;
             }
         }
 
-        if(access) {
-            TextView message = (TextView)findViewById(R.id.message);
-            message.setText("");
+        if(accessCus) {
             Intent intent = new Intent(this, PopSuccessActivity.class);
+            intent.putExtra("role", "customer");
+            startActivity(intent);
+        } else if(accessVendor)  {
+            Log.d("msg", "vendor login");
+            Intent intent = new Intent(this, PopSuccessActivity.class);
+            intent.putExtra("role", "vendor");
             startActivity(intent);
         } else {
             TextView message = (TextView)findViewById(R.id.message);
@@ -124,7 +134,8 @@ public class DisplayLogin extends AppCompatActivity {
                                 int Gender = object.getInt("Gender");
                                 String Email = object.getString("Email");
                                 String Phone = object.getString("Phone");
-                                cusList.add(new Customer(ID, UserName, PassWord, Name, DateOfBirth, Gender, Email, Phone));
+                                String Role = object.getString("Role");
+                                cusList.add(new Customer(ID, UserName, PassWord, Name, DateOfBirth, Gender, Email, Phone, Role));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

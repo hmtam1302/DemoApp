@@ -1,6 +1,7 @@
 package com.example.demoapp.Data;
 
 public class Order {
+    private int OrderID;
     private int CustomerID;
     private int RestaurantID;
     private int ID;
@@ -8,8 +9,10 @@ public class Order {
     private int Quantity;
     private String Description;
     private String Price;
+    private String Status;
 
-    public Order(int customerID, int restaurantID, int ID, String name, int quantity, String description, String price) {
+    public Order(int orderID, int customerID, int restaurantID, int ID, String name, int quantity, String description, String price, String status) {
+        OrderID = orderID;
         CustomerID = customerID;
         RestaurantID = restaurantID;
         this.ID = ID;
@@ -17,6 +20,7 @@ public class Order {
         Quantity = quantity;
         Description = description;
         Price = price;
+        Status = status;
     }
 
     public int getCustomerID() {

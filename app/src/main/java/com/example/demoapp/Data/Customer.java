@@ -11,8 +11,9 @@ public class Customer {
     private int Gender;
     private String Email;
     private String Phone;
+    private String Role;
 
-    public Customer(int ID, String username, String passWord, String name, String dateOfBirth, int gender, String email, String phone) {
+    public Customer(int ID, String username, String passWord, String name, String dateOfBirth, int gender, String email, String phone, String role) {
         this.ID = ID;
         this.Username = username;
         this.PassWord = passWord;
@@ -21,14 +22,16 @@ public class Customer {
         this.Gender = gender;
         this.Email = email;
         this.Phone = phone;
+        this.Role = role;
     }
 
-    public Customer(int ID, String username, String passWord, String email, String phone) {
+    public Customer(int ID, String username, String passWord, String email, String phone, String role) {
         this.ID = ID;
         this.Username = username;
         this.PassWord = passWord;
         this.Email = email;
         this.Phone = phone;
+        this.Role = role;
     }
 
     public Customer(int id, String passChanging, String nameChanging, String dobChanging, int genderChanging, String emailChanging, String phoneChanging) {
@@ -39,6 +42,15 @@ public class Customer {
         this.Gender = genderChanging;
         this.Email = emailChanging;
         this.Phone = phoneChanging;
+        this.Role = "User";
+    }
+
+    public String getRole() {
+        return Role;
+    }
+
+    public void setRole(String role) {
+        Role = role;
     }
 
     public int getID() {

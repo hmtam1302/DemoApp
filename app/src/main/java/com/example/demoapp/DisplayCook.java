@@ -37,6 +37,9 @@ public class DisplayCook extends AppCompatActivity {
     private String selectedID;
     private String resName = "KFC"; //This variable is used to find which restaurant to display
 
+    private ArrayList<Bill> prepareBillList = new ArrayList<>();
+    private ArrayList<Bill> completedBillList = new ArrayList<>();
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +59,45 @@ public class DisplayCook extends AppCompatActivity {
         billCookDetailScene = Scene.getSceneForLayout(root, R.layout.display_bill_cook_detail, this);
         settingScene = Scene.getSceneForLayout(root, R.layout.setting, this);
 
+        //Set up prepateBillList and completedBillList
+        getBillList();
+
         String cmd = getIntent().getStringExtra("cmd");
         if (cmd != null) displayCompletedBill();
         else displayBillCook();
+    }
+
+    private void getBillList(){
+        ArrayList<BillItem> orderList = DisplayLogin.orderList;
+        while(orderList.size() != 0){
+            Bill bill = new Bill();
+            bill.addNewItem(orderList.get(0));      //Add the first element in the orderList
+            String status = orderList.get(0).getStatus();
+            int id = orderList.get(0).getID();
+            bill.setStatus(status);
+            bill.setBillID(Integer.toString(id));
+            orderList.remove(0);            //then remove it and set the status of the bill
+
+            //Add bill item with the same ID
+            int i = 0;
+            while(i < orderList.size()){
+                if(orderList.get(i).getID() == id){
+                    bill.addNewItem(orderList.get(i));
+                    orderList.remove(i);
+                    i--;
+                }
+                i++;
+            }
+
+            //Add bill to prepareBillList or completedBillList
+            bill.calcTotalPrice();  //Calculate total price of bill
+            if(!status.equals("completed")){
+                prepareBillList.add(bill);
+            }
+            else{
+                completedBillList.add(bill);
+            }
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -79,7 +118,7 @@ public class DisplayCook extends AppCompatActivity {
         settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings));
 
         ListView listView = (ListView)findViewById(R.id.bill_cook_List);
-        listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getBillList()));
+        listView.setAdapter(new CustomListBillCookAdapter(this, prepareBillList));
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -153,7 +192,7 @@ public class DisplayCook extends AppCompatActivity {
 
         //Display completed bill list
         ListView listView = (ListView)findViewById(R.id.bill_cook_List);
-        listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getCompletedBillList()));
+        listView.setAdapter(new CustomListBillCookAdapter(this, completedBillList));
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -183,7 +222,7 @@ public class DisplayCook extends AppCompatActivity {
         ImageButton settingButton = (ImageButton) findViewById(R.id.setting_button);
         settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings));
         ListView listView = (ListView)findViewById(R.id.bill_cook_List);
-        listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getBillList()));
+        listView.setAdapter(new CustomListBillCookAdapter(this, prepareBillList));
 
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -211,7 +250,7 @@ public class DisplayCook extends AppCompatActivity {
 
         //Display completed bill list
         ListView listView = (ListView) findViewById(R.id.bill_cook_List);
-        listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getCompletedBillList()));
+        listView.setAdapter(new CustomListBillCookAdapter(this, completedBillList));
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

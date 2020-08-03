@@ -35,8 +35,8 @@ import java.util.Map;
 public class DisplayBill extends AppCompatActivity {
 
     private Scene billScene;
-    String urlInsertData = "http://192.168.0.101/androidwebservice/order/insert.php";
-    String urlUpdateData = "http://192.168.0.101/androidwebservice/order/update.php";
+    String urlInsertData = "http://192.168.0.102:8080/androidwebservice/order/insert.php";
+    String urlUpdateData = "http://192.168.0.102:8080/androidwebservice/order/update.php";
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -121,13 +121,13 @@ public class DisplayBill extends AppCompatActivity {
         //Clear bill and return home
         DisplayCart.billManager.setNewBill();
 
-        //Display Home for order new bill
-        //Intent intent = new Intent(this, DisplayHome.class);
-        //startActivity(intent);
+        //Display popup successfull and back for order new bill
+        Intent intent = new Intent(this, PopSuccessActivity.class);
+        startActivity(intent);
 
         //Here for test bill, when done, add new method to display bill on cook account
-        Intent intent = new Intent(this, DisplayCook.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, DisplayCook.class);
+        //startActivity(intent);
     }
 
     public void backToPrevious(View view){

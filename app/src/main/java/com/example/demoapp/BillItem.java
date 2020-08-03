@@ -11,7 +11,7 @@ public class BillItem {
     private String description;
     private String status;
 
-    public BillItem(int ID, int customerID, int restaurantID, int foodID, String name, String price, String quantity, String description, String status) {
+    public BillItem(int ID, int customerID, int restaurantID, int foodID, String name, String quantity, String description, String price, String status) {
         this.ID = ID;
         CustomerID = customerID;
         RestaurantID = restaurantID;

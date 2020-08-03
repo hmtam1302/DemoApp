@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class PopSuccessActivity extends Activity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +34,14 @@ public class PopSuccessActivity extends Activity {
     }
 
     public void displayHome(View view){
-        Intent intent = new Intent(this, DisplayHome.class);
+        Intent intent = getIntent();
+        String role = intent.getStringExtra("role");
+        if (role.equals("vendor")){
+            intent = new Intent(this, DisplayCook.class);
+        }
+        else{
+            intent = new Intent(this, DisplayHome.class);
+        }
         startActivity(intent);
     }
 }

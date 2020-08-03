@@ -43,11 +43,11 @@ import java.util.regex.Pattern;
 public class DisplaySignUp extends AppCompatActivity {
     public static Customer customerSignUp = null;
     private Scene signupScene = null;
-    String urlGetDataCustomer = "http://192.168.0.101/androidwebservice/customer/getData.php";
-    String urlGetDataRestaurant = "http://192.168.0.101/androidwebservice/restaurant/getData.php";
-    String urlGetDataFood = "http://192.168.0.101/androidwebservice/food/getData.php";
-    String urlGetDataOrder = "http://192.168.0.101/androidwebservice/order/getData.php";
-    String urlInsertData = "http://192.168.0.101/androidwebservice/customer/insert.php";
+    String urlGetDataCustomer = "http://192.168.0.102:8080/androidwebservice/customer/getData.php";
+    String urlGetDataRestaurant = "http://192.168.0.102:8080/androidwebservice/restaurant/getData.php";
+    String urlGetDataFood = "http://192.168.0.102:8080/androidwebservice/food/getData.php";
+    String urlGetDataOrder = "http://192.168.0.102:8080/androidwebservice/order/getData.php";
+    String urlInsertData = "http://192.168.0.102:8080/androidwebservice/customer/insert.php";
     public static ArrayList<Customer> cusList = new ArrayList<>();
     public static ArrayList<Restaurant> resList = new ArrayList<>();
     public static ArrayList<Food> foodList = new ArrayList<>();
@@ -100,7 +100,7 @@ public class DisplaySignUp extends AppCompatActivity {
 
         if (password.equals(confirmPassword) && message == null) {
             addData(urlInsertData);
-            customerSignUp = new Customer(ID, userName, password, email, phone);
+            customerSignUp = new Customer(ID, userName, password, email, phone, "User");
             Intent intent = new Intent(this, PopSuccessActivity.class);
             startActivity(intent);
         }
@@ -165,7 +165,8 @@ public class DisplaySignUp extends AppCompatActivity {
                                 int Gender = object.getInt("Gender");
                                 String Email = object.getString("Email");
                                 String Phone = object.getString("Phone");
-                                cusList.add(new Customer(ID, UserName, PassWord, Name, DateOfBirth, Gender, Email, Phone));
+                                String Role = object.getString("Role");
+                                cusList.add(new Customer(ID, UserName, PassWord, Name, DateOfBirth, Gender, Email, Phone, Role));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

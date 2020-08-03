@@ -59,7 +59,6 @@ public class DisplayHome extends AppCompatActivity {
         foodScene = Scene.getSceneForLayout(root, R.layout.orderfood, this);
 
         displayHome();
-
     }
 
     @SuppressLint("ResourceAsColor")
