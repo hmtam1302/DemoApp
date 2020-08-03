@@ -3,6 +3,7 @@ package com.example.demoapp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
@@ -28,6 +29,7 @@ import com.example.demoapp.Data.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.MissingFormatArgumentException;
 
 public class DisplayHome extends AppCompatActivity {
     public static int num_of_order = 0;
@@ -36,9 +38,9 @@ public class DisplayHome extends AppCompatActivity {
     private String selectedRestaurant = null;
     private Scene homeScene;
     private Scene foodScene;
-    public static ArrayList<Restaurant> resList = new ArrayList<>();
-    public static ArrayList<Food> foodList = new ArrayList<>();
-    public static ArrayList<BillItem> orderList = new ArrayList<>();
+    public static ArrayList<Restaurant> resList = MainActivity.resList;
+    public static ArrayList<Food> foodList = MainActivity.foodList;
+    public static ArrayList<BillItem> orderList = MainActivity.orderList;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -73,15 +75,9 @@ public class DisplayHome extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.listRestaurant);
         if(DisplayLogin.resList.size() != 0) {
             customerID = DisplayLogin.customerLogin.getID();
-            resList = DisplayLogin.resList;
-            foodList = DisplayLogin.foodList;
-            orderList = DisplayLogin.orderList;
         }
         else {
             customerID = DisplaySignUp.customerSignUp.getID();
-            resList = DisplaySignUp.resList;
-            foodList = DisplaySignUp.foodList;
-            orderList = DisplaySignUp.orderList;
         }
 
         // Calculate number of order in system
