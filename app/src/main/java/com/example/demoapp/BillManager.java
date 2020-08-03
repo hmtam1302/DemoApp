@@ -6,8 +6,8 @@ import java.util.List;
 public class BillManager {
     private Bill bill = new Bill();
 
-    private List<Bill> billList = new ArrayList<>();
-    private List<Bill> completedBillList = new ArrayList<>();
+    private ArrayList<Bill> billList = new ArrayList<>();
+    private ArrayList<Bill> completedBillList = new ArrayList<>();
 
     public Bill getBill() {
         return bill;
@@ -25,9 +25,9 @@ public class BillManager {
         return null;
     }
 
-    public List<Bill> getBillList(){ return billList; }
+    public ArrayList<Bill> getBillList(){ return billList; }
 
-    public List<Bill> getCompletedBillList(){ return completedBillList; }
+    public ArrayList<Bill> getCompletedBillList(){ return completedBillList; }
 
     public void addNewBill(Bill bill){
         billList.add(bill);
@@ -48,4 +48,11 @@ public class BillManager {
         }
     }
 
+    public void setBillList(ArrayList<Bill> billList) {
+        this.billList = billList;
+    }
+
+    public void setCompletedBillList(ArrayList<Bill> completedBillList) {
+        this.completedBillList = completedBillList;
+    }
 }

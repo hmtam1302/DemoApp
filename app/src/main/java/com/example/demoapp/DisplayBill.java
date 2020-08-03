@@ -71,9 +71,26 @@ public class DisplayBill extends AppCompatActivity {
         totalPriceTxt.setText(DisplayCart.billManager.getBill().getTotalPrice() + "VND");
     }
 
-    public void backToHome(View view){
-        // Add bill to database
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void addBillAndBack(View v){
         Bill bill = DisplayCart.billManager.getBill();
+
+        //Generate Bill ID based on current date and time
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyMMddHHmmss");
+        LocalDateTime now = LocalDateTime.now();
+
+        bill.setBillID(dtf.format(now).toString());
+
+        //Set bill status
+        bill.setStatus("unconfirmed");
+
+        //Add new bill to database
+        DisplayCart.billManager.addNewBill(bill);
+
+        //Clear bill and return home
+        DisplayCart.billManager.setNewBill();
+
+        // Add bill to database
         Log.d("msg", bill.billItemList.size()+"");
         for(int i = 0; i < bill.billItemList.size(); i++) {
             Log.d("msg", bill.billItemList.get(i).getName());
@@ -98,31 +115,10 @@ public class DisplayBill extends AppCompatActivity {
         }
 
         bill.billItemList.clear();
-        Intent intent = new Intent(this, DisplayHome.class);
-        startActivity(intent);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void addBillAndBack(View v){
-        Bill bill = DisplayCart.billManager.getBill();
-
-        //Generate Bill ID based on current date and time
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyMMddHHmmss");
-        LocalDateTime now = LocalDateTime.now();
-
-        bill.setBillID(dtf.format(now).toString());
-
-        //Set bill status
-        bill.setStatus("unconfirmed");
-
-        //Add new bill to database
-        DisplayCart.billManager.addNewBill(bill);
-
-        //Clear bill and return home
-        DisplayCart.billManager.setNewBill();
 
         //Display popup successfull and back for order new bill
         Intent intent = new Intent(this, PopSuccessActivity.class);
+        intent.putExtra("role", "user");
         startActivity(intent);
 
         //Here for test bill, when done, add new method to display bill on cook account
