@@ -81,6 +81,7 @@ public class DisplayLogin extends AppCompatActivity {
             } else if(username.equals(cusList.get(i).getUsername()) && password.equals(cusList.get(i).getPassWord()) && cusList.get(i).getRole().equals("cook")) {
                 accessCook = true;
                 vendorLogin = cusList.get(i);
+                Log.d("check", cusList.get(i).getRestaurantID()+"");
                 break;
             }
         }

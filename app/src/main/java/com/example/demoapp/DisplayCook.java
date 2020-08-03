@@ -286,7 +286,7 @@ public class DisplayCook extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.list_food);
 
         //Find restaurant match given name
-        List<Restaurant> resList = DisplayHome.resList; //Get from database, ****** Cho nay fix roi nha
+        List<Restaurant> resList = MainActivity.resList; //Get from database, ****** Cho nay fix roi nha
         Restaurant res = null;
         for(int i = 0; i < resList.size(); i++){
             res = resList.get(i);

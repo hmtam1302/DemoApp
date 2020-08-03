@@ -83,7 +83,8 @@ public class MainActivity extends AppCompatActivity {
                                 String Email = object.getString("Email");
                                 String Phone = object.getString("Phone");
                                 String Role = object.getString("Role");
-                                cusList.add(new Customer(ID, UserName, PassWord, Name, DateOfBirth, Gender, Email, Phone, Role));
+                                int RestaurantID = object.getInt("RestaurantID");
+                                cusList.add(new Customer(ID, UserName, PassWord, Name, DateOfBirth, Gender, Email, Phone, Role, RestaurantID));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

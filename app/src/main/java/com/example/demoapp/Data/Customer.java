@@ -12,8 +12,9 @@ public class Customer {
     private String Email;
     private String Phone;
     private String Role;
+    private int RestaurantID;
 
-    public Customer(int ID, String username, String passWord, String name, String dateOfBirth, int gender, String email, String phone, String role) {
+    public Customer(int ID, String username, String passWord, String name, String dateOfBirth, int gender, String email, String phone, String role, int restaurantID) {
         this.ID = ID;
         this.Username = username;
         this.PassWord = passWord;
@@ -23,6 +24,15 @@ public class Customer {
         this.Email = email;
         this.Phone = phone;
         this.Role = role;
+        this.RestaurantID = restaurantID;
+    }
+
+    public int getRestaurantID() {
+        return RestaurantID;
+    }
+
+    public void setRestaurantID(int restaurantID) {
+        RestaurantID = restaurantID;
     }
 
     public Customer(int ID, String username, String passWord, String email, String phone, String role) {
