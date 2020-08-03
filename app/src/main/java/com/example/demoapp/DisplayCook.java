@@ -18,14 +18,10 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.demoapp.Data.Food;
-import com.example.demoapp.Data.Restaurant;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +32,7 @@ public class DisplayCook extends AppCompatActivity {
     private Scene settingScene;
 
     private static String selectedID;
-    private static int resID = DisplayLogin.cookLogin.getRestaurantID();   //Get current restaurant of the cook
+    private static int resID = DisplayLogin.currentUser.getRestaurantID();   //Get current restaurant of the cook
     private ArrayList<Food> listFood;
 
     private static ArrayList<Bill> prepareBillList = new ArrayList<>();
@@ -141,6 +137,9 @@ public class DisplayCook extends AppCompatActivity {
 
         ListView listView = (ListView)findViewById(R.id.bill_cook_List);
         listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getBillList()));
+        ImageButton infoButton = (ImageButton) findViewById(R.id.info_btn);
+        infoButton.setImageDrawable(getResources().getDrawable(R.drawable.account_btn));
+
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -215,6 +214,9 @@ public class DisplayCook extends AppCompatActivity {
         //Display completed bill list
         ListView listView = (ListView)findViewById(R.id.bill_cook_List);
         listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getCompletedBillList()));
+        ImageButton infoButton = (ImageButton) findViewById(R.id.info_btn);
+        infoButton.setImageDrawable(getResources().getDrawable(R.drawable.account_btn));
+
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -245,6 +247,8 @@ public class DisplayCook extends AppCompatActivity {
         settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings));
         ListView listView = (ListView)findViewById(R.id.bill_cook_List);
         listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getBillList()));
+        ImageButton infoButton = (ImageButton) findViewById(R.id.info_btn);
+        infoButton.setImageDrawable(getResources().getDrawable(R.drawable.account_btn));
 
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -269,6 +273,8 @@ public class DisplayCook extends AppCompatActivity {
         completedButton.setTag(R.drawable.complete_pressed); //Set tag for searching
         ImageButton settingButton = (ImageButton) findViewById(R.id.setting_button);
         settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings));
+        ImageButton infoButton = (ImageButton) findViewById(R.id.info_btn);
+        infoButton.setImageDrawable(getResources().getDrawable(R.drawable.account_btn));
 
         //Display completed bill list
         ListView listView = (ListView) findViewById(R.id.bill_cook_List);
@@ -297,6 +303,8 @@ public class DisplayCook extends AppCompatActivity {
         completedButton.setImageDrawable(getResources().getDrawable(R.drawable.complete));
         ImageButton settingButton = (ImageButton) findViewById(R.id.setting_button);
         settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings_pressed));
+        ImageButton infoButton = (ImageButton) findViewById(R.id.info_btn);
+        infoButton.setImageDrawable(getResources().getDrawable(R.drawable.account_btn));
 
         //Display food for settings
         ListView listView = (ListView) findViewById(R.id.list_food);
@@ -326,6 +334,8 @@ public class DisplayCook extends AppCompatActivity {
         completedButton.setImageDrawable(getResources().getDrawable(R.drawable.complete));
         ImageButton settingButton = (ImageButton) findViewById(R.id.setting_button);
         settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings_pressed));
+        ImageButton infoButton = (ImageButton) findViewById(R.id.info_btn);
+        infoButton.setImageDrawable(getResources().getDrawable(R.drawable.account_btn));
 
         //Display food for settings
         ListView listView = (ListView) findViewById(R.id.list_food);
@@ -344,6 +354,11 @@ public class DisplayCook extends AppCompatActivity {
         // Implement code for change food settings
         Intent intent = new Intent(this, DisplayFoodSetting.class);
         intent.putExtra("foodName", ((TextView) v.findViewById(R.id.foodName)).getText().toString());
+        startActivity(intent);
+    }
+
+    public void displayInfo(View v){
+        Intent intent = new Intent(this, DisplayInfomation.class);
         startActivity(intent);
     }
 }

@@ -93,6 +93,7 @@ public class DisplaySignUp extends AppCompatActivity {
         if (password.equals(confirmPassword) && message == null) {
             addData(urlInsertData);
             customerSignUp = new Customer(ID, userName, password, email, phone, "User");
+            DisplayLogin.currentUser = customerSignUp;
             Intent intent = new Intent(this, PopSuccessActivity.class);
             startActivity(intent);
         }

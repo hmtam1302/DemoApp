@@ -25,8 +25,7 @@ import java.util.ArrayList;
 
 public class DisplayLogin extends AppCompatActivity {
     private Scene loginScene = null;
-    public static Customer customerLogin = null;
-    public static Customer cookLogin = null;
+    public static Customer currentUser = null;
 
     public static ArrayList<Customer> cusList = MainActivity.cusList;
     public static ArrayList<Restaurant> resList = MainActivity.resList;
@@ -57,6 +56,8 @@ public class DisplayLogin extends AppCompatActivity {
     public void displayLoginPop(View view){
         boolean accessCus = false;
         boolean accessCook = false;
+        boolean accessVendor = false;
+        boolean accessManager = false;
         EditText user_name = (EditText)findViewById(R.id.loginUsername);
         EditText pass_word = (EditText)findViewById(R.id.loginPassword);
         String username = user_name.getText().toString();
@@ -64,12 +65,20 @@ public class DisplayLogin extends AppCompatActivity {
         for(int i = 0; i < cusList.size(); i++) {
             if(username.equals(cusList.get(i).getUsername()) && password.equals(cusList.get(i).getPassWord()) && cusList.get(i).getRole().equals("user")){
                 accessCus = true;
-                customerLogin = cusList.get(i);
+                currentUser = cusList.get(i);
                 break;
             } else if(username.equals(cusList.get(i).getUsername()) && password.equals(cusList.get(i).getPassWord()) && cusList.get(i).getRole().equals("cook")) {
                 accessCook = true;
-                cookLogin = cusList.get(i);
-                Log.d("check", cusList.get(i).getRestaurantID()+"");
+                currentUser = cusList.get(i);
+                break;
+            } else if(username.equals(cusList.get(i).getUsername()) && password.equals(cusList.get(i).getPassWord()) && cusList.get(i).getRole().equals("vendor")) {
+                accessVendor = true;
+                currentUser = cusList.get(i);
+                break;
+            }
+            else if(username.equals(cusList.get(i).getUsername()) && password.equals(cusList.get(i).getPassWord()) && cusList.get(i).getRole().equals("manager")) {
+                accessManager = true;
+                currentUser = cusList.get(i);
                 break;
             }
         }
@@ -78,7 +87,7 @@ public class DisplayLogin extends AppCompatActivity {
             Intent intent = new Intent(this, PopSuccessActivity.class);
             intent.putExtra("role", "customer");
             startActivity(intent);
-        } else if(accessCook)  {
+        } else if(accessCook)  { //Còn access vendor với manager nữa
             Log.d("msg", "vendor login");
             Intent intent = new Intent(this, PopSuccessActivity.class);
             intent.putExtra("role", "vendor");

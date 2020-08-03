@@ -74,7 +74,7 @@ public class DisplayHome extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.listRestaurant);
         if(DisplayLogin.resList.size() != 0) {
-            customerID = DisplayLogin.customerLogin.getID();
+            customerID = DisplayLogin.currentUser.getID();
         }
         else {
             customerID = DisplaySignUp.customerSignUp.getID();

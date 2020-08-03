@@ -83,14 +83,9 @@ public class DisplayInfomation extends AppCompatActivity {
         genderSpinner.setAdapter(arrayAdapter);
         genderSpinner.setEnabled(false);
 
-        // Customer login or sign-up
-        customer = DisplayLogin.customerLogin;
-        if(DisplayLogin.customerLogin != null) {
-            customer = DisplayLogin.customerLogin;
-        } else {
-            customer = DisplaySignUp.customerSignUp;
-        }
+        customer = DisplayLogin.currentUser;
         Log.d("msg check", customer.getUsername());
+
         //Display information
         EditText edtUserName = (EditText)findViewById(R.id.edtUsername);
         edtUserName.setText(customer.getUsername());
