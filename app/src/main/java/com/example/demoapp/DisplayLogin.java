@@ -75,7 +75,7 @@ public class DisplayLogin extends AppCompatActivity {
     }
     public void displayLoginPop(View view){
         boolean accessCus = false;
-        boolean accessVendor = false;
+        boolean accessCook = false;
         EditText user_name = (EditText)findViewById(R.id.loginUsername);
         EditText pass_word = (EditText)findViewById(R.id.loginPassword);
         String username = user_name.getText().toString();
@@ -85,8 +85,8 @@ public class DisplayLogin extends AppCompatActivity {
                 accessCus = true;
                 customerLogin = cusList.get(i);
                 break;
-            } else if(username.equals(cusList.get(i).getUsername()) && password.equals(cusList.get(i).getPassWord()) && cusList.get(i).getRole().equals("vendor")) {
-                accessVendor = true;
+            } else if(username.equals(cusList.get(i).getUsername()) && password.equals(cusList.get(i).getPassWord()) && cusList.get(i).getRole().equals("cook")) {
+                accessCook = true;
                 vendorLogin = cusList.get(i);
                 break;
             }
@@ -96,7 +96,7 @@ public class DisplayLogin extends AppCompatActivity {
             Intent intent = new Intent(this, PopSuccessActivity.class);
             intent.putExtra("role", "customer");
             startActivity(intent);
-        } else if(accessVendor)  {
+        } else if(accessCook)  {
             Log.d("msg", "vendor login");
             Intent intent = new Intent(this, PopSuccessActivity.class);
             intent.putExtra("role", "vendor");
