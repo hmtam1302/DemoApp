@@ -16,29 +16,17 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.demoapp.Data.Customer;
 import com.example.demoapp.Data.Food;
 import com.example.demoapp.Data.Restaurant;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.net.InetAddress;
 
 
 public class DisplayLogin extends AppCompatActivity {
     private Scene loginScene = null;
     public static Customer customerLogin = null;
-    public static Customer vendorLogin = null;
+    public static Customer cookLogin = null;
 
     public static ArrayList<Customer> cusList = MainActivity.cusList;
     public static ArrayList<Restaurant> resList = MainActivity.resList;
@@ -80,7 +68,7 @@ public class DisplayLogin extends AppCompatActivity {
                 break;
             } else if(username.equals(cusList.get(i).getUsername()) && password.equals(cusList.get(i).getPassWord()) && cusList.get(i).getRole().equals("cook")) {
                 accessCook = true;
-                vendorLogin = cusList.get(i);
+                cookLogin = cusList.get(i);
                 Log.d("check", cusList.get(i).getRestaurantID()+"");
                 break;
             }

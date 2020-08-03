@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.demoapp.Data.Food;
 import com.example.demoapp.Data.Restaurant;
 
 import org.w3c.dom.Text;
@@ -34,11 +35,12 @@ public class DisplayCook extends AppCompatActivity {
     private Scene billCookDetailScene;
     private Scene settingScene;
 
-    private String selectedID;
-    private String resName = "KFC"; //This variable is used to find which restaurant to display
+    private static String selectedID;
+    private static int resID = DisplayLogin.cookLogin.getRestaurantID();   //Get current restaurant of the cook
+    private ArrayList<Food> listFood;
 
-    private ArrayList<Bill> prepareBillList = new ArrayList<>();
-    private ArrayList<Bill> completedBillList = new ArrayList<>();
+    private static ArrayList<Bill> prepareBillList = new ArrayList<>();
+    private static ArrayList<Bill> completedBillList = new ArrayList<>();
     private static int count = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -63,13 +65,18 @@ public class DisplayCook extends AppCompatActivity {
         //Set up prepateBillList and completedBillList
         if(count == 0){
             getBillList();
+            getFoodList();
             DisplayCart.billManager.setBillList(prepareBillList);
             DisplayCart.billManager.setCompletedBillList(completedBillList);
         }
 
         String cmd = getIntent().getStringExtra("cmd");
-        if (cmd != null) displayCompletedBill();
+        if (cmd != null) {
+            if(cmd.equals("foodsetting")) displaySettings();
+            else displayCompletedBill();
+        }
         else displayBillCook();
+
     }
 
     private void getBillList(){
@@ -104,6 +111,15 @@ public class DisplayCook extends AppCompatActivity {
             }
         }
         count++;
+    }
+
+    public void getFoodList(){
+        //Get the food list of the restaurant
+       listFood = new ArrayList<>();
+        for(int i = 0; i < MainActivity.foodList.size(); i++){
+            Food food = MainActivity.foodList.get(i);
+            if(food.getRes_ID() == resID) listFood.add(food);
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -285,17 +301,7 @@ public class DisplayCook extends AppCompatActivity {
         //Display food for settings
         ListView listView = (ListView) findViewById(R.id.list_food);
 
-        //Find restaurant match given name
-        List<Restaurant> resList = MainActivity.resList; //Get from database, ****** Cho nay fix roi nha
-        Restaurant res = null;
-        for(int i = 0; i < resList.size(); i++){
-            res = resList.get(i);
-            if (res.getName().equals(resName)){
-                break;
-            }
-        }
-
-        listView.setAdapter(new CustomListFoodAdapter(this, DisplayHome.foodList));
+        listView.setAdapter(new CustomListFoodAdapter(this, listFood));
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -305,7 +311,39 @@ public class DisplayCook extends AppCompatActivity {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void displaySettings() {
+        Transition slide = new Slide(Gravity.RIGHT);
+        TransitionManager.go(settingScene, slide);
+
+        //Set title
+        TextView title = (TextView) findViewById(R.id.title);
+        title.setText("Settings");
+        //Set navigation bar
+        ImageButton listButton = (ImageButton) findViewById(R.id.list_button);
+        listButton.setImageDrawable(getResources().getDrawable(R.drawable.preparing));
+        ImageButton completedButton = (ImageButton) findViewById(R.id.completed_button);
+        completedButton.setImageDrawable(getResources().getDrawable(R.drawable.complete));
+        ImageButton settingButton = (ImageButton) findViewById(R.id.setting_button);
+        settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings_pressed));
+
+        //Display food for settings
+        ListView listView = (ListView) findViewById(R.id.list_food);
+
+        if(listFood == null) getFoodList();
+        listView.setAdapter(new CustomListFoodAdapter(this, listFood));
+        // When the user clicks on the ListItem
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+                displayFoodSettings(v);
+            }
+        });
+    }
     public void displayFoodSettings(View v){
         // Implement code for change food settings
+        Intent intent = new Intent(this, DisplayFoodSetting.class);
+        intent.putExtra("foodName", ((TextView) v.findViewById(R.id.foodName)).getText().toString());
+        startActivity(intent);
     }
 }

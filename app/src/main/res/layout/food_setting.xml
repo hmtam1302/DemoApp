@@ -20,21 +20,25 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="5dp"
-            android:text="FOOD SETTING"
+            android:text="Food settings"
             android:textColor="#040087"
             android:textSize="30dp"
             android:textStyle="bold" />
 
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/foodsettings_foodLogo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"/>
+            android:layout_height="220dp"
+            android:layout_marginTop="60dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="300dp">
             <EditText
+                android:id="@+id/edt_foodsettings_name"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -45,8 +49,9 @@
                 android:paddingLeft="50dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="#707070" />
+                android:textColor="#000" />
             <EditText
+                android:id="@+id/edt_foodsettings_quantity"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -57,9 +62,10 @@
                 android:paddingLeft="50dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="#707070"
+                android:textColor="#000"
                 android:layout_marginTop="60dp"/>
             <EditText
+                android:id="@+id/edt_foodsettings_price"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -70,27 +76,33 @@
                 android:paddingLeft="50dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="#707070"
+                android:textColor="#000"
                 android:layout_marginTop="120dp"/>
-            <RelativeLayout
+            <RadioGroup
+                android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="180dp">
+
                 <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Disable"
-                    android:textSize="20sp"
-                    android:textColor="#040087"/>
-                <RadioButton
+                    android:id="@+id/radioEnable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Enable"
-                    android:layout_marginLeft="170dp"
+                    android:buttonTint="#040087"
+                    android:textColor="#040087"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/radioDisable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="#040087"
+                    android:text="Disable"
                     android:textSize="20sp"
                     android:textColor="#040087"/>
-            </RelativeLayout>
+            </RadioGroup>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -105,18 +117,23 @@
                     android:layout_centerHorizontal="true"/>
 
                 <ImageButton
+                    android:id="@+id/foodsettings_yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/no"
-                    android:layout_marginLeft="30dp"/>
+                    android:layout_marginLeft="30dp"
+                    android:onClick="discardChange"
+                    />
 
                 <ImageButton
+                    android:id="@+id/foodsettings_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/yes"
-                    android:layout_marginLeft="200dp"/>
+                    android:layout_marginLeft="200dp"
+                    android:onClick="confirmChange"/>
             </RelativeLayout>
 
         </RelativeLayout>
