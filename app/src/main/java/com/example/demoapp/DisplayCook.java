@@ -39,6 +39,7 @@ public class DisplayCook extends AppCompatActivity {
 
     private ArrayList<Bill> prepareBillList = new ArrayList<>();
     private ArrayList<Bill> completedBillList = new ArrayList<>();
+    private static int count = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -60,7 +61,11 @@ public class DisplayCook extends AppCompatActivity {
         settingScene = Scene.getSceneForLayout(root, R.layout.setting, this);
 
         //Set up prepateBillList and completedBillList
-        getBillList();
+        if(count == 0){
+            getBillList();
+            DisplayCart.billManager.setBillList(prepareBillList);
+            DisplayCart.billManager.setCompletedBillList(completedBillList);
+        }
 
         String cmd = getIntent().getStringExtra("cmd");
         if (cmd != null) displayCompletedBill();
@@ -98,6 +103,7 @@ public class DisplayCook extends AppCompatActivity {
                 completedBillList.add(bill);
             }
         }
+        count++;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -118,7 +124,7 @@ public class DisplayCook extends AppCompatActivity {
         settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings));
 
         ListView listView = (ListView)findViewById(R.id.bill_cook_List);
-        listView.setAdapter(new CustomListBillCookAdapter(this, prepareBillList));
+        listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getBillList()));
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -192,7 +198,7 @@ public class DisplayCook extends AppCompatActivity {
 
         //Display completed bill list
         ListView listView = (ListView)findViewById(R.id.bill_cook_List);
-        listView.setAdapter(new CustomListBillCookAdapter(this, completedBillList));
+        listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getCompletedBillList()));
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -222,7 +228,7 @@ public class DisplayCook extends AppCompatActivity {
         ImageButton settingButton = (ImageButton) findViewById(R.id.setting_button);
         settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings));
         ListView listView = (ListView)findViewById(R.id.bill_cook_List);
-        listView.setAdapter(new CustomListBillCookAdapter(this, prepareBillList));
+        listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getBillList()));
 
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -250,7 +256,7 @@ public class DisplayCook extends AppCompatActivity {
 
         //Display completed bill list
         ListView listView = (ListView) findViewById(R.id.bill_cook_List);
-        listView.setAdapter(new CustomListBillCookAdapter(this, completedBillList));
+        listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getCompletedBillList()));
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

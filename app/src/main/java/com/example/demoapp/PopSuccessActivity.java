@@ -34,8 +34,8 @@ public class PopSuccessActivity extends Activity {
     }
 
     public void displayHome(View view){
-        Intent intent = getIntent();
-        String role = intent.getStringExtra("role");
+        Intent intent;
+        String role = getIntent().getStringExtra("role");
         if (role.equals("vendor")){
             intent = new Intent(this, DisplayCook.class);
         }

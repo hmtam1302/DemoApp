@@ -116,12 +116,12 @@ public class DisplayFoodDetail extends AppCompatActivity {
         String itemPrice = ((TextView)findViewById(R.id.price_of_food)).getText().toString();
         String itemQuantity = ((TextView)findViewById(R.id.quantity_of_food)).getText().toString();
         String itemNote = ((TextView)findViewById(R.id.note_of_food)).getText().toString();
-        String itemStatus = "prepare";
+        String itemStatus = "unconfirmed";
 
         int index = getItemIndex(itemName);
 
         if(index == -1){
-            bill.addNewItem(new BillItem(OrderID, customerID,restaurantID, selectedFood.getID(), itemName, itemPrice, itemQuantity, itemNote, itemStatus));
+            bill.addNewItem(new BillItem(OrderID, customerID, restaurantID, selectedFood.getID(), itemName, itemQuantity, itemNote, itemPrice, itemStatus));
         }
         else{
             BillItem item = bill.billItemList.get(index);
