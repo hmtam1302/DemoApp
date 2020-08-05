@@ -48,6 +48,8 @@ public class PopSuccessActivity extends Activity {
                 intent = new Intent(this, DisplayVendor.class);
             } else if (role.equals("manager")) {
                 intent = new Intent(this, DisplayManager.class);
+            } else if (role.equals("customer")){
+                intent = new Intent(this, DisplayHome.class);
             }
         } else if(cmd != null){
             if(cmd.equals("reportStall")){

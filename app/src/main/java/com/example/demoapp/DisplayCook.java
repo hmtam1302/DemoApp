@@ -68,7 +68,7 @@ public class DisplayCook extends AppCompatActivity {
 
         String cmd = getIntent().getStringExtra("cmd");
         if (cmd != null) {
-            if(cmd.equals("foodsetting")) displaySettings();
+            if(cmd.equals("foodsetting")) displayCookSettings();
             else displayCompletedBill();
         }
         else displayBillCook();
@@ -289,7 +289,7 @@ public class DisplayCook extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void displaySettings(View v){
+    public void displayCookSettings(View v){
         Transition slide = new Slide(Gravity.RIGHT);
         TransitionManager.go(settingScene, slide);
 
@@ -320,7 +320,7 @@ public class DisplayCook extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void displaySettings() {
+    public void displayCookSettings() {
         Transition slide = new Slide(Gravity.RIGHT);
         TransitionManager.go(settingScene, slide);
 

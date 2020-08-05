@@ -118,7 +118,7 @@ public class DisplayBill extends AppCompatActivity {
 
         //Display popup successfull and back for order new bill
         Intent intent = new Intent(this, PopSuccessActivity.class);
-        intent.putExtra("role", "user");
+        intent.putExtra("role", "customer");
         startActivity(intent);
 
         //Here for test bill, when done, add new method to display bill on cook account

@@ -55,13 +55,15 @@ public class DisplayVendor extends AppCompatActivity {
         statisticScene = Scene.getSceneForLayout(root, R.layout.vendor_statistic, this);
         settingScene = Scene.getSceneForLayout(root, R.layout.setting, this);
 
+
+        getFoodList();
         if(count == 0){
             getBillList();
-            getFoodList();
             DisplayCart.billManager.setBillList(prepareBillList);
             DisplayCart.billManager.setCompletedBillList(completedBillList);
         }
-        if(getIntent().getStringExtra("cmd").equals("foodsetting")){
+        String cmd = getIntent().getStringExtra("cmd");
+        if(cmd != null){
             displayVendorSettings();
         } else{
             displayStat();
@@ -215,5 +217,10 @@ public class DisplayVendor extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayStat(View v){
         displayStat();
+    }
+
+    public void backToPrevious(View v){
+        Intent intent = new Intent(this, PopLogout.class);
+        startActivity(intent);
     }
 }
