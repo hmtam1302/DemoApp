@@ -228,7 +228,7 @@ public class DisplayCook extends AppCompatActivity {
 
 
     public void backToPrevious(View v){
-        Intent intent = new Intent(this, DisplayHome.class);
+        Intent intent = new Intent(this, PopLogout.class);
         startActivity(intent);
     }
 

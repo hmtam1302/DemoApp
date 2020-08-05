@@ -3,6 +3,8 @@ package com.example.demoapp;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.hardware.display.DisplayManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -10,6 +12,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
 
 public class PopSuccessActivity extends Activity {
     @Override
@@ -33,11 +37,23 @@ public class PopSuccessActivity extends Activity {
         getWindow().setAttributes(params);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayHome(View view){
-        Intent intent;
+        Intent intent = null;
         String role = getIntent().getStringExtra("role");
-        if (role.equals("vendor")){
-            intent = new Intent(this, DisplayCook.class);
+        String cmd = getIntent().getStringExtra("cmd");
+        if(role != null){
+            if (role.equals("cook")) {
+                intent = new Intent(this, DisplayCook.class);
+            } else if (role.equals("vendor")) {
+                intent = new Intent(this, DisplayVendor.class);
+            } else if (role.equals("manager")) {
+                intent = new Intent(this, DisplayManager.class);
+            }
+        } else if(cmd != null){
+            if(cmd.equals("report")){
+                intent = new Intent(this, DisplayVendor.class);
+            }
         }
         else{
             intent = new Intent(this, DisplayHome.class);

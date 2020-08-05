@@ -9,4 +9,5 @@
     <string name="logo">Logo</string>
     <string name="sigintocontinue">Sign in to continue</string>
     <string name="userexample">user123</string>
+    <string name="export_report">Export report</string>
 </resources>

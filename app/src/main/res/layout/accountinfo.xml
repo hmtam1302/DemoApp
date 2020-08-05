@@ -142,7 +142,7 @@
             android:clickable="true"
             android:onClick="displayChangePassword"
             android:text="Change your password?"
-            android:textColor="@drawable/clikabletext"
+            android:textColor="@drawable/clickabletext"
             android:textSize="15sp"
             android:textStyle="italic" />
 

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--Back button-->
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/backbtn"
+            android:contentDescription="@string/back"
+            android:onClick="backToPrevious" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:text="Statistics"
+            android:textColor="#040087"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="50dp"
+            android:text="Completed bills"
+            android:textColor="#040087"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+
+        <ListView
+            android:id="@+id/vendor_completedBillList"
+            android:layout_width="400dp"
+            android:layout_height="480dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="80dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="570dp"
+            android:text="Total revenue"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280dp"
+            android:layout_marginTop="570dp"
+            android:textColor="@drawable/clickabletext"
+            android:onClick="displayReport"
+            android:text="Export report"
+            android:textSize="20sp"
+            android:clickable="true"
+            android:textStyle="italic"
+            />
+
+        <TextView
+            android:id="@+id/vendor_revenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="600dp"
+            android:text="2.500.000 vnd"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -256,7 +256,7 @@
             android:clickable="true"
             android:onClick="loginActivity"
             android:text="Login"
-            android:textColor="@drawable/clikabletext"
+            android:textColor="@drawable/clickabletext"
             android:textSize="15sp"
             android:textStyle="bold" />
     </RelativeLayout>

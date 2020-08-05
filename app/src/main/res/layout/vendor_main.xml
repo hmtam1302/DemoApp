@@ -15,40 +15,33 @@
 
         <TableRow>
             <ImageButton
-                android:id="@+id/stat_btn"
-                android:layout_width="102dp"
+                android:id="@+id/vendor_stat_btn"
+                android:layout_width="140dp"
                 android:layout_height="40dp"
                 android:adjustViewBounds="true"
                 android:background="#FFFFFF"
                 android:scaleType="fitCenter"
-                android:src="@drawable/statistic_pressed" />
+                android:src="@drawable/statistic_pressed"
+                android:onClick="displayStat"/>
+
             <ImageButton
-                android:id="@+id/order_btn"
-                android:layout_width="102dp"
+                android:id="@+id/vendor_setting_btn"
+                android:layout_width="140dp"
                 android:layout_height="40dp"
                 android:adjustViewBounds="true"
                 android:background="#FFFFFF"
-                android:onClick="display"
+                android:onClick="displayVendorSettings"
                 android:scaleType="fitCenter"
-                android:src="@drawable/preparing" />
+                android:src="@drawable/settings" />
             <ImageButton
-                android:id="@+id/setting_btn"
-                android:layout_width="102dp"
+                android:id="@+id/vendor_info_btn"
+                android:layout_width="140dp"
                 android:layout_height="40dp"
                 android:adjustViewBounds="true"
                 android:background="#FFFFFF"
                 android:onClick="displayInfo"
                 android:scaleType="fitCenter"
-                android:src="@drawable/settings_pressed" />
-            <ImageButton
-                android:id="@+id/info_btn"
-                android:layout_width="102dp"
-                android:layout_height="40dp"
-                android:adjustViewBounds="true"
-                android:background="#FFFFFF"
-                android:onClick="displayInfo"
-                android:scaleType="fitCenter"
-                android:src="@drawable/account_pressed" />
+                android:src="@drawable/account_btn" />
         </TableRow>
     </TableLayout>
 </RelativeLayout>

@@ -34,21 +34,21 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="5dp"
-            android:text="@string/name"
+            android:text="Report"
             android:textColor="#040087"
             android:textSize="30dp"
             android:textStyle="bold" />
 
-        <!--Forgot Password-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:text="FOOD STALL STATISTIC"
+            android:src="@mipmap/kfc"
+            android:layout_marginTop="80dp"
             android:textColor="#040087"
             android:textSize="32sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:id="@+id/report_stall_logo"/>
 
 
         <!--Phone number-->
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/edittextborder"
+                android:background="@drawable/border"
                 android:enabled="true"
                 android:text="Name"
                 android:maxLines="1"
@@ -71,15 +71,16 @@
                 android:paddingLeft="50dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="#707070"
-                android:textStyle="italic" />
+                android:textColor="#000"
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/report_stall_name"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="140dp"
-                android:background="@drawable/edittextborder"
+                android:background="@drawable/border"
                 android:enabled="true"
                 android:text="[NAME OF RESTAURANT]"
                 android:maxLines="1"
@@ -90,31 +91,30 @@
                 android:textColor="#707070"
                 android:textStyle="normal" />
 
-
-            <!--Stall ID-->
             <TextView
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/edittextborder"
+                android:background="@drawable/border"
                 android:enabled="true"
-                android:text="Stall ID"
+                android:text="Date"
                 android:maxLines="1"
                 android:paddingStart="36dp"
                 android:paddingLeft="50dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="#707070"
-                android:textStyle="italic"
+                android:textColor="#000"
+                android:textStyle="bold"
                 />
 
             <TextView
+                android:id="@+id/report_stall_date"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:layout_marginLeft="140dp"
-                android:background="@drawable/edittextborder"
+                android:background="@drawable/border"
                 android:enabled="true"
                 android:text="[STALL ID]"
                 android:maxLines="1"
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="90dp"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/edittextborder"
+                android:background="@drawable/border"
                 android:enabled="true"
                 android:text="Num. of order"
                 android:maxLines="1"
@@ -139,16 +139,17 @@
                 android:paddingLeft="50dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="#707070"
-                android:textStyle="italic"
+                android:textColor="#000"
+                android:textStyle="bold"
                 />
 
             <TextView
+                android:id="@+id/report_stall_num_order"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="90dp"
                 android:layout_marginLeft="140dp"
-                android:background="@drawable/edittextborder"
+                android:background="@drawable/border"
                 android:enabled="true"
                 android:text="[NUM. OF ORDER]"
                 android:maxLines="1"
@@ -160,81 +161,51 @@
                 android:textStyle="normal" />
 
             <!--Num. of dishes-->
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="130dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/edittextborder"
-                android:enabled="true"
-                android:text="Num. of dishes"
-                android:maxLines="1"
-                android:paddingStart="16dp"
-                android:paddingLeft="50dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:textColor="#707070"
-                android:textStyle="italic"
-                />
-
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="130dp"
-                android:layout_marginLeft="140dp"
-                android:background="@drawable/edittextborder"
-                android:enabled="true"
-                android:text="[NUM. OF DISHES]"
-                android:maxLines="1"
-                android:paddingStart="10dp"
-                android:paddingLeft="50dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:textColor="#707070"
-                android:textStyle="normal" />
 
 
             <!--Average rating-->
+
+            <!--Total revenue-->
+
             <TextView
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="170dp"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/edittextborder"
+                android:layout_marginTop="130dp"
+                android:background="@drawable/border"
                 android:enabled="true"
-                android:text="Average rating"
                 android:maxLines="1"
                 android:paddingStart="16dp"
                 android:paddingLeft="50dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="#707070"
-                android:textStyle="italic"
-                />
+                android:text="Average rating"
+                android:textColor="#000"
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/report_stall_rating"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="170dp"
                 android:layout_marginLeft="140dp"
-                android:background="@drawable/edittextborder"
+                android:layout_marginTop="130dp"
+                android:background="@drawable/border"
                 android:enabled="true"
-                android:text="[AVERAGE RATING]"
                 android:maxLines="1"
                 android:paddingStart="10dp"
                 android:paddingLeft="50dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
+                android:text="[AVERAGE RATING]"
                 android:textColor="#707070"
                 android:textStyle="normal" />
 
-            <!--Total revenue-->
             <TextView
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="210dp"
+                android:layout_marginTop="170dp"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/edittextborder"
+                android:background="@drawable/border"
                 android:enabled="true"
                 android:text="Total revenue"
                 android:maxLines="1"
@@ -242,16 +213,17 @@
                 android:paddingLeft="50dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="#707070"
-                android:textStyle="italic"
+                android:textColor="#000"
+                android:textStyle="bold"
                 />
 
             <TextView
+                android:id="@+id/report_stall_revenue"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="210dp"
+                android:layout_marginTop="170dp"
                 android:layout_marginLeft="140dp"
-                android:background="@drawable/edittextborder"
+                android:background="@drawable/border"
                 android:enabled="true"
                 android:text="[TOTAL REVENUE]"
                 android:maxLines="1"
@@ -276,24 +248,24 @@
             <ImageButton
                 android:layout_width="120dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="70dp"
+                android:layout_marginLeft="240dp"
                 android:adjustViewBounds="true"
                 android:background="#FFFFFF"
                 android:maxWidth="120dp"
                 android:maxHeight="40dp"
-                android:onClick="checkPassword"
+                android:onClick="printReport"
                 android:scaleType="fitCenter"
                 android:src="@drawable/export_button" />
 
             <ImageButton
                 android:layout_width="120dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="240dp"
+                android:layout_marginLeft="70dp"
                 android:adjustViewBounds="true"
                 android:background="#FFFFFF"
                 android:maxWidth="200dp"
                 android:maxHeight="100dp"
-                android:onClick="displayInfo"
+                android:onClick="backToPrevious"
                 android:scaleType="fitCenter"
                 android:src="@drawable/cancel_button" />
 

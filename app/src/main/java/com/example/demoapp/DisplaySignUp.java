@@ -44,7 +44,7 @@ public class DisplaySignUp extends AppCompatActivity {
     public static Customer customerSignUp = null;
     private Scene signupScene = null;
 
-    String urlInsertData = "http://192.168.0.102:8080/androidwebservice/customer/insert.php";
+    String urlInsertData = "http://172.17.19.69:8080/androidwebservice/customer/insert.php";
     public static ArrayList<Customer> cusList = MainActivity.cusList;
     public static ArrayList<Restaurant> resList = MainActivity.resList;
     public static ArrayList<Food> foodList = MainActivity.foodList;

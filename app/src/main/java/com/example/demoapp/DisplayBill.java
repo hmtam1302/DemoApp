@@ -35,8 +35,8 @@ import java.util.Map;
 public class DisplayBill extends AppCompatActivity {
 
     private Scene billScene;
-    String urlInsertData = "http://192.168.0.102:8080/androidwebservice/order/insert.php";
-    String urlUpdateData = "http://192.168.0.102:8080/androidwebservice/order/update.php";
+    String urlInsertData = "http://172.17.19.69:8080//androidwebservice/order/insert.php";
+    String urlUpdateData = "http://172.17.19.69:8080/androidwebservice/order/update.php";
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

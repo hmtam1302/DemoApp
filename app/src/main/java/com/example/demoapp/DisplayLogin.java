@@ -87,10 +87,17 @@ public class DisplayLogin extends AppCompatActivity {
             Intent intent = new Intent(this, PopSuccessActivity.class);
             intent.putExtra("role", "customer");
             startActivity(intent);
-        } else if(accessCook)  { //Còn access vendor với manager nữa
-            Log.d("msg", "vendor login");
+        } else if(accessCook)  {
+            Intent intent = new Intent(this, PopSuccessActivity.class);
+            intent.putExtra("role", "cook");
+            startActivity(intent);
+        } else if(accessVendor){
             Intent intent = new Intent(this, PopSuccessActivity.class);
             intent.putExtra("role", "vendor");
+            startActivity(intent);
+        } else if(accessManager){
+            Intent intent = new Intent(this, PopSuccessActivity.class);
+            intent.putExtra("role", "manager");
             startActivity(intent);
         } else {
             TextView message = (TextView)findViewById(R.id.message);

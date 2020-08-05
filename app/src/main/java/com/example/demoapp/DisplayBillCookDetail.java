@@ -120,4 +120,6 @@ public class DisplayBillCookDetail extends AppCompatActivity {
             displayCompletedBillCook();
         }
     }
+
+    public void backToPrevious(View v){finish();}
 }
