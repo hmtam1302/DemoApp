@@ -61,15 +61,17 @@ public class DisplayVendor extends AppCompatActivity {
             DisplayCart.billManager.setBillList(prepareBillList);
             DisplayCart.billManager.setCompletedBillList(completedBillList);
         }
-
-
-        displayStat();
+        if(getIntent().getStringExtra("cmd").equals("foodsetting")){
+            displayVendorSettings();
+        } else{
+            displayStat();
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayStat(){
         Transition slide = new Slide(Gravity.RIGHT);
-        statisticScene.enter();
+        TransitionManager.go(statisticScene, slide);
 
         //Set navigation bar
         ImageButton statBtn = (ImageButton) findViewById(R.id.vendor_stat_btn);
@@ -79,13 +81,6 @@ public class DisplayVendor extends AppCompatActivity {
 
         ListView listView = (ListView)findViewById(R.id.vendor_completedBillList);
         listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getCompletedBillList()));
-        // When the user clicks on the ListItem
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                //displayReport(v);
-            }
-        });
 
         //Calculate total revenue
         int revenue = 0;
@@ -150,6 +145,35 @@ public class DisplayVendor extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayVendorSettings(View v){
+        Transition slide = new Slide(Gravity.RIGHT);
+        TransitionManager.go(settingScene, slide);
+
+        //Set title
+        TextView title = (TextView) findViewById(R.id.title);
+        title.setText("Settings");
+        //Set navigation bar
+        ImageButton statBtn = (ImageButton) findViewById(R.id.vendor_stat_btn);
+        statBtn.setImageDrawable(getResources().getDrawable(R.drawable.statistic));
+        ImageButton settingButton = (ImageButton) findViewById(R.id.vendor_setting_btn);
+        settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings_pressed));
+        ImageButton infoButton = (ImageButton) findViewById(R.id.vendor_info_btn);
+        infoButton.setImageDrawable(getResources().getDrawable(R.drawable.account_btn));
+
+        //Display food for settings
+        ListView listView = (ListView) findViewById(R.id.list_food);
+
+        listView.setAdapter(new CustomListFoodAdapter(this, listFood));
+        // When the user clicks on the ListItem
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+                displayFoodSettings(v);
+            }
+        });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void displayVendorSettings(){
         Transition slide = new Slide(Gravity.RIGHT);
         TransitionManager.go(settingScene, slide);
 

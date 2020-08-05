@@ -91,8 +91,13 @@ public class DisplayFoodSetting extends AppCompatActivity {
         RadioButton enableBtn = (RadioButton) findViewById(R.id.radioEnable);
         if (enableBtn.isChecked()) selectedFood.setEnable("enable");
         else selectedFood.setEnable("disable");
-
-        Intent intent = new Intent(this, DisplayCook.class);
+        Intent intent = null;
+        if(DisplayLogin.currentUser.getRole().equals("cook")){
+            intent = new Intent(this, DisplayCook.class);
+        }
+        else{
+            intent = new Intent(this, DisplayVendor.class);
+        }
         intent.putExtra("cmd", "foodsetting");
         startActivity(intent);
     }

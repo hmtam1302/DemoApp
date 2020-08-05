@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="690dp"
+        android:id="@+id/managerContainer"/>
+    <!--Navigation bar-->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TableRow>
+            <ImageButton
+                android:id="@+id/manager_stat_btn"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/statistic_pressed"
+                android:onClick="displayManagerStat"/>
+
+            <ImageButton
+                android:id="@+id/manager_setting_btn"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:onClick="displayManagerSettings"
+                android:scaleType="fitCenter"
+                android:src="@drawable/settings" />
+            <ImageButton
+                android:id="@+id/manager_info_btn"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:onClick="displayInfo"
+                android:scaleType="fitCenter"
+                android:src="@drawable/account_btn" />
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>

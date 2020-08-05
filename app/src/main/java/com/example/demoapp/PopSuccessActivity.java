@@ -3,7 +3,6 @@ package com.example.demoapp;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.hardware.display.DisplayManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -51,8 +50,11 @@ public class PopSuccessActivity extends Activity {
                 intent = new Intent(this, DisplayManager.class);
             }
         } else if(cmd != null){
-            if(cmd.equals("report")){
+            if(cmd.equals("reportStall")){
                 intent = new Intent(this, DisplayVendor.class);
+            }
+            else{
+                intent = new Intent(this, DisplayManager.class);
             }
         }
         else{

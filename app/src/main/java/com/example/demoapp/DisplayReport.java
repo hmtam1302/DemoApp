@@ -31,6 +31,8 @@ public class DisplayReport extends AppCompatActivity {
 
     private Scene reportScene;
 
+    private int role = 0;
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +47,21 @@ public class DisplayReport extends AppCompatActivity {
         //Set main content view
         setContentView(R.layout.activity_main);
         ViewGroup root = findViewById(R.id.mainContainer);
+        String cmd = getIntent().getStringExtra("cmd");
+        if(cmd == null){
+            role = 0;
+            reportScene = Scene.getSceneForLayout(root, R.layout.report_stall, this);
+            displayReportStall();
+        } else {
+            role = 1;
+            reportScene = Scene.getSceneForLayout(root, R.layout.report_system, this);
+            displayReportManager();
+        }
 
-        reportScene = Scene.getSceneForLayout(root, R.layout.report_stall, this);
 
-        displayReport();
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void displayReport(){
+    private void displayReportStall(){
         Transition slide = new Slide(Gravity.RIGHT);
         TransitionManager.go(reportScene, slide);
 
@@ -78,6 +88,34 @@ public class DisplayReport extends AppCompatActivity {
         revenueView.setText(getIntent().getStringExtra("revenue"));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void displayReportManager(){
+        Transition slide = new Slide(Gravity.RIGHT);
+        TransitionManager.go(reportScene, slide);
+
+        TextView numStallView = (TextView) findViewById(R.id.manager_num_stall);
+        TextView dateView = (TextView) findViewById(R.id.manager_date);
+        TextView numOrderView = (TextView) findViewById(R.id.manager_num_order);
+        TextView revenueView = (TextView) findViewById(R.id.manager_total_revenue);
+
+        //Set value
+        numStallView.setText(String.valueOf(MainActivity.resList.size()));
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        dateView.setText(formatter.format(date)); //Set date
+
+        //Set numOrder
+        int numOrder = 0;
+        for(int i = 0; i < MainActivity.orderList.size(); i++){
+            if (MainActivity.orderList.get(i).getStatus().equals("completed")) numOrder++;
+        }
+        numOrderView.setText(String.valueOf(numOrder));
+
+        //Set total revenue
+        revenueView.setText(getIntent().getStringExtra("revenue"));
+    }
+
     // Find Image ID corresponding to the name of the image (in the directory mipmap).
     public int getMipmapResIdByName(String resName)  {
         String pkgName = this.getPackageName();
@@ -96,7 +134,12 @@ public class DisplayReport extends AppCompatActivity {
 
     public void printReport(View v){
         Intent intent = new Intent(this, PopSuccessActivity.class);
-        intent.putExtra("cmd", "report");
+        if(role == 0){
+            intent.putExtra("cmd", "reportStall");
+        }
+        else {
+            intent.putExtra("cmd", "reportManager");
+        }
         startActivity(intent);
     }
 
