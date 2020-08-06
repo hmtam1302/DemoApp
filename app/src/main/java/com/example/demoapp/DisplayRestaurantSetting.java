@@ -63,11 +63,6 @@ public class DisplayRestaurantSetting extends AppCompatActivity {
         EditText ratingEdt = (EditText) findViewById(R.id.edt_res_ratings);
         ratingEdt.setText(selectedRes.getRating());
 
-        RadioButton enableBtn = (RadioButton) findViewById(R.id.radioEnable);
-        RadioButton disableBtn = (RadioButton) findViewById(R.id.radioDisable);
-        //Uncommet these when add enable field for restaurant
-        //if(selectedRes.getEnable().equals("enable")) enableBtn.setChecked(true);
-        //else disableBtn.setChecked(true);
     }
 
     public int getMipmapResIdByName(String logo)  {

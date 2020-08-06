@@ -83,26 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="180dp">
-
-                <RadioButton
-                    android:id="@+id/radioEnable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Enable"
-                    android:buttonTint="#040087"
-                    android:textColor="#040087"
-                    android:textSize="20sp" />
-
-                <RadioButton
-                    android:id="@+id/radioDisable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="#040087"
-                    android:text="Disable"
-                    android:textSize="20sp"
-                    android:textColor="#040087"/>
-            </RadioGroup>
+                android:layout_marginTop="180dp"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"

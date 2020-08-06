@@ -44,7 +44,7 @@ public class DisplayInfomation extends AppCompatActivity {
     private Customer customer = null;
     private int ID = -1;
     ArrayList<Customer> cusList = new ArrayList<>();
-    String urlUpdateData = "http://172.17.19.69:8080/androidwebservice/update.php";
+    String urlUpdateData = "http://192.168.1.8:8080/androidwebservice/update.php";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -70,8 +70,8 @@ public class DisplayInfomation extends AppCompatActivity {
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayInfo(){
-        Transition explode = new Explode();
-        TransitionManager.go(informationScene, explode);
+        Transition slide = new Slide(Gravity.RIGHT);
+        TransitionManager.go(informationScene, slide);
 
         //Set up gender spinner
         genderSpinner = (Spinner) findViewById(R.id.genderSpinner);

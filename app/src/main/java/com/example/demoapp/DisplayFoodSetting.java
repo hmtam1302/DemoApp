@@ -64,10 +64,6 @@ public class DisplayFoodSetting extends AppCompatActivity {
         priceEdt.setText(selectedFood.getPrice());
         EditText quantityEdt = (EditText) findViewById(R.id.edt_foodsettings_quantity);
         quantityEdt.setText(Integer.toString(selectedFood.getQuantity()));
-        RadioButton enableBtn = (RadioButton) findViewById(R.id.radioEnable);
-        RadioButton disableBtn = (RadioButton) findViewById(R.id.radioDisable);
-        if(selectedFood.getEnable().equals("enable")) enableBtn.setChecked(true);
-        else disableBtn.setChecked(true);
     }
 
     public int getMipmapResIdByName(String logo)  {
@@ -88,9 +84,6 @@ public class DisplayFoodSetting extends AppCompatActivity {
         EditText quantityEdt = (EditText) findViewById(R.id.edt_foodsettings_quantity);
         selectedFood.setQuantity(Integer.valueOf(quantityEdt.getText().toString()));
 
-        RadioButton enableBtn = (RadioButton) findViewById(R.id.radioEnable);
-        if (enableBtn.isChecked()) selectedFood.setEnable("enable");
-        else selectedFood.setEnable("disable");
         Intent intent = null;
         if(DisplayLogin.currentUser.getRole().equals("cook")){
             intent = new Intent(this, DisplayCook.class);

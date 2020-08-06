@@ -28,19 +28,11 @@
         <ListView
             android:id="@+id/list_food"
             android:layout_width="400dp"
-            android:layout_height="500dp"
-            android:layout_marginTop="70dp"
+            android:layout_height="600dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="5dp"
             android:background="#FFFFFF" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="italic"
-            android:text="+ Add new foods"
-            android:textColor="#040087"
-            android:textSize="20sp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="580dp"/>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

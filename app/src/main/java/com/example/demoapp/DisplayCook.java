@@ -35,9 +35,8 @@ public class DisplayCook extends AppCompatActivity {
     private static int resID = DisplayLogin.currentUser.getRestaurantID();   //Get current restaurant of the cook
     private ArrayList<Food> listFood;
 
-    private static ArrayList<Bill> prepareBillList = new ArrayList<>();
-    private static ArrayList<Bill> completedBillList = new ArrayList<>();
-    private static int count = 0;
+    private static ArrayList<Bill> prepareBillList;
+    private static ArrayList<Bill> completedBillList;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -59,12 +58,15 @@ public class DisplayCook extends AppCompatActivity {
         settingScene = Scene.getSceneForLayout(root, R.layout.setting, this);
 
         //Set up prepateBillList and completedBillList
-        if(count == 0){
-            getBillList();
-            getFoodList();
-            DisplayCart.billManager.setBillList(prepareBillList);
-            DisplayCart.billManager.setCompletedBillList(completedBillList);
-        }
+        prepareBillList = new ArrayList<>();
+        completedBillList = new ArrayList<>();
+        getBillList();
+        getFoodList();
+        prepareBillList.addAll(DisplayCart.billManager.getBillList());
+        completedBillList.addAll(DisplayCart.billManager.getCompletedBillList());
+        DisplayCart.billManager.setBillList(prepareBillList);
+        DisplayCart.billManager.setCompletedBillList(completedBillList);
+
 
         String cmd = getIntent().getStringExtra("cmd");
         if (cmd != null) {
@@ -106,7 +108,6 @@ public class DisplayCook extends AppCompatActivity {
                 completedBillList.add(bill);
             }
         }
-        count++;
     }
 
     public void getFoodList(){
@@ -234,6 +235,9 @@ public class DisplayCook extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayBillCook(View v){
+        Transition slide = new Slide(Gravity.RIGHT);
+        TransitionManager.go(billCookScene, slide);
+
         //Set navigation bar
         TextView title = (TextView) findViewById(R.id.title);
         title.setText("Waiting Bill");
@@ -261,6 +265,9 @@ public class DisplayCook extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayCompletedBill(View v){
+        Transition slide = new Slide(Gravity.RIGHT);
+        TransitionManager.go(billCookScene, slide);
+
         //Set title
         TextView title = (TextView) findViewById(R.id.title);
         title.setText("Completed Bill");
