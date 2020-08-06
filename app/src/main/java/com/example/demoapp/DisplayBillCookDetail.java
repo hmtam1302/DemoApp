@@ -128,6 +128,7 @@ public class DisplayBillCookDetail extends AppCompatActivity {
                 Log.d("check ID", MainActivity.orderList.get(i).getID()+"");
                 if(MainActivity.orderList.get(i).getID() == ID) {
                     update(urlUpdateData, ID, "being_prepared");
+                    MainActivity.orderList.get(i).setStatus("being_prepared");
                 }
             }
             displayBillCook();
@@ -141,6 +142,7 @@ public class DisplayBillCookDetail extends AppCompatActivity {
                 Log.d("check ID", MainActivity.orderList.get(i).getID()+"");
                 if(MainActivity.orderList.get(i).getID() == ID) {
                     update(urlUpdateData, ID, "finished");
+                    MainActivity.orderList.get(i).setStatus("finished");
                 }
             }
 
