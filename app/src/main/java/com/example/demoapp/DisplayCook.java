@@ -78,22 +78,23 @@ public class DisplayCook extends AppCompatActivity {
     }
 
     private void getBillList(){
-        ArrayList<BillItem> orderList = DisplayLogin.orderList;
-        while(orderList.size() != 0){
+        ArrayList<BillItem> tempList = new ArrayList<>();
+        tempList.addAll(MainActivity.orderList);
+        while(tempList.size() != 0){
             Bill bill = new Bill();
-            bill.addNewItem(orderList.get(0));      //Add the first element in the orderList
-            String status = orderList.get(0).getStatus();
-            int id = orderList.get(0).getID();
+            bill.addNewItem(tempList.get(0));      //Add the first element in the orderList
+            String status = tempList.get(0).getStatus();
+            int id = tempList.get(0).getID();
             bill.setStatus(status);
             bill.setBillID(Integer.toString(id));
-            orderList.remove(0);            //then remove it and set the status of the bill
+            tempList.remove(0);            //then remove it and set the status of the bill
 
             //Add bill item with the same ID
             int i = 0;
-            while(i < orderList.size()){
-                if(orderList.get(i).getID() == id){
-                    bill.addNewItem(orderList.get(i));
-                    orderList.remove(i);
+            while(i < tempList.size()){
+                if(tempList.get(i).getID() == id){
+                    bill.addNewItem(tempList.get(i));
+                    tempList.remove(i);
                     i--;
                 }
                 i++;
@@ -101,7 +102,7 @@ public class DisplayCook extends AppCompatActivity {
 
             //Add bill to prepareBillList or completedBillList
             bill.calcTotalPrice();  //Calculate total price of bill
-            if(!status.equals("completed")){
+            if(!status.equals("finished")){
                 prepareBillList.add(bill);
             }
             else{

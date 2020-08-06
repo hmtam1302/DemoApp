@@ -10,6 +10,7 @@ import android.transition.Scene;
 import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
@@ -22,11 +23,24 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.demoapp.Data.Customer;
 import com.example.demoapp.Data.Food;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DisplayFoodSetting extends AppCompatActivity {
     private Food selectedFood;
     private Scene foodSettingScene;
+    String urlUpdateData = "http://192.168.0.101/androidwebservice/food/updateMan.php";
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +98,9 @@ public class DisplayFoodSetting extends AppCompatActivity {
         EditText quantityEdt = (EditText) findViewById(R.id.edt_foodsettings_quantity);
         selectedFood.setQuantity(Integer.valueOf(quantityEdt.getText().toString()));
 
+        //Update database
+        update(urlUpdateData, selectedFood.getID(), nameEdt.getText().toString(), priceEdt.getText().toString(), quantityEdt.getText().toString());
+
         Intent intent = null;
         if(DisplayLogin.currentUser.getRole().equals("cook")){
             intent = new Intent(this, DisplayCook.class);
@@ -93,6 +110,8 @@ public class DisplayFoodSetting extends AppCompatActivity {
         }
         intent.putExtra("cmd", "foodsetting");
         startActivity(intent);
+
+
     }
 
     public void discardChange(View v){
@@ -103,5 +122,38 @@ public class DisplayFoodSetting extends AppCompatActivity {
 
     public void backToPrevious(View v){
         discardChange(v);
+    }
+
+    private void update(String url, final int foodID, final String nameChange, final String priceChange, final String qualityChange) {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.trim().equals("success")) {
+                            Log.d("msg", "Update food successful");
+                        } else {
+                            Log.d("msg", "Update food fail");
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("msg", "Fault in database/link. "+error.toString());
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("idFood",String.valueOf(foodID));
+                params.put("nameFood", nameChange);
+                params.put("quantityFood", qualityChange);
+                params.put("priceFood", priceChange);
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
     }
 }

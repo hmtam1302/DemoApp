@@ -44,10 +44,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    String urlGetDataCustomer = "http://192.168.1.8:8080/androidwebservice/customer/getData.php";
-    String urlGetDataRestaurant = "http://192.168.1.8:8080/androidwebservice/restaurant/getData.php";
-    String urlGetDataFood = "http://192.168.1.8:8080/androidwebservice/food/getData.php";
-    String urlGetDataOrder = "http://192.168.1.8:8080/androidwebservice/order/getData.php";
+    String urlGetDataCustomer = "http://192.168.0.101/androidwebservice/customer/getData.php";
+    String urlGetDataRestaurant = "http://192.168.0.101/androidwebservice/restaurant/getData.php";
+    String urlGetDataFood = "http://192.168.0.101/androidwebservice/food/getData.php";
+    String urlGetDataOrder = "http://192.168.0.101/androidwebservice/order/getData.php";
     public static ArrayList<Customer> cusList = new ArrayList<>();
     public static ArrayList<Restaurant> resList = new ArrayList<>();
     public static ArrayList<Food> foodList = new ArrayList<>();

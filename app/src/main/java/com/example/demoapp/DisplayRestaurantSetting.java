@@ -10,6 +10,7 @@ import android.transition.Scene;
 import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +20,24 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.demoapp.Data.Food;
 import com.example.demoapp.Data.Restaurant;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DisplayRestaurantSetting extends AppCompatActivity {
     private Restaurant selectedRes;
     private Scene resSettingScene;
+    String urlUpdateData = "http://192.168.0.101/androidwebservice/restaurant/update.php";
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +96,9 @@ public class DisplayRestaurantSetting extends AppCompatActivity {
         EditText descriptionEdt = (EditText) findViewById(R.id.edt_res_discription);
         selectedRes.setDescription(descriptionEdt.getText().toString());
 
+        // Update database
+        update(urlUpdateData, selectedRes.getID(), selectedRes.getName(), selectedRes.getRating(), selectedRes.getDescription());
+
         //Uncomment these when add enable field for restaurant
         /*RadioButton enableBtn = (RadioButton) findViewById(R.id.radioEnable);
         if (enableBtn.isChecked()) selectedRes.setEnable("enable");
@@ -101,5 +117,39 @@ public class DisplayRestaurantSetting extends AppCompatActivity {
 
     public void backToPrevious(View v){
         discardChange(v);
+    }
+
+    private void update(String url, final int resID, final String name, final String rating, final String description) {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.trim().equals("success")) {
+                            Log.d("msg", "Update restaurant successful");
+                        } else {
+                            Log.d("msg", "Update restaurant fail");
+                            Log.d("msg", response);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("msg", "Fault in database/link. "+error.toString());
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("idRes", String.valueOf(resID));
+                params.put("nameRestaurant", name);
+                params.put("ratingRestaurant", rating);
+                params.put("descriptionRestaurant", description);
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
     }
 }

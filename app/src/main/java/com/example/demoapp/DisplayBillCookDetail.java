@@ -10,6 +10,7 @@ import android.transition.Scene;
 import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +21,23 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class DisplayBillCookDetail extends AppCompatActivity {
 
     private Scene billCookDetailScene;
     private String selectedID;
+    String urlUpdateData = "http://192.168.0.101/androidwebservice/order/update.php";
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -104,13 +118,31 @@ public class DisplayBillCookDetail extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void commandBill(View v){
         Bill bill = DisplayCart.billManager.getBillByID(selectedID);
-
         if(bill.getStatus().equals("unconfirmed")){
             bill.setStatus("being_prepared");
+
+            //Update database
+            int ID = Integer.valueOf(selectedID);
+            Log.d("check", MainActivity.orderList.size()+"");
+            for(int i = 0; i < MainActivity.orderList.size(); i++) {
+                Log.d("check ID", MainActivity.orderList.get(i).getID()+"");
+                if(MainActivity.orderList.get(i).getID() == ID) {
+                    update(urlUpdateData, ID, "being_prepared");
+                }
+            }
             displayBillCook();
         }
         else if (bill.getStatus().equals("being_prepared")){
             bill.setStatus("finished");
+
+            // Update database
+            int ID = Integer.valueOf(selectedID);
+            for(int i = 0; i < MainActivity.orderList.size(); i++) {
+                Log.d("check ID", MainActivity.orderList.get(i).getID()+"");
+                if(MainActivity.orderList.get(i).getID() == ID) {
+                    update(urlUpdateData, ID, "finished");
+                }
+            }
 
             //Send the bill to the end of Bill List
             DisplayCart.billManager.addToCompletedBillList(selectedID);
@@ -122,4 +154,36 @@ public class DisplayBillCookDetail extends AppCompatActivity {
     }
 
     public void backToPrevious(View v){finish();}
+
+    private void update(String url, final int orderID, final String status) {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.trim().equals("success")) {
+                            Log.d("msg", "Update order's status successful");
+                        } else {
+                            Log.d("msg", "Update order's status fail");
+                            Log.d("msg", response);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("msg", "Fault in database/link. "+error.toString());
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("OrderID", String.valueOf(orderID));
+                params.put("Status", status);
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
 }
