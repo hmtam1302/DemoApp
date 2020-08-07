@@ -36,7 +36,7 @@ import java.util.Map;
 public class DisplayRestaurantSetting extends AppCompatActivity {
     private Restaurant selectedRes;
     private Scene resSettingScene;
-    String urlUpdateData = "http://192.168.0.101/androidwebservice/restaurant/update.php";
+    String urlUpdateData = "http://172.17.23.72:8080/androidwebservice/restaurant/update.php";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override

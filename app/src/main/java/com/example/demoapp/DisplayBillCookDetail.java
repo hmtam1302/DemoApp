@@ -36,7 +36,7 @@ public class DisplayBillCookDetail extends AppCompatActivity {
 
     private Scene billCookDetailScene;
     private String selectedID;
-    String urlUpdateData = "http://192.168.0.101/androidwebservice/order/update.php";
+    String urlUpdateData = "http://172.17.23.72:8080/androidwebservice/order/update.php";
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -134,15 +134,15 @@ public class DisplayBillCookDetail extends AppCompatActivity {
             displayBillCook();
         }
         else if (bill.getStatus().equals("being_prepared")){
-            bill.setStatus("finished");
+            bill.setStatus("completed");
 
             // Update database
             int ID = Integer.valueOf(selectedID);
             for(int i = 0; i < MainActivity.orderList.size(); i++) {
                 Log.d("check ID", MainActivity.orderList.get(i).getID()+"");
                 if(MainActivity.orderList.get(i).getID() == ID) {
-                    update(urlUpdateData, ID, "finished");
-                    MainActivity.orderList.get(i).setStatus("finished");
+                    update(urlUpdateData, ID, "completed");
+                    MainActivity.orderList.get(i).setStatus("completed");
                 }
             }
 

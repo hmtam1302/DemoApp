@@ -39,7 +39,7 @@ import java.util.Map;
 public class DisplayFoodSetting extends AppCompatActivity {
     private Food selectedFood;
     private Scene foodSettingScene;
-    String urlUpdateData = "http://192.168.0.101/androidwebservice/food/updateMan.php";
+    String urlUpdateData = "http://172.17.23.72:8080/androidwebservice/food/updateMan.php";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override

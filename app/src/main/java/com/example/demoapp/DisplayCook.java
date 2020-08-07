@@ -31,8 +31,8 @@ public class DisplayCook extends AppCompatActivity {
     private Scene billCookDetailScene;
     private Scene settingScene;
 
-    private static String selectedID;
-    private static int resID = DisplayLogin.currentUser.getRestaurantID();   //Get current restaurant of the cook
+    private String selectedID;
+    private int resID = DisplayLogin.currentUser.getRestaurantID();   //Get current restaurant of the cook
     private ArrayList<Food> listFood;
 
     private static ArrayList<Bill> prepareBillList;
@@ -62,8 +62,6 @@ public class DisplayCook extends AppCompatActivity {
         completedBillList = new ArrayList<>();
         getBillList();
         getFoodList();
-        prepareBillList.addAll(DisplayCart.billManager.getBillList());
-        completedBillList.addAll(DisplayCart.billManager.getCompletedBillList());
         DisplayCart.billManager.setBillList(prepareBillList);
         DisplayCart.billManager.setCompletedBillList(completedBillList);
 
@@ -102,7 +100,7 @@ public class DisplayCook extends AppCompatActivity {
 
             //Add bill to prepareBillList or completedBillList
             bill.calcTotalPrice();  //Calculate total price of bill
-            if(!status.equals("finished")){
+            if(!status.equals("completed")){
                 prepareBillList.add(bill);
             }
             else{
