@@ -61,8 +61,8 @@ public class DisplayRestaurantSetting extends AppCompatActivity {
         TransitionManager.go(resSettingScene, slide);
 
         selectedRes = null;
-        for(int i = 0; i < MainActivity.resList.size(); i++){
-            selectedRes = MainActivity.resList.get(i);
+        for(int i = 0; i < DisplayLogin.resList.size(); i++){
+            selectedRes = DisplayLogin.resList.get(i);
             if(resName.equals(selectedRes.getName())) break;
         }
 

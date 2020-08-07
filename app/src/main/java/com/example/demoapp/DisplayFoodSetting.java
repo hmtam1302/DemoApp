@@ -64,8 +64,8 @@ public class DisplayFoodSetting extends AppCompatActivity {
         TransitionManager.go(foodSettingScene, slide);
 
         selectedFood = null;
-        for(int i = 0; i < MainActivity.foodList.size(); i++){
-            selectedFood = MainActivity.foodList.get(i);
+        for(int i = 0; i < DisplayLogin.foodList.size(); i++){
+            selectedFood = DisplayLogin.foodList.get(i);
             if(foodName.equals(selectedFood.getName())) break;
         }
 

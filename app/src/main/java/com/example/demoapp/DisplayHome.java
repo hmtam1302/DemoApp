@@ -38,9 +38,9 @@ public class DisplayHome extends AppCompatActivity {
     private String selectedRestaurant = null;
     private Scene homeScene;
     private Scene foodScene;
-    public static ArrayList<Restaurant> resList = MainActivity.resList;
-    public static ArrayList<Food> foodList = MainActivity.foodList;
-    public static ArrayList<BillItem> orderList = MainActivity.orderList;
+    public static ArrayList<Restaurant> resList = DisplayLogin.resList;
+    public static ArrayList<Food> foodList = DisplayLogin.foodList;
+    public static ArrayList<BillItem> orderList = DisplayLogin.orderList;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override

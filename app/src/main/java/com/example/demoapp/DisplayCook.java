@@ -79,7 +79,7 @@ public class DisplayCook extends AppCompatActivity {
 
     private void getBillList() {
         ArrayList<BillItem> tempList = new ArrayList<>();
-        tempList.addAll(MainActivity.orderList);
+        tempList.addAll(DisplayLogin.orderList);
         int countItem = 0;
         int countBill = 0;
         while (tempList.size() != 0) {
@@ -119,8 +119,8 @@ public class DisplayCook extends AppCompatActivity {
     public void getFoodList(){
         //Get the food list of the restaurant
        listFood = new ArrayList<>();
-        for(int i = 0; i < MainActivity.foodList.size(); i++){
-            Food food = MainActivity.foodList.get(i);
+        for(int i = 0; i < DisplayLogin.foodList.size(); i++){
+            Food food = DisplayLogin.foodList.get(i);
             if(food.getRes_ID() == resID) listFood.add(food);
         }
     }

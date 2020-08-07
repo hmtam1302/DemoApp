@@ -70,8 +70,8 @@ public class DisplayManager extends AppCompatActivity {
         listView.setAdapter(new CustomListRestaurantManagerAdapter(this, DisplayLogin.resList));
 
         //Get total revenue
-        for(int i = 0; i < MainActivity.orderList.size(); i++){
-            BillItem item = MainActivity.orderList.get(i);
+        for(int i = 0; i < DisplayLogin.orderList.size(); i++){
+            BillItem item = DisplayLogin.orderList.get(i);
             if (item.getStatus().equals("completed")) revenue += Float.valueOf(item.getPrice());
         }
         TextView revenueTxt = (TextView) findViewById(R.id.manager_revenue);
@@ -103,7 +103,7 @@ public class DisplayManager extends AppCompatActivity {
         //Display food for settings
         ListView listView = (ListView) findViewById(R.id.list_restaurant);
 
-        listView.setAdapter(new CustomListRestaurantAdapter(this, MainActivity.resList));
+        listView.setAdapter(new CustomListRestaurantAdapter(this, DisplayLogin.resList));
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -131,7 +131,7 @@ public class DisplayManager extends AppCompatActivity {
         //Display food for settings
         ListView listView = (ListView) findViewById(R.id.list_restaurant);
 
-        listView.setAdapter(new CustomListRestaurantAdapter(this, MainActivity.resList));
+        listView.setAdapter(new CustomListRestaurantAdapter(this, DisplayLogin.resList));
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

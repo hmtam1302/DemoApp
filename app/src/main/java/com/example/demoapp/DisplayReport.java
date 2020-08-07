@@ -99,7 +99,7 @@ public class DisplayReport extends AppCompatActivity {
         TextView revenueView = (TextView) findViewById(R.id.manager_total_revenue);
 
         //Set value
-        numStallView.setText(String.valueOf(MainActivity.resList.size()));
+        numStallView.setText(String.valueOf(DisplayLogin.resList.size()));
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
@@ -107,8 +107,8 @@ public class DisplayReport extends AppCompatActivity {
 
         //Set numOrder
         int numOrder = 0;
-        for(int i = 0; i < MainActivity.orderList.size(); i++){
-            if (MainActivity.orderList.get(i).getStatus().equals("completed")) numOrder++;
+        for(int i = 0; i < DisplayLogin.orderList.size(); i++){
+            if (DisplayLogin.orderList.get(i).getStatus().equals("completed")) numOrder++;
         }
         numOrderView.setText(String.valueOf(numOrder));
 

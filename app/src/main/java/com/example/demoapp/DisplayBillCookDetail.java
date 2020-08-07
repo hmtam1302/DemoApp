@@ -123,12 +123,12 @@ public class DisplayBillCookDetail extends AppCompatActivity {
 
             //Update database
             int ID = Integer.valueOf(selectedID);
-            Log.d("check", MainActivity.orderList.size()+"");
-            for(int i = 0; i < MainActivity.orderList.size(); i++) {
-                Log.d("check ID", MainActivity.orderList.get(i).getID()+"");
-                if(MainActivity.orderList.get(i).getID() == ID) {
+            Log.d("check", DisplayLogin.orderList.size()+"");
+            for(int i = 0; i < DisplayLogin.orderList.size(); i++) {
+                Log.d("check ID", DisplayLogin.orderList.get(i).getID()+"");
+                if(DisplayLogin.orderList.get(i).getID() == ID) {
                     update(urlUpdateData, ID, "being_prepared");
-                    MainActivity.orderList.get(i).setStatus("being_prepared");
+                    DisplayLogin.orderList.get(i).setStatus("being_prepared");
                 }
             }
             displayBillCook();
@@ -138,11 +138,11 @@ public class DisplayBillCookDetail extends AppCompatActivity {
 
             // Update database
             int ID = Integer.valueOf(selectedID);
-            for(int i = 0; i < MainActivity.orderList.size(); i++) {
-                Log.d("check ID", MainActivity.orderList.get(i).getID()+"");
-                if(MainActivity.orderList.get(i).getID() == ID) {
+            for(int i = 0; i < DisplayLogin.orderList.size(); i++) {
+                Log.d("check ID", DisplayLogin.orderList.get(i).getID()+"");
+                if(DisplayLogin.orderList.get(i).getID() == ID) {
                     update(urlUpdateData, ID, "completed");
-                    MainActivity.orderList.get(i).setStatus("completed");
+                    DisplayLogin.orderList.get(i).setStatus("completed");
                 }
             }
 

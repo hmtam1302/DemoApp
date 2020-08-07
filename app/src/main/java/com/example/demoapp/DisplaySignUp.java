@@ -45,10 +45,10 @@ public class DisplaySignUp extends AppCompatActivity {
     private Scene signupScene = null;
 
     String urlInsertData = "http://172.17.23.72:8080/androidwebservice/customer/insert.php";
-    public static ArrayList<Customer> cusList = MainActivity.cusList;
-    public static ArrayList<Restaurant> resList = MainActivity.resList;
-    public static ArrayList<Food> foodList = MainActivity.foodList;
-    public static ArrayList<BillItem> orderList = MainActivity.orderList;
+    public static ArrayList<Customer> cusList = DisplayLogin.cusList;
+    public static ArrayList<Restaurant> resList = DisplayLogin.resList;
+    public static ArrayList<Food> foodList = DisplayLogin.foodList;
+    public static ArrayList<BillItem> orderList = DisplayLogin.orderList;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
