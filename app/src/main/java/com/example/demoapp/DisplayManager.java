@@ -59,7 +59,7 @@ public class DisplayManager extends AppCompatActivity {
     public void displayStat(){
         Transition slide = new Slide(Gravity.RIGHT);
         TransitionManager.go(statScene, slide);
-
+        revenue = 0;
         //Set navigation bar
         ImageButton statBtn = (ImageButton) findViewById(R.id.manager_stat_btn);
         statBtn.setImageDrawable(getResources().getDrawable(R.drawable.statistic_pressed));
@@ -75,13 +75,13 @@ public class DisplayManager extends AppCompatActivity {
             if (item.getStatus().equals("completed")) revenue += Float.valueOf(item.getPrice());
         }
         TextView revenueTxt = (TextView) findViewById(R.id.manager_revenue);
-        revenueTxt.setText(String.valueOf(revenue) + "000 VNĐ");
+        revenueTxt.setText(String.valueOf(revenue) + "VNĐ");
     }
 
     public void displayManagerReport(View v){
         Intent intent = new Intent(this, DisplayReport.class);
         intent.putExtra("cmd", "mamanger");
-        intent.putExtra("revenue", String.valueOf(revenue) + "000 VNĐ");
+        intent.putExtra("revenue", String.valueOf(revenue) + "VNĐ");
         startActivity(intent);
     }
 
@@ -156,5 +156,10 @@ public class DisplayManager extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayManagerStat(View v){
         displayStat();
+    }
+
+    public void backToPrevious(View v){
+        Intent intent = new Intent(this, PopLogout.class);
+        startActivity(intent);
     }
 }

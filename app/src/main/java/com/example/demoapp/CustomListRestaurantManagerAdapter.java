@@ -88,7 +88,7 @@ public class CustomListRestaurantManagerAdapter extends BaseAdapter {
         }
         String res = "Revenue: ";
         if (revenue == 0) res += "0 VNĐ";
-        else res += String.valueOf(revenue) + "000 VNĐ";
+        else res += String.valueOf(revenue) + "VNĐ";
         return res;
     }
 }

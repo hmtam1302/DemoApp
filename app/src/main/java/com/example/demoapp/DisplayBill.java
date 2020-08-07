@@ -27,8 +27,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -84,6 +86,11 @@ public class DisplayBill extends AppCompatActivity {
 
         //Set bill status
         bill.setStatus("unconfirmed");
+
+        //Set bill delivery time
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MINUTE, 10 + DisplayCart.billManager.getBillList().size()*1);
+        String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm").format(calendar.getTime());
 
         //Add new bill to database
         DisplayCart.billManager.addNewBill(bill);

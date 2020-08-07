@@ -47,7 +47,7 @@ public class Bill {
             float itemPrice = Float.parseFloat(billItemList.get(i).getPrice()) * Integer.valueOf(billItemList.get(i).getQuantity());
             sum += itemPrice;
         }
-        totalPrice = String.valueOf(sum) + ".000";
+        totalPrice = String.valueOf(sum);
     }
 
     public void addNewItem(BillItem billItem){

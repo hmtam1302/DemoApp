@@ -91,41 +91,46 @@ public class DisplayVendor extends AppCompatActivity {
             revenue += Float.valueOf(bill.getTotalPrice());
         }
         TextView revenueTxt = (TextView) findViewById(R.id.vendor_revenue);
-        revenueTxt.setText(String.valueOf(revenue) + "000 VNĐ");
+        revenueTxt.setText(String.valueOf(revenue) + "VNĐ");
     }
 
-    private void getBillList(){
-        ArrayList<BillItem> orderList = DisplayLogin.orderList;
-        while(orderList.size() != 0){
+    private void getBillList() {
+        ArrayList<BillItem> tempList = new ArrayList<>();
+        tempList.addAll(MainActivity.orderList);
+        int countItem = 0;
+        int countBill = 0;
+        while (tempList.size() != 0) {
             Bill bill = new Bill();
-            bill.addNewItem(orderList.get(0));      //Add the first element in the orderList
-            String status = orderList.get(0).getStatus();
-            int id = orderList.get(0).getID();
-            bill.setStatus(status);
-            bill.setBillID(Integer.toString(id));
-            orderList.remove(0);            //then remove it and set the status of the bill
+            if (tempList.get(0).getRestaurantID() == resID) {
+                countBill++; countItem++;
+                bill.addNewItem(tempList.get(0));      //Add the first element in the orderList
+                String status = tempList.get(0).getStatus();
+                int id = tempList.get(0).getID();
+                bill.setStatus(status);
+                bill.setBillID(Integer.toString(id));
+                tempList.remove(0);            //then remove it and set the status of the bill
 
-            //Add bill item with the same ID
-            int i = 0;
-            while(i < orderList.size()){
-                if(orderList.get(i).getID() == id){
-                    bill.addNewItem(orderList.get(i));
-                    orderList.remove(i);
-                    i--;
+                //Add bill item with the same ID and restaurantID
+                int i = 0;
+                while (i < tempList.size()) {
+                    if (tempList.get(i).getID() == id) {
+                        countItem++;
+                        bill.addNewItem(tempList.get(i));
+                        tempList.remove(i);
+                        i--;
+                    }
+                    i++;
                 }
-                i++;
-            }
 
-            //Add bill to prepareBillList or completedBillList
-            bill.calcTotalPrice();  //Calculate total price of bill
-            if(!status.equals("completed")){
-                prepareBillList.add(bill);
-            }
-            else{
-                completedBillList.add(bill);
-            }
+                //Add bill to prepareBillList or completedBillList
+                bill.calcTotalPrice();  //Calculate total price of bill
+                if (!status.equals("completed")) {
+                    prepareBillList.add(bill);
+                } else {
+                    completedBillList.add(bill);
+                }
+            } else tempList.remove(0);
         }
-        count++;
     }
 
     public void getFoodList(){
