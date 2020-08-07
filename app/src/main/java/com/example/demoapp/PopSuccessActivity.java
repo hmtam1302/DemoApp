@@ -62,6 +62,7 @@ public class PopSuccessActivity extends Activity {
         else{
             intent = new Intent(this, DisplayHome.class);
         }
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 }

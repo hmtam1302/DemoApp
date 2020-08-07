@@ -81,6 +81,7 @@ public class DisplayBill extends AppCompatActivity {
 
         bill.setBillID(dtf.format(now).toString());
 
+
         //Set bill status
         bill.setStatus("unconfirmed");
 

@@ -149,6 +149,7 @@ public class DisplayInfomation extends AppCompatActivity {
         email.setEnabled(false);
         phonenumber.setEnabled(false);
 
+
         // Get user input data
         String nameChanging = name.getText().toString();
         int genderChanging = gender.getSelectedItemPosition();

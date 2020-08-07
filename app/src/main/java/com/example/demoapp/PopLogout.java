@@ -40,7 +40,6 @@ public class PopLogout extends Activity {
         startActivity(intent);
     }
     public void cancleLogout(View view){
-        Intent intent = new Intent(this, DisplayHome.class);
-        startActivity(intent);
+        finish();
     }
 }

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="5dp"
-            android:text="Waiting Bill"
+            android:text="Completed Bill"
             android:textColor="#040087"
             android:textSize="30dp"
             android:textStyle="bold" />
@@ -67,7 +67,7 @@
         <!--List of restaurant-->
         <ListView
             android:layout_marginLeft="5dp"
-            android:id="@+id/bill_cook_List"
+            android:id="@+id/bill_completed_cook_List"
             android:layout_width="400dp"
             android:layout_height="535dp"
             android:layout_marginTop="100dp"

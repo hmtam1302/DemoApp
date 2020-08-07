@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DisplayRestaurantSetting"></activity>
+        <activity android:name=".DisplayBillCompleted"></activity>
+        <activity android:name=".DisplayRestaurantSetting" />
         <activity android:name=".DisplayManager" />
         <activity android:name=".DisplayReport" />
         <activity android:name=".DisplayVendor" />

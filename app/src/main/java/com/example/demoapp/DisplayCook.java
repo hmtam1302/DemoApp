@@ -23,12 +23,14 @@ import android.widget.TextView;
 
 import com.example.demoapp.Data.Food;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class DisplayCook extends AppCompatActivity {
     private Scene billCookScene;
-    private Scene billCookDetailScene;
+    private Scene billCompletedScene;
     private Scene settingScene;
 
     private String selectedID;
@@ -54,7 +56,7 @@ public class DisplayCook extends AppCompatActivity {
 
         ViewGroup root = findViewById(R.id.mainContainer);
         billCookScene = Scene.getSceneForLayout(root, R.layout.bill_cook, this);
-        billCookDetailScene = Scene.getSceneForLayout(root, R.layout.display_bill_cook_detail, this);
+        billCompletedScene = Scene.getSceneForLayout(root, R.layout.bill_completed_cook, this);
         settingScene = Scene.getSceneForLayout(root, R.layout.setting, this);
 
         //Set up prepateBillList and completedBillList
@@ -78,9 +80,12 @@ public class DisplayCook extends AppCompatActivity {
     private void getBillList() {
         ArrayList<BillItem> tempList = new ArrayList<>();
         tempList.addAll(MainActivity.orderList);
+        int countItem = 0;
+        int countBill = 0;
         while (tempList.size() != 0) {
             Bill bill = new Bill();
             if (tempList.get(0).getRestaurantID() == resID) {
+                countBill++; countItem++;
                 bill.addNewItem(tempList.get(0));      //Add the first element in the orderList
                 String status = tempList.get(0).getStatus();
                 int id = tempList.get(0).getID();
@@ -92,6 +97,7 @@ public class DisplayCook extends AppCompatActivity {
                 int i = 0;
                 while (i < tempList.size()) {
                     if (tempList.get(i).getID() == id) {
+                        countItem++;
                         bill.addNewItem(tempList.get(i));
                         tempList.remove(i);
                         i--;
@@ -198,7 +204,7 @@ public class DisplayCook extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public  void displayCompletedBill(){
         Transition slide = new Slide(Gravity.RIGHT);
-        TransitionManager.go(billCookScene, slide);
+        TransitionManager.go(billCompletedScene, slide);
 
         //Set navigation bar
         TextView title = (TextView) findViewById(R.id.title);
@@ -213,7 +219,7 @@ public class DisplayCook extends AppCompatActivity {
         settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings));
 
         //Display completed bill list
-        ListView listView = (ListView)findViewById(R.id.bill_cook_List);
+        ListView listView = (ListView)findViewById(R.id.bill_completed_cook_List);
         listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getCompletedBillList()));
         ImageButton infoButton = (ImageButton) findViewById(R.id.info_btn);
         infoButton.setImageDrawable(getResources().getDrawable(R.drawable.account_btn));
@@ -239,8 +245,6 @@ public class DisplayCook extends AppCompatActivity {
         TransitionManager.go(billCookScene, slide);
 
         //Set navigation bar
-        TextView title = (TextView) findViewById(R.id.title);
-        title.setText("Waiting Bill");
         ImageButton listButton = (ImageButton) findViewById(R.id.list_button);
         listButton.setImageDrawable(getResources().getDrawable(R.drawable.preparing_pressed));
         listButton.setTag(R.drawable.preparing_pressed); //Set tag for searching
@@ -249,6 +253,7 @@ public class DisplayCook extends AppCompatActivity {
         completedButton.setTag(null);   //Set tag for searching
         ImageButton settingButton = (ImageButton) findViewById(R.id.setting_button);
         settingButton.setImageDrawable(getResources().getDrawable(R.drawable.settings));
+
         ListView listView = (ListView)findViewById(R.id.bill_cook_List);
         listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getBillList()));
         ImageButton infoButton = (ImageButton) findViewById(R.id.info_btn);
@@ -266,7 +271,7 @@ public class DisplayCook extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void displayCompletedBill(View v){
         Transition slide = new Slide(Gravity.RIGHT);
-        TransitionManager.go(billCookScene, slide);
+        TransitionManager.go(billCompletedScene, slide);
 
         //Set title
         TextView title = (TextView) findViewById(R.id.title);
@@ -284,7 +289,7 @@ public class DisplayCook extends AppCompatActivity {
         infoButton.setImageDrawable(getResources().getDrawable(R.drawable.account_btn));
 
         //Display completed bill list
-        ListView listView = (ListView) findViewById(R.id.bill_cook_List);
+        ListView listView = (ListView) findViewById(R.id.bill_completed_cook_List);
         ArrayList<Bill> completedBillList = DisplayCart.billManager.getCompletedBillList();
         listView.setAdapter(new CustomListBillCookAdapter(this, completedBillList));
         // When the user clicks on the ListItem
