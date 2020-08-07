@@ -75,37 +75,38 @@ public class DisplayCook extends AppCompatActivity {
 
     }
 
-    private void getBillList(){
+    private void getBillList() {
         ArrayList<BillItem> tempList = new ArrayList<>();
         tempList.addAll(MainActivity.orderList);
-        while(tempList.size() != 0){
+        while (tempList.size() != 0) {
             Bill bill = new Bill();
-            bill.addNewItem(tempList.get(0));      //Add the first element in the orderList
-            String status = tempList.get(0).getStatus();
-            int id = tempList.get(0).getID();
-            bill.setStatus(status);
-            bill.setBillID(Integer.toString(id));
-            tempList.remove(0);            //then remove it and set the status of the bill
+            if (tempList.get(0).getRestaurantID() == resID) {
+                bill.addNewItem(tempList.get(0));      //Add the first element in the orderList
+                String status = tempList.get(0).getStatus();
+                int id = tempList.get(0).getID();
+                bill.setStatus(status);
+                bill.setBillID(Integer.toString(id));
+                tempList.remove(0);            //then remove it and set the status of the bill
 
-            //Add bill item with the same ID
-            int i = 0;
-            while(i < tempList.size()){
-                if(tempList.get(i).getID() == id){
-                    bill.addNewItem(tempList.get(i));
-                    tempList.remove(i);
-                    i--;
+                //Add bill item with the same ID and restaurantID
+                int i = 0;
+                while (i < tempList.size()) {
+                    if (tempList.get(i).getID() == id) {
+                        bill.addNewItem(tempList.get(i));
+                        tempList.remove(i);
+                        i--;
+                    }
+                    i++;
                 }
-                i++;
-            }
 
-            //Add bill to prepareBillList or completedBillList
-            bill.calcTotalPrice();  //Calculate total price of bill
-            if(!status.equals("completed")){
-                prepareBillList.add(bill);
-            }
-            else{
-                completedBillList.add(bill);
-            }
+                //Add bill to prepareBillList or completedBillList
+                bill.calcTotalPrice();  //Calculate total price of bill
+                if (!status.equals("completed")) {
+                    prepareBillList.add(bill);
+                } else {
+                    completedBillList.add(bill);
+                }
+            } else tempList.remove(0);
         }
     }
 
@@ -284,7 +285,8 @@ public class DisplayCook extends AppCompatActivity {
 
         //Display completed bill list
         ListView listView = (ListView) findViewById(R.id.bill_cook_List);
-        listView.setAdapter(new CustomListBillCookAdapter(this, DisplayCart.billManager.getCompletedBillList()));
+        ArrayList<Bill> completedBillList = DisplayCart.billManager.getCompletedBillList();
+        listView.setAdapter(new CustomListBillCookAdapter(this, completedBillList));
         // When the user clicks on the ListItem
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -87,7 +87,7 @@ public class DisplayBillCookDetail extends AppCompatActivity {
             statusView.setImageDrawable(getResources().getDrawable(R.drawable.being_prepared));
             button.setBackground(getResources().getDrawable(R.drawable.finish_button));
         }
-        else if (bill.getStatus().equals("finished")){
+        else if (bill.getStatus().equals("completed")){
             statusView.setImageDrawable(getResources().getDrawable(R.drawable.finished));
             button.setBackground(getResources().getDrawable(R.drawable.ok_button));
             button.setOnClickListener(new View.OnClickListener() {
