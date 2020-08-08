@@ -37,10 +37,10 @@ public class DisplayLogin extends AppCompatActivity {
     private Scene loginScene = null;
     public static Customer currentUser = null;
 
-    String urlGetDataCustomer = "http://172.17.23.72:8080/androidwebservice/customer/getData.php";
-    String urlGetDataRestaurant = "http://172.17.23.72:8080/androidwebservice/restaurant/getData.php";
-    String urlGetDataFood = "http://172.17.23.72:8080/androidwebservice/food/getData.php";
-    String urlGetDataOrder = "http://172.17.23.72:8080/androidwebservice/order/getData.php";
+    String urlGetDataCustomer = "http://192.168.0.101/androidwebservice/customer/getData.php";
+    String urlGetDataRestaurant = "http://192.168.0.101/androidwebservice/restaurant/getData.php";
+    String urlGetDataFood = "http://192.168.0.101/androidwebservice/food/getData.php";
+    String urlGetDataOrder = "http://192.168.0.101/androidwebservice/order/getData.php";
     public static ArrayList<Customer> cusList = new ArrayList<>();
     public static ArrayList<Restaurant> resList = new ArrayList<>();
     public static ArrayList<Food> foodList = new ArrayList<>();
@@ -268,7 +268,8 @@ public class DisplayLogin extends AppCompatActivity {
                                     String Description = object.getString("Description");
                                     String Price = object.getString("Price");
                                     String Status = object.getString("Status");
-                                    orderList.add(new BillItem(Order_ID, Cus_ID, Res_ID, Food_ID, Name, Quantity, Description, Price, Status));
+                                    String Time = object.getString("Time");
+                                    orderList.add(new BillItem(Order_ID, Cus_ID, Res_ID, Food_ID, Name, Quantity, Description, Price, Status, Time));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }

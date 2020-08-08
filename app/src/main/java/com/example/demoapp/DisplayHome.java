@@ -24,6 +24,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.demoapp.Data.Customer;
 import com.example.demoapp.Data.Food;
 import com.example.demoapp.Data.Restaurant;
 
@@ -38,9 +39,11 @@ public class DisplayHome extends AppCompatActivity {
     private String selectedRestaurant = null;
     private Scene homeScene;
     private Scene foodScene;
-    public static ArrayList<Restaurant> resList = DisplayLogin.resList;
-    public static ArrayList<Food> foodList = DisplayLogin.foodList;
-    public static ArrayList<BillItem> orderList = DisplayLogin.orderList;
+
+    public static ArrayList<Customer> cusList = new ArrayList<>();
+    public static ArrayList<Restaurant> resList = new ArrayList<>();
+    public static ArrayList<Food> foodList = new ArrayList<>();
+    public static ArrayList<BillItem> orderList = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -75,9 +78,17 @@ public class DisplayHome extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.listRestaurant);
         if(DisplayLogin.resList.size() != 0) {
             customerID = DisplayLogin.currentUser.getID();
+            cusList = DisplayLogin.cusList;
+            resList = DisplayLogin.resList;
+            foodList = DisplayLogin.foodList;
+            orderList = DisplayLogin.orderList;
         }
         else {
             customerID = DisplaySignUp.customerSignUp.getID();
+            cusList = DisplayLogin.cusList;
+            resList = DisplaySignUp.resList;
+            foodList = DisplaySignUp.foodList;
+            orderList = DisplaySignUp.orderList;
         }
 
         // Calculate number of order in system

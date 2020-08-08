@@ -37,8 +37,8 @@ import java.util.Map;
 public class DisplayBill extends AppCompatActivity {
 
     private Scene billScene;
-    String urlInsertData = "http://172.17.23.72:8080//androidwebservice/order/insert.php";
-    String urlUpdateData = "http://172.17.23.72:8080/androidwebservice/order/update.php";
+    String urlInsertData = "http://192.168.0.101//androidwebservice/order/insert.php";
+    String urlUpdateData = "http://192.168.0.101/androidwebservice/food/update.php";
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -91,6 +91,7 @@ public class DisplayBill extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MINUTE, 10 + DisplayCart.billManager.getBillList().size()*1);
         String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm").format(calendar.getTime());
+        Log.d("date", timeStamp);
 
         //Add new bill to database
         DisplayCart.billManager.addNewBill(bill);
@@ -101,6 +102,7 @@ public class DisplayBill extends AppCompatActivity {
         // Add bill to database
         Log.d("msg", bill.billItemList.size()+"");
         for(int i = 0; i < bill.billItemList.size(); i++) {
+            bill.billItemList.get(i).setTime(timeStamp);
             Log.d("msg", bill.billItemList.get(i).getName());
             Log.d("msg", bill.billItemList.get(i).getQuantity()+"");
             addData(urlInsertData, bill.billItemList.get(i));
@@ -114,6 +116,8 @@ public class DisplayBill extends AppCompatActivity {
                 if(DisplayHome.foodList.get(i).getRes_ID() == bill.billItemList.get(j).getRestaurantID()) {
                     if(DisplayHome.foodList.get(i).getID() == bill.billItemList.get(j).getFoodID()) {
                         int newQuantity = DisplayHome.foodList.get(i).getQuantity() - Integer.valueOf(bill.billItemList.get(j).getQuantity());
+                        Log.d("old quantity", DisplayHome.foodList.get(i).getQuantity()+"");
+                        Log.d("sub", bill.billItemList.get(j).getQuantity());
                         Log.d("new quantity", newQuantity+"");
                         DisplayHome.foodList.get(i).setQuantity(newQuantity);
                         update(urlUpdateData, DisplayHome.foodList.get(i).getID(), newQuantity);
@@ -169,6 +173,7 @@ public class DisplayBill extends AppCompatActivity {
                 params.put("Description", item.getDescription());
                 params.put("Price", item.getPrice());
                 params.put("Status", item.getStatus());
+                params.put("Time", item.getTime());
                 return params;
             }
         };
@@ -185,6 +190,7 @@ public class DisplayBill extends AppCompatActivity {
                             Log.d("msg", "Update food quantity successful");
                         } else {
                             Log.d("msg", "Update food quantity fail");
+                            Log.d("msg", response);
                         }
                     }
                 },

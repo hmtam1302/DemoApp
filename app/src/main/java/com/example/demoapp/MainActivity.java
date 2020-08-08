@@ -44,10 +44,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static ArrayList<Customer> cusList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         //Start into display activity
         Intent intent = new Intent(this, DisplayWelcome.class);
         startActivity(intent);

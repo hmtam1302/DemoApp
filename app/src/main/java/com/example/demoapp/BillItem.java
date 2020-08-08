@@ -10,8 +10,9 @@ public class BillItem {
     private String quantity;
     private String description;
     private String status;
+    private String time;
 
-    public BillItem(int ID, int customerID, int restaurantID, int foodID, String name, String quantity, String description, String price, String status) {
+    public BillItem(int ID, int customerID, int restaurantID, int foodID, String name, String quantity, String description, String price, String status, String time) {
         this.ID = ID;
         CustomerID = customerID;
         RestaurantID = restaurantID;
@@ -21,6 +22,15 @@ public class BillItem {
         this.quantity = quantity;
         this.description = description;
         this.status = status;
+        this.time = time;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public int getID() {

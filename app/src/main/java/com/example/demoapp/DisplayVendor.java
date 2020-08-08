@@ -108,6 +108,7 @@ public class DisplayVendor extends AppCompatActivity {
                 int id = tempList.get(0).getID();
                 bill.setStatus(status);
                 bill.setBillID(Integer.toString(id));
+                bill.setTime(tempList.get(0).getTime());
                 tempList.remove(0);            //then remove it and set the status of the bill
 
                 //Add bill item with the same ID and restaurantID

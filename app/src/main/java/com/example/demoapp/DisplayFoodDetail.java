@@ -121,7 +121,7 @@ public class DisplayFoodDetail extends AppCompatActivity {
         int index = getItemIndex(itemName);
 
         if(index == -1){
-            bill.addNewItem(new BillItem(OrderID, customerID, restaurantID, selectedFood.getID(), itemName, itemQuantity, itemNote, itemPrice, itemStatus));
+            bill.addNewItem(new BillItem(OrderID, customerID, restaurantID, selectedFood.getID(), itemName, itemQuantity, itemNote, itemPrice, itemStatus, ""));
         }
         else{
             BillItem item = bill.billItemList.get(index);

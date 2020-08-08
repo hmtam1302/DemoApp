@@ -44,7 +44,8 @@ public class DisplayInfomation extends AppCompatActivity {
     private Customer customer = null;
     private int ID = -1;
     ArrayList<Customer> cusList = new ArrayList<>();
-    String urlUpdateData = "http://172.17.23.72:8080/androidwebservice/update.php";
+    String urlUpdateData = "http://192.168.0.101/androidwebservice/customer/update.php";
+    String urlUpdatePass = "http://192.168.0.101/androidwebservice/customer/updatePass.php";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -209,8 +210,7 @@ public class DisplayInfomation extends AppCompatActivity {
             Log.d("user input 1: ", newPass);
             Log.d("user input 2: ", confirmNewPass);
             if (newPass.equals(confirmNewPass)) {
-                customer.setPassWord(newPass);
-                update(urlUpdateData, customer);
+                updatePass(urlUpdatePass, customer.getID(), newPass);
                 // Message to notify the change is successful
                 Intent intent = new Intent(this, PopLoginAgain.class);
                 startActivity(intent);
@@ -257,6 +257,37 @@ public class DisplayInfomation extends AppCompatActivity {
                 params.put("genderCus", String.valueOf(customerChange.getGender()));
                 params.put("emailCus", customerChange.getEmail());
                 params.put("phoneCus", customerChange.getPhone());
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    private void updatePass(String url, final int ID, final String password) {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(response.trim().equals("success")) {
+                            Log.d("msg", "Update password successful");
+                        } else {
+                            Log.d("msg", "Update password fail");
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("msg", "Fault in database/link. "+error.toString());
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("idCus",String.valueOf(ID));
+                params.put("passCus", password);
                 return params;
             }
         };
